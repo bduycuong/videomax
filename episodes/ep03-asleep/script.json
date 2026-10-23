@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "en": ["Here's a sleepy question.", "How many years of your life will you spend asleep?"], "vi": ["Một câu hỏi buồn ngủ nhé.", "Cả đời, bạn sẽ ngủ mất bao nhiêu năm?"]},
+ {"id": "guess", "en": ["Take a guess.", "Five years? Ten years? Or more than twenty?"], "vi": ["Thử đoán xem.", "Năm năm? Mười năm? Hay hơn hai mươi năm?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's do the math."], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng làm phép tính nhé."]},
+ {"id": "night", "en": ["Health experts say adults need at least seven hours of sleep a night.", "Let's use eight."], "vi": ["Các chuyên gia y tế khuyên người lớn ngủ ít nhất 7 tiếng mỗi đêm.", "Mình lấy 8 tiếng nhé."]},
+ {"id": "day", "en": ["Eight hours out of twenty four is exactly one third of your day."], "vi": ["8 tiếng trên 24 tiếng là đúng một phần ba ngày của bạn."]},
+ {"id": "life", "en": ["Now take an eighty year life.", "One third of it is almost twenty seven years of sleep!"], "vi": ["Giờ lấy một đời người 80 năm.", "Một phần ba trong đó là gần 27 năm ngủ!"]},
+ {"id": "seven", "en": ["Sleep just seven hours a night, and it's still about twenty three years."], "vi": ["Dù chỉ ngủ 7 tiếng mỗi đêm, vẫn khoảng 23 năm."]},
+ {"id": "baby", "en": ["Babies are the real sleep champions.", "A newborn can sleep about sixteen hours a day, and teens need around nine."], "vi": ["Em bé mới là nhà vô địch ngủ.", "Trẻ sơ sinh có thể ngủ khoảng 16 tiếng mỗi ngày, còn tuổi teen cần khoảng 9 tiếng."]},
+ {"id": "short", "en": ["But about one in three American adults sleep less than seven hours.", "That's a lot of tired people!"], "vi": ["Nhưng khoảng một phần ba người lớn ở Mỹ ngủ chưa đến 7 tiếng.", "Thật nhiều người mệt mỏi!"]},
+ {"id": "why", "en": ["And that time isn't wasted.", "While you snooze, your brain sorts memories and your body repairs itself."], "vi": ["Và quãng thời gian đó không hề phí.", "Khi bạn ngủ, não sắp xếp ký ức và cơ thể tự phục hồi."]},
+ {"id": "outro", "en": ["So, about a third of your life in bed, and it's time well spent.", "Stay curious!"], "vi": ["Vậy là khoảng một phần ba cuộc đời trên giường, và thật đáng giá.", "Hãy luôn tò mò nhé!"]}
+]
