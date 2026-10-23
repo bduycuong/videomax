@@ -35,9 +35,9 @@
   "caveat_vi": "Ước tính; trẻ em tim đập nhanh hơn nên tổng thực có thể cao hơn.",
   "source_title": "LibreTexts Physics – Heart Beats Per Lifetime",
   "source_url": "https://phys.libretexts.org/Bookshelves/Conceptual_Physics/Body_Physics_-_Motion_to_Metabolism_(Davis)/02%3A_Measuring_the_Body/2.05%3A_Heart_Beats_Per_Lifetime",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": 2,
+  "done_date": "2026-10-23"
  },
  {
   "slug": "years-life-spend-asleep",
@@ -56,9 +56,9 @@
   "caveat_vi": "Trẻ nhỏ và thiếu niên ngủ nhiều hơn, đẩy tổng lên cao.",
   "source_title": "CDC – 1 in 3 adults don't get enough sleep",
   "source_url": "https://archive.cdc.gov/www_cdc_gov/media/releases/2016/p0215-enough-sleep.html",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": 3,
+  "done_date": "2026-10-23"
  },
  {
   "slug": "long-would-take-count",

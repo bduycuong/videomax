@@ -1,0 +1,119 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "Here's a sleepy question.",
+   "How many years of your life will you spend asleep?"
+  ],
+  "vi": [
+   "Một câu hỏi buồn ngủ nhé.",
+   "Cả đời, bạn sẽ ngủ mất bao nhiêu năm?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "Five years? Fifteen years? Or even more?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Năm năm? Mười lăm năm? Hay còn nhiều hơn?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's do the math."
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Cùng làm phép tính nhé."
+  ]
+ },
+ {
+  "id": "need",
+  "en": [
+   "Sleep experts say adults need at least seven hours every night."
+  ],
+  "vi": [
+   "Các chuyên gia giấc ngủ nói người lớn cần ngủ ít nhất 7 tiếng mỗi đêm."
+  ]
+ },
+ {
+  "id": "day",
+  "en": [
+   "Let's use eight hours, a nice round number.",
+   "A day has twenty four hours.",
+   "So eight out of twenty four is exactly one third."
+  ],
+  "vi": [
+   "Mình lấy 8 tiếng cho tròn số.",
+   "Một ngày có 24 tiếng.",
+   "Vậy 8 trên 24 đúng bằng một phần ba."
+  ]
+ },
+ {
+  "id": "life",
+  "en": [
+   "Now picture a whole life of eighty years.",
+   "One third of that is about twenty seven years asleep!"
+  ],
+  "vi": [
+   "Giờ hình dung cả cuộc đời 80 năm.",
+   "Một phần ba trong đó là khoảng 27 năm ngủ!"
+  ]
+ },
+ {
+  "id": "seven",
+  "en": [
+   "Even at seven hours a night, it's still about twenty three years."
+  ],
+  "vi": [
+   "Kể cả chỉ ngủ 7 tiếng mỗi đêm, vẫn là khoảng 23 năm."
+  ]
+ },
+ {
+  "id": "baby",
+  "en": [
+   "And newborn babies need even more, about fourteen to seventeen hours a day!"
+  ],
+  "vi": [
+   "Còn trẻ sơ sinh cần ngủ nhiều hơn nữa, khoảng 14 đến 17 tiếng mỗi ngày!"
+  ]
+ },
+ {
+  "id": "short",
+  "en": [
+   "But more than one in three American adults sleep less than seven hours.",
+   "That's a lot of tired people."
+  ],
+  "vi": [
+   "Nhưng hơn 1/3 người trưởng thành ở Mỹ ngủ dưới 7 tiếng.",
+   "Thật nhiều người mệt mỏi."
+  ]
+ },
+ {
+  "id": "why",
+  "en": [
+   "And that time isn't wasted.",
+   "While you sleep, your brain sorts your memories and your body repairs itself."
+  ],
+  "vi": [
+   "Và khoảng thời gian đó không hề phí.",
+   "Khi bạn ngủ, não sắp xếp ký ức và cơ thể tự sửa chữa."
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "So, about twenty seven years of sleep, and that's what keeps your awake years bright.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Vậy là khoảng 27 năm ngủ, và chính nó giúp những năm thức của bạn tươi sáng.",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]
