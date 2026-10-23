@@ -76,9 +76,9 @@
   "caveat_vi": "Đọc to số lớn mất vài giây mỗi số, thực tế còn lâu hơn cả đời người.",
   "source_title": "DataGenetics – One Trillion Dollars",
   "source_url": "https://datagenetics.com/blog/april12019/index.html",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep04-count-billion",
+  "done_date": "2026-10-23"
  },
  {
   "slug": "cutting-an-onion-make",
@@ -97,9 +97,9 @@
   "caveat_vi": "Nhiều nguồn phổ thông vẫn chỉ nhắc enzyme alliinase; thực ra nó chỉ khởi đầu chuỗi phản ứng.",
   "source_title": "Library of Congress – Everyday Mysteries",
   "source_url": "https://www.loc.gov/everyday-mysteries/food-and-nutrition/item/why-does-chopping-an-onion-make-you-cry/",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep05-onion-tears",
+  "done_date": "2026-10-23"
  },
  {
   "slug": "cant-tickle-yourself",
