@@ -118,9 +118,9 @@
   "caveat_vi": "Vì sao tiến hóa ra cảm giác nhột thì vẫn còn bàn cãi.",
   "source_title": "Scientific American – Why can't a person tickle himself?",
   "source_url": "https://www.scientificamerican.com/article/why-cant-a-person-tickle/",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep06-tickle",
+  "done_date": "2026-10-24"
  },
  {
   "slug": "fold-sheet-paper-42",
@@ -140,9 +140,9 @@
   "caveat_vi": "Chỉ là thí nghiệm tưởng tượng; giấy thật không gấp quá ~12 lần.",
   "source_title": "Scientific American – Paper folds to the Moon",
   "source_url": "https://www.scientificamerican.com/article/how-many-paper-folds-would-get-you-to-the-moon/",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep07-paper-moon",
+  "done_date": "2026-10-24"
  },
  {
   "slug": "youre-sitting-still-so",

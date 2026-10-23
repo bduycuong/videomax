@@ -1,0 +1,125 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "Here's a wild one.",
+   "Fold a sheet of paper in half forty two times.",
+   "Could it reach the Moon?"
+  ],
+  "vi": [
+   "Một câu hỏi điên rồ nhé.",
+   "Gấp đôi một tờ giấy 42 lần.",
+   "Liệu nó có chạm tới Mặt Trăng?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "A house? A mountain? Or all the way to the Moon?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Bằng ngôi nhà? Bằng ngọn núi? Hay tới tận Mặt Trăng?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's fold it step by step."
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Cùng gấp từng bước nhé."
+  ]
+ },
+ {
+  "id": "thin",
+  "en": [
+   "A sheet of paper is about a tenth of a millimeter thick."
+  ],
+  "vi": [
+   "Một tờ giấy chỉ dày khoảng 1/10 milimét."
+  ]
+ },
+ {
+  "id": "double",
+  "en": [
+   "Every fold doubles the stack.",
+   "Two layers, then four, then eight."
+  ],
+  "vi": [
+   "Mỗi lần gấp, chồng giấy dày gấp đôi.",
+   "Hai lớp, rồi bốn, rồi tám."
+  ]
+ },
+ {
+  "id": "ten",
+  "en": [
+   "After ten folds, it's about ten centimeters thick.",
+   "That's as wide as your hand."
+  ],
+  "vi": [
+   "Sau 10 lần gấp, nó dày khoảng 10 centimét.",
+   "Bằng bề ngang bàn tay bạn."
+  ]
+ },
+ {
+  "id": "twenty",
+  "en": [
+   "After twenty folds, it's about one hundred meters tall.",
+   "Taller than a big building!"
+  ],
+  "vi": [
+   "Sau 20 lần gấp, nó cao khoảng 100 mét.",
+   "Cao hơn cả một tòa nhà lớn!"
+  ]
+ },
+ {
+  "id": "thirty",
+  "en": [
+   "After thirty folds, it's over one hundred kilometers.",
+   "That's past the edge of space!"
+  ],
+  "vi": [
+   "Sau 30 lần gấp, nó cao hơn 100 kilômét.",
+   "Vượt qua cả rìa không gian!"
+  ]
+ },
+ {
+  "id": "moon",
+  "en": [
+   "And after forty two folds, about four hundred forty thousand kilometers.",
+   "The Moon is only about three hundred eighty four thousand kilometers away.",
+   "You'd shoot right past it!"
+  ],
+  "vi": [
+   "Và sau 42 lần gấp, khoảng 440.000 kilômét.",
+   "Mặt Trăng chỉ cách chúng ta khoảng 384.000 kilômét.",
+   "Bạn sẽ vượt qua luôn nó!"
+  ]
+ },
+ {
+  "id": "record",
+  "en": [
+   "But real paper fights back.",
+   "The world record is just twelve folds, set in two thousand one by a high school student, with a strip of paper over a kilometer long."
+  ],
+  "vi": [
+   "Nhưng giấy thật thì không chịu nổi.",
+   "Kỷ lục thế giới chỉ là 12 lần gấp, do một nữ sinh trung học lập năm 2001, với một dải giấy dài hơn 1 kilômét."
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "So yes, forty two folds would reach the Moon, at least on paper.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Vậy đúng là 42 lần gấp sẽ chạm tới Mặt Trăng, ít nhất là trên giấy.",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]
