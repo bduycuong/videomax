@@ -161,9 +161,9 @@
   "caveat_vi": "Tốc độ quay phụ thuộc vĩ độ.",
   "source_title": "Space.com – How fast is Earth moving?",
   "source_url": "https://space.com/33527-how-fast-is-earth-moving.html",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep08-earth-speed",
+  "done_date": "2026-10-25"
  },
  {
   "slug": "more-bacteria-than-human",
@@ -182,9 +182,9 @@
   "caveat_vi": "Tỷ lệ thay đổi theo người.",
   "source_title": "PLOS Biology 2016 (Sender, Fuchs & Milo)",
   "source_url": "https://pubmed.ncbi.nlm.nih.gov/27541692/",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep09-bacteria-cells",
+  "done_date": "2026-10-25"
  },
  {
   "slug": "years-life-spend-staring",

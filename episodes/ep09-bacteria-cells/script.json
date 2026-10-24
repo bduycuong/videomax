@@ -1,0 +1,123 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "Here's a weird one.",
+   "People love to say you're more bacteria than human.",
+   "Is that true?"
+  ],
+  "vi": [
+   "Một câu hỏi kỳ lạ nhé.",
+   "Người ta hay nói bạn là vi khuẩn nhiều hơn là người.",
+   "Điều đó có đúng không?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "Ten bacteria for every human cell? One for one? Or way fewer?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Mười vi khuẩn cho mỗi tế bào người? Một đổi một? Hay ít hơn nhiều?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's count some cells."
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Cùng đếm tế bào nào."
+  ]
+ },
+ {
+  "id": "myth",
+  "en": [
+   "That famous ten to one number started as a rough guess, way back in nineteen seventy two.",
+   "Nobody really checked it for decades."
+  ],
+  "vi": [
+   "Con số 10 đổi 1 nổi tiếng đó bắt đầu từ một ước đoán sơ sài, tận năm 1972.",
+   "Suốt nhiều thập kỷ, gần như chẳng ai kiểm tra lại."
+  ]
+ },
+ {
+  "id": "human",
+  "en": [
+   "In twenty sixteen, scientists recounted.",
+   "A typical adult has about thirty trillion human cells."
+  ],
+  "vi": [
+   "Năm 2016, các nhà khoa học đếm lại.",
+   "Một người trưởng thành có khoảng 30 nghìn tỷ tế bào người."
+  ]
+ },
+ {
+  "id": "blood",
+  "en": [
+   "Most of them are tiny red blood cells, zipping through your veins."
+  ],
+  "vi": [
+   "Phần lớn trong số đó là hồng cầu tí hon, chạy khắp mạch máu."
+  ]
+ },
+ {
+  "id": "bugs",
+  "en": [
+   "And the bacteria?",
+   "About thirty eight trillion, mostly living in your gut."
+  ],
+  "vi": [
+   "Còn vi khuẩn?",
+   "Khoảng 38 nghìn tỷ, chủ yếu sống trong ruột bạn."
+  ]
+ },
+ {
+  "id": "ratio",
+  "en": [
+   "So the real ratio is close to one to one.",
+   "About one point three bacteria for each human cell."
+  ],
+  "vi": [
+   "Vậy tỷ lệ thật gần như một đổi một.",
+   "Khoảng 1,3 vi khuẩn cho mỗi tế bào người."
+  ]
+ },
+ {
+  "id": "weight",
+  "en": [
+   "And because bacteria are so small, all of them together weigh less than half a pound."
+  ],
+  "vi": [
+   "Và vì vi khuẩn rất nhỏ, tất cả gộp lại nặng chưa tới nửa pound."
+  ]
+ },
+ {
+  "id": "flush",
+  "en": [
+   "Here's the funny part.",
+   "The numbers are so close that one trip to the bathroom can tip the balance toward human!"
+  ],
+  "vi": [
+   "Đây mới là phần buồn cười.",
+   "Hai con số sát nhau đến mức một lần đi vệ sinh có thể làm cán cân nghiêng về phía người!"
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "So you're not mostly bacteria.",
+   "You're roughly half and half.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Vậy bạn không phải chủ yếu là vi khuẩn.",
+   "Bạn là khoảng nửa nọ nửa kia.",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]

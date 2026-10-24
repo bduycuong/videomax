@@ -1,0 +1,127 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "Here's a strange one.",
+   "Right now, you're sitting perfectly still.",
+   "So how fast are you really moving?"
+  ],
+  "vi": [
+   "Một câu hỏi lạ nhé.",
+   "Lúc này, bạn đang ngồi yên tuyệt đối.",
+   "Vậy thật ra bạn đang di chuyển nhanh cỡ nào?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "Zero? As fast as a car? Or faster than a rocket?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Bằng không? Nhanh như ô tô? Hay nhanh hơn tên lửa?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Buckle up!"
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Thắt dây an toàn nào!"
+  ]
+ },
+ {
+  "id": "spin",
+  "en": [
+   "First, Earth spins once a day.",
+   "Around its middle, that's a trip of about twenty five thousand miles."
+  ],
+  "vi": [
+   "Đầu tiên, Trái Đất tự quay một vòng mỗi ngày.",
+   "Quanh đường xích đạo, một vòng dài khoảng 25.000 dặm."
+  ]
+ },
+ {
+  "id": "equator",
+  "en": [
+   "Divide by twenty four hours.",
+   "The ground at the equator moves about one thousand miles an hour.",
+   "That's faster than a jet!"
+  ],
+  "vi": [
+   "Chia cho 24 giờ.",
+   "Mặt đất ở xích đạo chạy khoảng 1.000 dặm/giờ.",
+   "Nhanh hơn cả máy bay phản lực!"
+  ]
+ },
+ {
+  "id": "poles",
+  "en": [
+   "Farther from the equator, your circle gets smaller.",
+   "In New York, it's about eight hundred miles an hour."
+  ],
+  "vi": [
+   "Càng xa xích đạo, vòng tròn của bạn càng nhỏ.",
+   "Ở New York, khoảng 800 dặm/giờ."
+  ]
+ },
+ {
+  "id": "orbit",
+  "en": [
+   "But Earth is also racing around the Sun.",
+   "One lap is nearly six hundred million miles, and it takes a year."
+  ],
+  "vi": [
+   "Nhưng Trái Đất còn lao quanh Mặt Trời.",
+   "Một vòng dài gần 600 triệu dặm, và mất một năm."
+  ]
+ },
+ {
+  "id": "fast",
+  "en": [
+   "That works out to about sixty seven thousand miles an hour.",
+   "Over a thousand miles every minute!"
+  ],
+  "vi": [
+   "Tính ra khoảng 67.000 dặm/giờ.",
+   "Hơn 1.000 dặm mỗi phút!"
+  ]
+ },
+ {
+  "id": "feel",
+  "en": [
+   "So why don't you feel it?",
+   "The air, your chair, and the ground all move with you, smoothly.",
+   "You only feel speeding up or slowing down."
+  ],
+  "vi": [
+   "Vậy sao bạn không cảm thấy gì?",
+   "Không khí, chiếc ghế và mặt đất đều di chuyển êm cùng bạn.",
+   "Bạn chỉ cảm nhận được khi tăng tốc hoặc giảm tốc."
+  ]
+ },
+ {
+  "id": "galaxy",
+  "en": [
+   "And the Sun drags us around the galaxy at about four hundred fifty thousand miles an hour."
+  ],
+  "vi": [
+   "Còn Mặt Trời kéo chúng ta quanh dải ngân hà với khoảng 450.000 dặm/giờ."
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "So, sitting still? You're zooming around the Sun at sixty seven thousand miles an hour.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Ngồi yên ư? Bạn đang lao quanh Mặt Trời với 67.000 dặm/giờ.",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]
