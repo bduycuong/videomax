@@ -203,9 +203,9 @@
   "caveat_vi": "Số liệu khác nhau theo khảo sát và quốc gia.",
   "source_title": "Exploding Topics – Smartphone usage stats (DataReportal)",
   "source_url": "https://explodingtopics.com/blog/smartphone-usage-stats",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep10-phone-years",
+  "done_date": "2026-10-26"
  },
  {
   "slug": "time-fly-faster-older",
@@ -224,9 +224,9 @@
   "caveat_vi": "Chưa có lời giải cuối cùng; nhiều giả thuyết cạnh tranh.",
   "source_title": "Scientific American – Why does time seem to speed up with age?",
   "source_url": "https://www.scientificamerican.com/article/why-does-time-seem-to-speed-up-with-age/",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep11-time-flies",
+  "done_date": "2026-10-26"
  },
  {
   "slug": "ants-crawling-right-now",

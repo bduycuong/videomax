@@ -1,0 +1,22 @@
+[
+ {"id":"hook", "en":["Remember how long summer felt when you were a kid?", "So why does a whole year now vanish in a blink?"],
+  "vi":["Nhớ hồi bé, mùa hè dài đến thế nào không?", "Vậy sao giờ cả một năm trôi qua trong chớp mắt?"]},
+ {"id":"guess", "en":["Take a guess.", "Is it your age? Fewer new memories? Or just being busy?"],
+  "vi":["Thử đoán xem.", "Do tuổi tác? Ít ký ức mới hơn? Hay chỉ vì bận rộn?"]},
+ {"id":"intro", "en":["I'm Max, and this is Max Wise.", "Scientists are still debating this one, so let's look at the clues."],
+  "vi":["Mình là Max, và đây là Max Wise.", "Các nhà khoa học vẫn còn tranh luận, nên cùng xem các manh mối nhé."]},
+ {"id":"ratio", "en":["Clue one.", "When you're five, one year is a fifth of your whole life.", "At fifty, it's just one fiftieth."],
+  "vi":["Manh mối một.", "Khi bạn 5 tuổi, một năm là 1/5 cả cuộc đời.", "Đến 50 tuổi, nó chỉ còn 1/50."]},
+ {"id":"firsts", "en":["Clue two.", "Kids have tons of firsts.", "First bike, first school, first snow.", "Looking back, all those new memories make the years feel long."],
+  "vi":["Manh mối hai.", "Trẻ con có vô số lần đầu tiên.", "Chiếc xe đạp đầu tiên, buổi học đầu tiên, trận tuyết đầu tiên.", "Nhìn lại, những ký ức mới ấy khiến năm tháng như dài ra."]},
+ {"id":"blur", "en":["Grown ups repeat the same days, so whole months blur into one."],
+  "vi":["Người lớn lặp lại những ngày giống nhau, nên cả tháng nhòe thành một."]},
+ {"id":"survey", "en":["Clue three.", "One study asked four hundred ninety nine people, aged fourteen to ninety four.", "Older people felt the last ten years flew by faster.", "But a single week? It felt about the same at every age."],
+  "vi":["Manh mối ba.", "Một nghiên cứu hỏi 499 người, từ 14 đến 94 tuổi.", "Người lớn tuổi thấy 10 năm qua trôi nhanh hơn.", "Nhưng một tuần? Cảm giác gần như như nhau ở mọi lứa tuổi."]},
+ {"id":"pressure", "en":["The strongest clue was time pressure.", "The busier people felt, the faster time seemed to fly."],
+  "vi":["Manh mối mạnh nhất là áp lực thời gian.", "Càng thấy bận rộn, người ta càng thấy thời gian trôi nhanh."]},
+ {"id":"tip", "en":["So here's a trick.", "Fill your year with new things.", "More firsts may make it feel longer when you look back."],
+  "vi":["Vậy đây là một mẹo nhỏ.", "Hãy lấp đầy năm của bạn bằng những điều mới.", "Càng nhiều lần đầu tiên, nhìn lại năm ấy có thể càng dài."]},
+ {"id":"outro", "en":["Time isn't really speeding up.", "Your brain is just a funny clock.", "Stay curious!"],
+  "vi":["Thời gian không thật sự trôi nhanh hơn.", "Chỉ là bộ não bạn là một chiếc đồng hồ kỳ lạ.", "Hãy luôn tò mò nhé!"]}
+]
