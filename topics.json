@@ -245,9 +245,9 @@
   "caveat_vi": "Tác giả gọi đây là ước tính tối thiểu.",
   "source_title": "Phys.org – PNAS 2022 ant census",
   "source_url": "https://phys.org/news/2022-09-ants-earth-quadrillion.html",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep12-ants-count",
+  "done_date": "2026-10-27"
  },
  {
   "slug": "fluffy-cloud-weigh",
@@ -266,9 +266,9 @@
   "caveat_vi": "Chỉ tính mây tích nhỏ; mây bão nặng hơn nhiều.",
   "source_title": "USGS Water Science School",
   "source_url": "https://www.usgs.gov/index.php/special-topics/water-science-school/science/how-much-does-a-cloud-weigh",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep13-cloud-weight",
+  "done_date": "2026-10-27"
  },
  {
   "slug": "yawns-contagious",
