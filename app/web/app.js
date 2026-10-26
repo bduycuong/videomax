@@ -32,6 +32,10 @@ const dm = (t) => new Intl.DateTimeFormat("vi-VN", { timeZone: tz, day: "2-digit
 const dayStart = (ymd) => new Date(`${ymd}T00:00:00+07:00`).toISOString();
 const addDays = (ymd, n) => { const d = new Date(`${ymd}T12:00:00+07:00`); d.setUTCDate(d.getUTCDate() + n); return vnDate(d); };
 const weekday = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
+const PF = { douyin: "Douyin", tiktok: "TikTok", xiaohongshu: "RedNote", instagram: "Instagram", youtube: "YouTube" };
+const HEARTS = new Set(["douyin", "xiaohongshu"]); // ranked by hearts
+const metric = (it) => HEARTS.has(it.platform) || !it.views ? `♥ ${num(it.likes)}` : `▶ ${num(it.views)}`;
+const detectPf = (u) => /tiktok\.com/i.test(u) ? "tiktok" : /douyin\.com|iesdouyin/i.test(u) ? "douyin" : /xiaohongshu\.com|xhslink\.com|rednote/i.test(u) ? "xiaohongshu" : /instagram\.com/i.test(u) ? "instagram" : /youtube\.com|youtu\.be/i.test(u) ? "youtube" : "";
 const toast = (m, ms = 2200) => { const t = document.createElement("div"); t.className = "toast"; t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), ms); };
 const grad = (seed) => { const hues = [28, 200, 150, 350, 265, 45, 190, 10]; let h = 0; for (const c of String(seed)) h = (h * 31 + c.charCodeAt(0)) >>> 0; const a = hues[h % hues.length]; return `linear-gradient(160deg,hsl(${a} 35% 62%),hsl(${a} 40% 24%))`; };
 const spinner = `<div class="empty"><span class="spin" style="display:inline-block"></span></div>`;
@@ -83,7 +87,11 @@ const backTop = (title, href, right = "") => `<header class="top"><div class="ro
 
 async function loadChannels() {
   const { data } = await sb.from("channels").select("*").order("created_at");
-  S.channels = data || []; S.chMap = Object.fromEntries(S.channels.map((c) => [c.id, c]));
+  S.channels = data || [];
+  const av = S.channels.filter((c) => (c.avatar_url || "").startsWith("sb:")).map((c) => c.avatar_url.slice(3));
+  const signedAv = av.length ? await signed("feed", av) : {};
+  S.channels.forEach((c) => { if ((c.avatar_url || "").startsWith("sb:")) c.avatar_url = signedAv[c.avatar_url.slice(3)] || null; else if (c.avatar_url) c.avatar_url = null; });
+  S.chMap = Object.fromEntries(S.channels.map((c) => [c.id, c]));
 }
 
 /* ---------- Face ID (WebAuthn platform authenticator gates this device's saved session) ---------- */
@@ -172,7 +180,7 @@ async function viewHome() {
   <section class="card">${hots.map((h) => `<div class="row" style="padding:10px 12px;border-bottom:1px solid #F4F4F5;gap:12px" data-id="${h.id}">
       <div class="th" style="width:44px;height:78px;background-image:url('${cov[h.cover_path] || ""}'),${grad(h.id)}"></div>
       <div style="flex:1;min-width:0"><div class="clamp2" style="font-size:14px;font-weight:600;line-height:1.3">${esc(h.caption_vi || h.caption_orig || "—")}</div>
-      <div class="vm">${esc(S.chMap[h.channel_id]?.name || "")} · ${h.views ? num(h.views) : "♥ " + num(h.likes)}</div></div>
+      <div class="vm">${esc(S.chMap[h.channel_id]?.name || "")} · ${metric(h)}</div></div>
       <button class="btn btn-y sm" data-ap="${h.id}" aria-label="Duyệt">${ic("check", 18, 2.8)}</button></div>`).join("")}</section>`
     : !S.channels.length ? `<a href="#/add" class="card empty" style="display:block">${ic("plus", 28)}<br>Thêm kênh</a>` : ""}`;
   m.querySelectorAll("[data-ap]").forEach((b) => b.onclick = async () => { b.disabled = true; await approve(hots.find((x) => x.id === b.dataset.ap)); b.closest("[data-id]").remove(); });
@@ -204,7 +212,7 @@ async function viewChannels() {
     const a = agg[c.id] || { n: 0, wait: 0 };
     return `<div class="ch" data-c="${c.id}"><div class="av" style="${c.avatar_url ? `background-image:url('${esc(c.avatar_url)}')` : `background:${grad(c.id)}`}">${c.avatar_url ? "" : esc((c.name || c.platform)[0].toUpperCase())}</div>
     <div style="flex:1;min-width:0"><div class="ell" style="font-size:15px;font-weight:700">${esc(c.name || c.url)}</div>
-    <div class="row" style="gap:6px;margin-top:4px">${c.platform === "douyin" ? '<span class="tag">Douyin</span>' : '<span class="tag">TikTok</span>'}${c.use_original ? '<span class="tag ok">Gốc</span>' : ""}${a.wait ? `<span class="tag yl">${a.wait} chờ</span>` : ""}${c.last_error ? '<span class="tag bad">Lỗi</span>' : ""}${c.active ? "" : '<span class="tag">Tắt</span>'}</div></div>
+    <div class="row" style="gap:6px;margin-top:4px"><span class="tag">${PF[c.platform] || c.platform}</span>${c.use_original ? '<span class="tag ok">Gốc</span>' : ""}${a.wait ? `<span class="tag yl">${a.wait} chờ</span>` : ""}${c.last_error ? '<span class="tag bad">Lỗi</span>' : ""}${c.active ? "" : '<span class="tag">Tắt</span>'}</div></div>
     <span style="color:#A1A1AA">${ic("chev", 18, 2.2)}</span></div>`;
   }).join("")}</section><a href="#/feed" class="btn btn-full">Lướt video</a>` : `<a href="#/add" class="card empty" style="display:block">${ic("plus", 28)}<br>Thêm kênh</a>`;
   m.querySelectorAll("[data-c]").forEach((el) => el.onclick = () => channelSheet(S.chMap[el.dataset.c]));
@@ -245,12 +253,12 @@ function channelSheet(c) {
 /* ---------- add channel ---------- */
 function viewAdd() {
   page({ navOn: "channels", top: backTop("Thêm kênh", "#/channels"), body: `<main class="main"><form id="f" style="display:flex;flex-direction:column;gap:10px">
-    <input class="inp" name="url" type="url" required placeholder="Link kênh Douyin / TikTok" aria-label="Link kênh" inputmode="url" autocapitalize="off">
-    <div class="seg" id="pf"><button type="button" data-v="douyin" class="on">Douyin</button><button type="button" data-v="tiktok">TikTok</button></div>
+    <input class="inp" name="url" type="url" required placeholder="Link kênh" aria-label="Link kênh" inputmode="url" autocapitalize="off">
+    <div class="seg pf5" id="pf">${Object.entries(PF).map(([k, l], i) => `<button type="button" data-v="${k}" class="${i ? "" : "on"}">${l === "Instagram" ? "IG" : l}</button>`).join("")}</div>
     <div class="card">
       <label class="li"><span>Tự cào 7 ngày</span><input type="checkbox" class="sw" name="auto" checked></label>
-      <label class="li"><span>View tối thiểu</span><select name="minv"><option value="0">Tất cả</option><option value="100000" selected>100N</option><option value="500000">500N</option><option value="1000000">1tr</option></select></label>
-      <label class="li"><span>Độ dài</span><select name="dur"><option value="20-300" selected>20s – 5p</option><option value="10-60">&lt; 60s</option><option value="20-600">≤ 10p</option></select></label>
+      <label class="li"><span id="mlab">Tim tối thiểu</span><select name="minv" id="minv"></select></label>
+      <label class="li"><span>Độ dài</span><select name="dur"><option value="20-300" selected>20s – 5p</option><option value="10-60">&lt; 60s</option><option value="20-600">≤ 10p</option><option value="20-1800">≤ 30p</option></select></label>
       <label class="li"><span>Dùng video gốc</span><input type="checkbox" class="sw" name="orig"></label>
     </div>
     <input class="inp" name="credit" type="text" placeholder="Ghi công (tuỳ chọn)" aria-label="Ghi công">
@@ -258,10 +266,16 @@ function viewAdd() {
   </form></main>` });
   let pf = "douyin";
   const segs = [...document.querySelectorAll("#pf button")];
-  const setPf = (v) => { pf = v; segs.forEach((b) => b.classList.toggle("on", b.dataset.v === v)); };
+  const OPTS = { hearts: [["0", "Tất cả"], ["10000", "10N"], ["50000", "50N"], ["100000", "100N"]], views: [["0", "Tất cả"], ["100000", "100N"], ["500000", "500N"], ["1000000", "1tr"]] };
+  const setPf = (v) => {
+    pf = v; segs.forEach((b) => b.classList.toggle("on", b.dataset.v === v));
+    const h = HEARTS.has(v); document.getElementById("mlab").textContent = h ? "Tim tối thiểu" : "View tối thiểu";
+    document.getElementById("minv").innerHTML = OPTS[h ? "hearts" : "views"].map(([val, l], i) => `<option value="${val}" ${i === 1 ? "selected" : ""}>${l}</option>`).join("");
+  };
   segs.forEach((b) => b.onclick = () => setPf(b.dataset.v));
+  setPf("douyin");
   const f = document.getElementById("f");
-  f.url.oninput = () => { const u = f.url.value; if (/tiktok\.com/i.test(u)) setPf("tiktok"); else if (/douyin\.com|iesdouyin/i.test(u)) setPf("douyin"); };
+  f.url.oninput = () => { const d = detectPf(f.url.value); if (d) setPf(d); };
   f.onsubmit = async (e) => {
     e.preventDefault();
     const url = (f.url.value.match(/https?:\/\/\S+/) || [f.url.value])[0].trim();
@@ -302,7 +316,7 @@ async function viewFeed(params) {
     const ch = S.chMap[it.channel_id] || {};
     const vi = it.caption_vi;
     return `<section class="fi" data-i="${i}" data-id="${it.id}" style="background-image:${grad(it.id)}">
-      <video playsinline muted loop preload="none"></video>
+      ${it.embed_url ? `<div class="emb" data-emb="${esc(it.embed_url)}"></div>` : `<video playsinline muted loop preload="none"></video>`}
       <div class="shade"></div>
       <div class="rail">
         <button class="rb ok" data-a="ap"><i>${ic("check", 24, 2.8)}</i>Duyệt</button>
@@ -315,7 +329,7 @@ async function viewFeed(params) {
         <div class="row" style="gap:8px"><span class="av" style="width:28px;height:28px;font-size:12px;border-radius:4px;${ch.avatar_url ? `background-image:url('${esc(ch.avatar_url)}')` : `background:${grad(ch.id)}`}">${ch.avatar_url ? "" : esc((ch.name || "?")[0])}</span>
           <span class="ell" style="font-size:15px;font-weight:800;max-width:190px">${esc(ch.name || "Kênh")}</span>${ch.use_original ? '<span class="tag" style="background:rgba(255,212,59,.2);color:#FFD43B">Gốc</span>' : ""}</div>
         <p data-cap>${esc(vi || it.caption_orig || "")}</p>
-        <div class="meta"><span>▶ ${it.views ? num(it.views) : "—"}</span><span>♥ ${num(it.likes)}</span>${it.duration_sec ? `<span>${dur(it.duration_sec)}</span>` : ""}<span>${ago(it.posted_at)}</span></div>
+        <div class="meta"><span class="tag" style="background:rgba(255,255,255,.15);color:#FFF">${PF[it.platform] || ""}</span>${HEARTS.has(it.platform) ? `<span>♥ ${num(it.likes)}</span>${it.views ? `<span>▶ ${num(it.views)}</span>` : ""}` : `${it.views ? `<span>▶ ${num(it.views)}</span>` : ""}${it.likes ? `<span>♥ ${num(it.likes)}</span>` : ""}`}${it.duration_sec ? `<span>${dur(it.duration_sec)}</span>` : ""}<span>${ago(it.posted_at)}</span></div>
       </div></section>`;
   };
   const media = async (from, to) => {
@@ -324,7 +338,7 @@ async function viewFeed(params) {
     slice.forEach((x, k) => {
       const sec = feed.querySelector(`[data-i="${from + k}"]`); if (!sec) return;
       if (cv[x.cover_path]) sec.style.backgroundImage = `url('${cv[x.cover_path]}'),${grad(x.id)}`;
-      const v = sec.querySelector("video");
+      const v = sec.querySelector("video"); if (!v) return;
       if (pv[x.preview_path]) v.dataset.url = pv[x.preview_path];
       if (cv[x.cover_path]) v.poster = cv[x.cover_path];
     });
@@ -341,6 +355,15 @@ async function viewFeed(params) {
   if (feedObs) feedObs.disconnect();
   feedObs = new IntersectionObserver((ents) => {
     ents.forEach((en) => {
+      const emb = en.target.querySelector("[data-emb]");
+      if (emb) {
+        if (en.isIntersecting && en.intersectionRatio > 0.6) {
+          cnt.textContent = `${[...feed.querySelectorAll(".fi")].indexOf(en.target) + 1}/${total - done}`;
+          if (!emb.firstChild) emb.innerHTML = `<iframe src="${emb.dataset.emb}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="YouTube"></iframe>`;
+          if (Number(en.target.dataset.i) >= rendered - 3) more();
+        } else if (emb.firstChild) emb.innerHTML = "";
+        return;
+      }
       const v = en.target.querySelector("video"); if (!v) return;
       if (en.isIntersecting && en.intersectionRatio > 0.6) {
         cnt.textContent = `${[...feed.querySelectorAll(".fi")].indexOf(en.target) + 1}/${total - done}`;
@@ -355,7 +378,8 @@ async function viewFeed(params) {
     const sec = e.target.closest(".fi"); if (!sec) return;
     const it = list[Number(sec.dataset.i)];
     const btn = e.target.closest("[data-a]");
-    if (!btn) { const v = sec.querySelector("video"); if (v.src) { v.paused ? v.play() : v.pause(); } return; }
+    if (e.target.closest("[data-cap]")) { e.target.closest("[data-cap]").classList.toggle("open"); return; }
+    if (!btn) { const v = sec.querySelector("video"); if (v && v.src) { v.paused ? v.play() : v.pause(); } return; }
     const a = btn.dataset.a;
     if (a === "lang") { const p = sec.querySelector("[data-cap]"); const orig = btn.dataset.o !== "1"; btn.dataset.o = orig ? "1" : ""; p.textContent = orig ? it.caption_orig : it.caption_vi; btn.querySelector("i").textContent = orig ? "中" : "VI"; btn.lastChild.textContent = orig ? "Dịch" : "Gốc"; return; }
     if (a === "snd") { muted = !muted; feed.querySelectorAll("video").forEach((v) => (v.muted = muted)); feed.querySelectorAll('[data-a="snd"] i').forEach((i) => (i.innerHTML = ic(muted ? "mute" : "sound", 22))); return; }
@@ -366,7 +390,8 @@ async function viewFeed(params) {
     feed.scrollTop = top;
     cnt.textContent = String(total - done);
     const cur = [...feed.querySelectorAll(".fi")].find((s) => s.offsetTop === top);
-    if (cur) { const cv = cur.querySelector("video"); if (cv.dataset.url && !cv.src) cv.src = cv.dataset.url; cv.muted = muted; cv.play().catch(() => {}); }
+    const emb = sec.querySelector("[data-emb]"); if (emb) emb.innerHTML = "";
+    if (cur) { const cv = cur.querySelector("video"); if (cv) { if (cv.dataset.url && !cv.src) cv.src = cv.dataset.url; cv.muted = muted; cv.play().catch(() => {}); } else { const ce = cur.querySelector("[data-emb]"); if (ce && !ce.firstChild) ce.innerHTML = `<iframe src="${ce.dataset.emb}" allow="autoplay; encrypted-media" title="YouTube"></iframe>`; } }
   };
 }
 
@@ -386,7 +411,7 @@ async function viewBst(params) {
     body: `<main class="main" id="m">${spinner}</main>` });
   await loadChannels();
   const [{ data: jobs }, { data: st }] = await Promise.all([
-    sb.from("jobs").select("*, feed_items(caption_vi,caption_orig,cover_path,views,channel_id)").neq("status", "cancelled").order("created_at", { ascending: false }).limit(100),
+    sb.from("jobs").select("*, feed_items(caption_vi,caption_orig,cover_path,views,likes,platform,channel_id)").neq("status", "cancelled").order("created_at", { ascending: false }).limit(100),
     sb.from("settings").select("auto_edit").eq("id", 1).single(),
   ]);
   const ae = document.getElementById("ae"); if (!ae) return;
