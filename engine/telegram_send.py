@@ -13,12 +13,11 @@ base = f"https://api.telegram.org/bot{cfg['token']}"
 kind = sys.argv[2]
 if kind == "text":
     cmd = ["curl", "-sS", "-m", "60", f"{base}/sendMessage", "-d", f"chat_id={cfg['chat_id']}",
-           "--data-urlencode", f"text={sys.argv[3]}", "-d", "parse_mode=HTML", "-d", "disable_web_page_preview=true"]
+           "--data-urlencode", f"text={sys.argv[3]}", "-d", "disable_web_page_preview=true"]
 elif kind == "video":
     # --form-string: captions start with "<b>", which plain -F would read as a file path
     cmd = ["curl", "-sS", "-m", "600", f"{base}/sendVideo", "--form-string", f"chat_id={cfg['chat_id']}",
-           "-F", f"video=@{sys.argv[3]}", "--form-string", f"caption={sys.argv[4][:1024]}", "--form-string", "parse_mode=HTML",
-           "--form-string", "supports_streaming=true", "--form-string", "width=1080", "--form-string", "height=1920"]
+           "-F", f"video=@{sys.argv[3]}", "--form-string", f"caption={sys.argv[4][:1024]}",            "--form-string", "supports_streaming=true", "--form-string", "width=1080", "--form-string", "height=1920"]
 else:
     raise SystemExit("kind must be text or video")
 for attempt in range(3):
