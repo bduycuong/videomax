@@ -16,9 +16,28 @@ Repo layout (`bduycuong/videomax`, default branch `main`):
 - `pip install --break-system-packages -q edge-tts` if `import edge_tts` fails. `npx hyperframes --version` must work. Work dir for projects: `/home/claude/videomax/work/` (git-ignored).
 - Telegram: if `telegram.json` has `chat_id: null`, call `https://api.telegram.org/bot<token>/getUpdates` and take the chat id of the most recent private message; save it into `telegram.json`. If there is still none, the user has not pressed Start in t.me/usvideoagent_bot yet — continue production, and at delivery time commit the mp4s to `pending/` instead of sending (see step 13).
 
-## Daily run (2 episodes, then deliver at 08:00 Asia/Saigon)
+## Studio app (Supabase) — do this around the daily run
 
-1. **Pick 2 topics**: the first two `status:"todo"` items in `topics.json` (already ordered by fit). Prefer confidence "cao"/"vừa"; a "thấp" topic must be framed as a mystery/debate, never as settled fact. If fewer than 2 remain, research new curious questions (lifetime tallies, weird body, mind-blowing scale), verify each with a reputable source (NIH, NASA, NOAA, USGS, CDC, BLS, peer-reviewed, Scientific American, BBC Science Focus, Library of Congress Everyday Mysteries), and append them to `topics.json` in the same format.
+Cuong now drives the series from the iPhone web app **MAX WISE Studio** (https://maxwise-studio.netlify.app, data in Supabase project `maxwise-studio`). `engine/studio.py` is the bridge (reads `supabase.json` — engine account, never print it). The app's choices override the defaults below.
+
+S0. `python3 engine/studio.py settings`. If `enabled` is false, or today's weekday in Asia/Saigon (0 = Sunday … 6 = Saturday) is not in `days`: produce nothing, still send anything waiting in `pending/`, `studio.py runlog --videos 0 --note "lịch tắt"`, stop.
+S1. **Scrape (≈05:30)**: `python3 engine/studio.py scrape`. It pulls the last 7 days from every channel the user added (TikHub). If it reports a TikHub credit error, note it in the log and carry on.
+S2. **Translate captions**: `studio.py untranslated --out work/tr_in.json`. Translate every `caption_orig` (Chinese or English) yourself into short natural Vietnamese (keep the meaning, drop hashtags and @mentions). Write `[{"id": ..., "caption_vi": ...}]` to `work/tr_out.json` and run `studio.py translations work/tr_out.json`.
+S3. **Plan today** from `studio.py jobs` and the settings:
+   - `doodles_per_day` doodle episodes: first the user's `doodle` jobs (their topic, voice, subs, music flags), then `idea` jobs (a video Cuong approved from a channel that is NOT marked "use original": take only the idea, write a fresh curious question and script in Max's words, fact-check it, never use that channel's footage or text), then fill from `topics.json`.
+   - If `auto_edit` is true: up to `footage_per_day` `footage` jobs (oldest first). Get the source with `studio.py source <job_id> work/footage/<job_id>.mp4` (it refuses jobs from channels not marked "use original"), then follow F2–F8 below. Credit the channel if the job has `credit`.
+   - Jobs you do not reach today stay `queued`.
+S4. **Report progress** so the app's BST tab moves: `studio.py job <id> downloading|editing|rendering --progress <0-100> --step "<short Vietnamese step>"`; on failure `studio.py job <id> failed --error "<short Vietnamese reason>"`.
+S5. **Export each finished video** to the app: social copy ≤ 45 MB (F7 command), thumbnail `ffmpeg -ss 2 -i <mp4> -frames:v 1 -vf scale=540:-2 thumb.jpg`, the caption from step 9 in a text file, then
+   `studio.py export --title "<hook question>" --caption-file cap.txt --video <social.mp4> --thumb thumb.jpg --duration <s> --kind doodle|idea|footage [--job <id>] [--source-channel "<name>"]`
+   (`--job` marks the job ready and hides the source video from the app's feed.)
+S6. After Telegram delivery: `studio.py runlog --videos <n> [--redone <n>] --sent [--note "<short>"]`.
+
+**"Làm ngay" runs** (the hourly scheduled task): setup only, then `studio.py jobs --now`. If it prints `[]`, stop at once — no build, no Telegram, no commit. Otherwise make those jobs exactly as above (S4–S5), send each to Telegram right away when its `telegram` flag is true, `studio.py runlog --videos <n> --sent --note "làm ngay"`, commit sources.
+
+## Daily run (counts from the app settings, default 2 doodles + 1 footage, then deliver at 08:00 Asia/Saigon)
+
+1. **Pick topics** (after S3 has taken the app's doodle/idea jobs): the next `status:"todo"` items in `topics.json` (already ordered by fit). Prefer confidence "cao"/"vừa"; a "thấp" topic must be framed as a mystery/debate, never as settled fact. If fewer than 2 remain, research new curious questions (lifetime tallies, weird body, mind-blowing scale), verify each with a reputable source (NIH, NASA, NOAA, USGS, CDC, BLS, peer-reviewed, Scientific American, BBC Science Focus, Library of Congress Everyday Mysteries), and append them to `topics.json` in the same format.
 2. **Re-check the facts**: open the topic's `source_url` (WebFetch) and confirm the numbers you will use. Do your own arithmetic in Python. Never copy source text; write in your own words.
 3. **Episode number**: next number after the highest `episodes/epNN-*` folder. Folder `episodes/epNN-<slug>/`.
 4. **Write `script.json`** (same shape as ep01): ~9–12 scenes, 55–75 s total, ~150–190 words.
@@ -71,11 +90,9 @@ Distilled from studying ~100 explainer prompts people shared for code-rendered v
 
 ## Footage episodes (real video + Max)
 
-Reference: `episodes/f01-wool-to-sweater/` (script.json with `src` ranges, scenes.py, footage.json). Source videos come ONLY from the allow-list `sources/channels.json` (each entry has a `permission` note) or from files Cuong sends himself. Never pull from a channel that is not on the list, and never add channels or permission notes yourself.
+Reference: `episodes/f01-wool-to-sweater/` (script.json with `src` ranges, scenes.py, footage.json). Source videos come ONLY from `footage` jobs in the Studio app — videos Cuong approved from a channel he marked "Dùng video gốc" (his own channel or one whose owner agreed) — or from files Cuong sends himself. `studio.py source` refuses anything else; never work around it.
 
-Daily: after the 2 doodle episodes, if `tikhub.json` has a token and the allow-list is not empty, make **1** footage episode (skip quietly if there is no new candidate).
-
-F1. `python3 engine/tikhub_pull.py --max 1` → `work/footage/<key>.mp4` + `.json` (channel, permission, desc, likes). It reports skipped channels; mention them in the log.
+F1. `python3 engine/studio.py source <job_id> work/footage/<job_id>.mp4` (see S3). The job JSON from `studio.py jobs` has the caption, channel name and credit.
 F2. Inspect the video: ffprobe; a 12-frame contact sheet; 3 full-resolution frames. Find every burned-in caption, logo and watermark with text (any language) and choose a crop `[w, h, x, y]` that keeps the subject and leaves all of them out (vertical sources: crop to a landscape-ish window that avoids them). If text sits over the subject so it cannot be cropped out, skip this video and log why.
 F3. Understand it: transcribe with faster-whisper (`language` of the source), scene-detect shots (`select='gt(scene,0.3)',showinfo` on a 480 px copy), map the steps to time ranges.
 F4. `script.json` (scenes `hook`, `intro`, …, `outro`; each with `"src": [start, end]` in source seconds and `vi` = "" strings): a NEW English script in your own words that explains what the footage shows — a curious-question hook, the steps, at least one fact checked at a reputable source (not only the source video's claims), "Stay curious!" ending. 80–110 s. Same no-digits/no-hyphens rule for `en`.
@@ -83,4 +100,4 @@ F5. `footage.json` = `{"source": "<abs path>", "crop": [w,h,x,y]}`.
 F6. `scenes.py` like f01: step chip in the top zone (y 110–220), at most 1–2 doodle tags/stickers on the panel (x 20–1060, y 230–898), notes right of Max (x 430–1040, y 905–995). Max stays bottom-left automatically in footage mode; subtitles are English-only.
 F7. Build: `make_audio.py` → `engine/footage_panel.py <ep> <proj>` → `maxwise.py` → check → snapshot every scene and LOOK (no source text visible anywhere, nothing hidden) → render. Original audio is dropped (voice + music + SFX only). Make a social copy ≤ 45 MB for Telegram: `ffmpeg -i in.mp4 -c:v libx264 -preset slow -crf 23 -maxrate 6M -bufsize 12M -c:a aac -b:a 160k -movflags +faststart out.mp4`.
 F8. Caption: same English-only format; if the channel entry has `credit`, add it as the last line before the hashtags.
-F9. Commit the episode folder (no mp4s) and `sources/seen.json`; note the source channel + permission in the log.
+F9. Export to the app (S5, with `--job`), commit the episode folder (no mp4s), note the source channel in the log.
