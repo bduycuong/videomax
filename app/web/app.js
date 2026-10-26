@@ -582,12 +582,15 @@ async function route() {
 window.addEventListener("hashchange", route);
 // every fresh app launch asks for Face ID once it is set up
 if (LS.get(faceIdKey) && SS.get("mw_open") !== "1") LS.set("mw_lock", "1");
-sb.auth.onAuthStateChange(async (ev, session) => {
+// NB: never await Supabase calls inside this callback (it holds the auth lock and deadlocks on reload)
+sb.auth.onAuthStateChange((ev, session) => {
   const was = S.session?.user?.id; S.session = session;
-  if (!session) { S.member = false; S.channels = []; return viewLogin(); }
+  if (!session) { S.member = false; S.channels = []; setTimeout(viewLogin, 0); return; }
   if (was !== session.user.id) {
-    const { data } = await sb.rpc("is_member"); S.member = !!data;
-    route();
+    setTimeout(async () => {
+      const { data } = await sb.rpc("is_member"); S.member = !!data;
+      route();
+    }, 0);
   }
 });
 (async () => {
