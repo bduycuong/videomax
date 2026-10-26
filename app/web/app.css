@@ -89,3 +89,8 @@ select.inp{background-image:linear-gradient(45deg,transparent 50%,#71717A 50%),l
 .sheet>div{background:#FFF;width:100%;max-width:560px;border-radius:12px 12px 0 0;padding:16px 16px calc(env(safe-area-inset-bottom) + 16px);max-height:80vh;overflow:auto}
 /* keep Netlify's free-plan badge visible but above the tab bar so it doesn't cover the buttons */
 #nl-badge-frame{bottom:calc(env(safe-area-inset-bottom) + 84px)!important}
+.login{background:#FFF;justify-content:center;padding:24px 28px calc(env(safe-area-inset-bottom) + 64px);gap:0}
+.login .inp{height:50px}
+.err{margin:0;color:#B91C1C;font-size:13px;font-weight:600}
+.ell{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.clamp2{overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
