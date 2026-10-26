@@ -68,3 +68,19 @@ Distilled from studying ~100 explainer prompts people shared for code-rendered v
 13. **Hit the beat.** Snap scene hand-offs and SFX hits to the nearest beat of the music bed when one is within ~0.15 s (`npx hyperframes beats assets/bgm.mp3 --json`); the voice still decides the order.
 14. **Curiosity gap + counter-intuition.** The hook poses a question the viewer thinks they can answer; the guess scene offers the intuitive (wrong) answer; one scene flips it. Use an everyday analogy for every abstract step.
 15. **Grade your own stills.** In QA, give each scene's snapshot a 1–10 score for clarity (one idea, readable in 1 s, nothing hidden by Max or subtitles) and fix the lowest two before rendering.
+
+## Footage episodes (real video + Max)
+
+Reference: `episodes/f01-wool-to-sweater/` (script.json with `src` ranges, scenes.py, footage.json). Source videos come ONLY from the allow-list `sources/channels.json` (each entry has a `permission` note) or from files Cuong sends himself. Never pull from a channel that is not on the list, and never add channels or permission notes yourself.
+
+Daily: after the 2 doodle episodes, if `tikhub.json` has a token and the allow-list is not empty, make **1** footage episode (skip quietly if there is no new candidate).
+
+F1. `python3 engine/tikhub_pull.py --max 1` → `work/footage/<key>.mp4` + `.json` (channel, permission, desc, likes). It reports skipped channels; mention them in the log.
+F2. Inspect the video: ffprobe; a 12-frame contact sheet; 3 full-resolution frames. Find every burned-in caption, logo and watermark with text (any language) and choose a crop `[w, h, x, y]` that keeps the subject and leaves all of them out (vertical sources: crop to a landscape-ish window that avoids them). If text sits over the subject so it cannot be cropped out, skip this video and log why.
+F3. Understand it: transcribe with faster-whisper (`language` of the source), scene-detect shots (`select='gt(scene,0.3)',showinfo` on a 480 px copy), map the steps to time ranges.
+F4. `script.json` (scenes `hook`, `intro`, …, `outro`; each with `"src": [start, end]` in source seconds and `vi` = "" strings): a NEW English script in your own words that explains what the footage shows — a curious-question hook, the steps, at least one fact checked at a reputable source (not only the source video's claims), "Stay curious!" ending. 80–110 s. Same no-digits/no-hyphens rule for `en`.
+F5. `footage.json` = `{"source": "<abs path>", "crop": [w,h,x,y]}`.
+F6. `scenes.py` like f01: step chip in the top zone (y 110–220), at most 1–2 doodle tags/stickers on the panel (x 20–1060, y 230–898), notes right of Max (x 430–1040, y 905–995). Max stays bottom-left automatically in footage mode; subtitles are English-only.
+F7. Build: `make_audio.py` → `engine/footage_panel.py <ep> <proj>` → `maxwise.py` → check → snapshot every scene and LOOK (no source text visible anywhere, nothing hidden) → render. Original audio is dropped (voice + music + SFX only). Make a social copy ≤ 45 MB for Telegram: `ffmpeg -i in.mp4 -c:v libx264 -preset slow -crf 23 -maxrate 6M -bufsize 12M -c:a aac -b:a 160k -movflags +faststart out.mp4`.
+F8. Caption: same English-only format; if the channel entry has `credit`, add it as the last line before the hashtags.
+F9. Commit the episode folder (no mp4s) and `sources/seen.json`; note the source channel + permission in the log.

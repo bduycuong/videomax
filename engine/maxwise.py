@@ -8,6 +8,7 @@ T = json.load(open(os.path.join(P, "assets/timing.json")))
 SC = {s["id"]: s for s in T["scenes"]}
 TOTAL = T["total"]
 MOUTH = json.load(open(os.path.join(P, "assets/mouth.json")))
+FOOTAGE = os.path.exists(os.path.join(EP, "footage.json"))  # real-footage episode: panel video, Max stays bottom-left
 _EP_SRC = open(os.path.join(EP, "scenes.py")).read()
 def _section(name):
     parts = _EP_SRC.split("# === ")
@@ -135,7 +136,7 @@ LID0 = "transform:scaleY(0)"
 exec(_section('SCENES'))
 
 # ---------------- Max rig ----------------
-REST = dict(x=-10, y=860); CEN = dict(x=340, y=640)
+REST = dict(x=-10, y=860); CEN = dict(REST) if FOOTAGE else dict(x=340, y=640)
 _ids = [s["id"] for s in T["scenes"]]
 i0 = SC["intro"]["start"]; o0 = SC["outro"]["start"]
 NEXT_AFTER_INTRO = T["scenes"][_ids.index("intro")+1]["start"]
@@ -205,12 +206,12 @@ for sc in T["scenes"]:
             if not brk and j + 1 < len(sw) and sw[j + 1]["start"] - w["end"] > 0.18: brk = True
             if brk: groups.append((sc["id"], cur)); cur = []
         a, b = sc["sent_spans"][si]
-        vis.append((sc["id"], sc["vi"][si], sc["start"] + a - 0.05, sc["start"] + b + 0.3))
+        if sc["vi"][si].strip(): vis.append((sc["id"], sc["vi"][si], sc["start"] + a - 0.05, sc["start"] + b + 0.3))
 # make VI windows not overlap
 for i in range(len(vis) - 1):
     if vis[i][3] > vis[i + 1][2]: vis[i] = (vis[i][0], vis[i][1], vis[i][2], vis[i + 1][2])
 ch = []; cj = []
-center = lambda sid: sid in ("intro", "outro")
+center = lambda sid: sid in ("intro", "outro") and not FOOTAGE
 for gi, (sid, ws) in enumerate(groups):
     start = ws[0][1] - 0.05
     nxt = groups[gi + 1][1][0][1] - 0.05 if gi + 1 < len(groups) else TOTAL - 0.2
@@ -256,6 +257,14 @@ for i, sc in enumerate(T["scenes"][1:], 1): sfx.append((wh[i % 2], sc["start"] -
 exec(_section('SFX'))
 sfx_html = "\n  ".join(f'<audio id="sfx{i}" class="clip" src="assets/{f}" data-start="{max(0,t):.3f}" data-duration="{min(adur(f), TOTAL-max(0,t)):.3f}" data-track-index="{20+i%5}" data-volume="{v}"></audio>' for i, (f, t, v) in enumerate(sfx))
 hosts = "\n  ".join(f'<div id="{sc["id"]}" data-composition-id="{sc["id"]}" data-composition-src="compositions/{sc["id"]}.html" data-start="{sc["start"]}" data-duration="{sc["slot"]}" data-track-index="2" data-track-kind="graphics" data-width="{W}" data-height="{H}" style="z-index:{10+i}"></div>' for i, sc in enumerate(T["scenes"]))
+PANEL = ""
+if FOOTAGE:
+    PANEL = (f'<video id="panel" class="clip" src="assets/panel.mp4" muted playsinline data-start="0" data-duration="{TOTAL}" data-track-index="3" '
+             f'style="position:absolute;left:20px;top:230px;width:1040px;height:668px;object-fit:cover;z-index:5"></video>\n'
+             f'  <svg id="panel-frame" width="1080" height="1000" viewBox="0 0 1080 1000" style="position:absolute;left:0;top:0;z-index:6;pointer-events:none">'
+             f'<path d="M18,229 Q540,224 1062,230 Q1065,564 1061,899 Q540,903 19,898 Q15,564 18,229 Z" fill="none" stroke="{K}" stroke-width="7" stroke-linejoin="round"/>'
+             f'<rect x="80" y="205" width="150" height="46" rx="4" fill="{C["hi"]}" opacity=".85" transform="rotate(-8 155 228)"/>'
+             f'<rect x="850" y="208" width="150" height="46" rx="4" fill="{C["hi"]}" opacity=".85" transform="rotate(7 925 231)"/></svg>')
 INDEX = f"""<!doctype html>
 <html lang="en" data-resolution="portrait">
 <head>
@@ -275,6 +284,7 @@ html, body {{ margin:0; width:{W}px; height:{H}px; overflow:hidden; background:{
 <div id="root" data-composition-id="main" data-start="0" data-duration="{TOTAL}" data-width="{W}" data-height="{H}">
   <div id="bg"></div><div id="margin"></div><div id="holes"></div>
   <svg id="ground" width="{W}" height="30" viewBox="0 0 {W} 30"><path d="M-5,12 Q200,6 420,13 T860,10 T1090,12" stroke="{K}" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+  {PANEL}
   {hosts}
   <div id="max" data-composition-id="max" data-composition-src="compositions/max.html" data-start="0" data-duration="{TOTAL}" data-track-index="5" data-track-kind="graphics" data-width="{W}" data-height="{H}" style="z-index:40"></div>
   <div id="caps" data-composition-id="caps" data-composition-src="compositions/caps.html" data-start="0" data-duration="{TOTAL}" data-track-index="6" data-track-kind="captions" data-width="{W}" data-height="{H}" style="z-index:50"></div>

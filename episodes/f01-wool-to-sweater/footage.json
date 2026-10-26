@@ -1,0 +1,5 @@
+{
+ "source": "/home/claude/videomax/work/footage/wool-source.mp4",
+ "crop": [1400, 900, 260, 0],
+ "note": "1920x1080 source; burned-in captions sit at y 930-1040 and the channel logo (with text) at top-left x<240, so both are cropped out"
+}

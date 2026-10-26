@@ -1,0 +1,16 @@
+[
+ {"id":"hook", "src":[0.0, 12.4], "en":["Ever wondered how fluffy, smelly sheep wool turns into your cozy sweater?"], "vi":[""]},
+ {"id":"intro", "src":[0.0, 8.4], "en":["I'm Max, and this is Max Wise.", "Let's follow the wool, step by step."], "vi":["",""]},
+ {"id":"shear", "src":[12.4, 20.8], "en":["Step one is shearing.", "Electric clippers take the fleece off in one big piece, like a haircut, and it doesn't hurt the sheep."], "vi":["",""]},
+ {"id":"raw", "src":[20.8, 30.1], "en":["Fresh wool is greasy and dirty.", "It's coated in a natural wax called lanolin, plus sweat, dust, soil and seeds."], "vi":["",""]},
+ {"id":"scour", "src":[30.1, 45.7], "en":["At the mill, it's sorted, then washed in a row of warm soapy tanks.", "Then it's rinsed, squeezed and dried with hot air."], "vi":["",""]},
+ {"id":"lanolin", "src":[45.7, 57.7], "en":["But that grease isn't wasted.", "It's cleaned up into lanolin, a great moisturizer used in skin creams."], "vi":["",""]},
+ {"id":"open", "src":[57.7, 70.1], "en":["Clean wool is still a tangled mess.", "So an opening machine with spinning drums pulls the clumps apart."], "vi":["",""]},
+ {"id":"card", "src":[70.1, 90.1], "en":["Next comes carding.", "Rollers covered in tiny wire teeth comb the fibers so they all point the same way.", "Out comes a soft rope called a sliver."], "vi":["","",""]},
+ {"id":"comb", "src":[90.1, 116.5], "en":["For the smoothest fabrics, it gets combed again.", "Short fibers and bits are pulled out, so the long ones lie perfectly straight.", "Neater fibers make smoother yarn."], "vi":["","",""]},
+ {"id":"draft", "src":[116.5, 128.3], "en":["Now, spinning.", "Rollers turning at different speeds stretch the sliver thinner and thinner."], "vi":["",""]},
+ {"id":"twist", "src":[128.3, 139.5], "en":["Then a fast spinning spindle adds twist, so the fibers grip each other and become strong yarn."], "vi":[""]},
+ {"id":"fabric", "src":[139.5, 153.7], "en":["Coats are woven, with threads going over and under.", "Sweaters are knitted, with loops hooked into loops."], "vi":["",""]},
+ {"id":"finish", "src":[153.7, 170.1], "en":["The fabric is dyed and finished to set its color, feel and shape."], "vi":[""]},
+ {"id":"outro", "src":[170.1, 181.5], "en":["Finally, it's cut, sewn and pressed.", "From sheep to sweater, there's a lot of engineering in every stitch.", "Stay curious!"], "vi":["","",""]}
+]
