@@ -1,0 +1,211 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   0.0,
+   9.6
+  ],
+  "en": [
+   "What does a baby actually do for nine months inside mom's belly?",
+   "Just float and nap? Not even close."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   9.6,
+   16.4
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's follow one baby, month by month."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "month1",
+  "src": [
+   16.4,
+   29.7
+  ],
+  "en": [
+   "Month one.",
+   "The whole embryo is about the size of a poppy seed.",
+   "But its cells are already laying down the brain and spinal cord."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "heart",
+  "src": [
+   37.6,
+   57.8
+  ],
+  "en": [
+   "Month two.",
+   "Tiny arms and legs sprout like buds.",
+   "And a little heart starts to beat.",
+   "By week five, it pulses about one hundred ten times a minute."
+  ],
+  "vi": [
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "drink",
+  "src": [
+   57.8,
+   78.7
+  ],
+  "en": [
+   "Month three.",
+   "The baby starts drinking the water around it, and then peeing it back out.",
+   "Gross, but it's great practice for its gut and kidneys.",
+   "Soon after, its fingerprints begin to form."
+  ],
+  "vi": [
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "moves",
+  "src": [
+   78.7,
+   97.2
+  ],
+  "en": [
+   "Month four.",
+   "Bones get harder, soft fuzzy hair grows, and the baby makes little faces.",
+   "Around now, mom may feel the first flutters, like a tiny fish swimming."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "hear",
+  "src": [
+   97.2,
+   119.5
+  ],
+  "en": [
+   "By week twenty two, the baby can hear mom's heartbeat, her stomach rumbling, and her voice.",
+   "That may be why newborns calm down to the sound of mom."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "coat",
+  "src": [
+   128.4,
+   140.8
+  ],
+  "en": [
+   "Living in water all day, its skin gets a waxy white coat called vernix.",
+   "It even practices breathing, and gets the hiccups."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "eyes",
+  "src": [
+   140.8,
+   159.3
+  ],
+  "en": [
+   "Month seven.",
+   "The eyes can open and blink.",
+   "And the baby starts packing on fat, like a warm winter jacket."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "lungs",
+  "src": [
+   163.4,
+   186.3
+  ],
+  "en": [
+   "Month eight.",
+   "Space runs out, so no more somersaults.",
+   "The lungs make a soapy liquid called surfactant, so they can pop open after birth."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "headdown",
+  "src": [
+   193.8,
+   204.4
+  ],
+  "en": [
+   "By week thirty six, most babies have flipped head down, ready for the exit."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "birth",
+  "src": [
+   204.4,
+   219.2
+  ],
+  "en": [
+   "Then, at around forty weeks, the big day.",
+   "The baby twists and turns through the birth canal, and lets out its first cry."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   219.2,
+   226.6
+  ],
+  "en": [
+   "From one single cell to a crying newborn in forty weeks.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ }
+]
