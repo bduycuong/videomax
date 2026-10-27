@@ -232,6 +232,7 @@ async function runScrape(channel_id) {
   const added = (data.channels || []).reduce((s, c) => s + (c.added || 0), 0);
   const errs = (data.channels || []).filter((c) => c.error);
   toast(errs.length ? `+${added} video · lỗi: ${errs[0].error}` : `+${added} video mới`, 3500);
+  if (added) sb.functions.invoke("translate", { body: {} }).then(() => { if (location.hash.startsWith("#/feed")) route(); });
   if (location.hash.startsWith("#/channels")) viewChannels(); else if (location.hash.startsWith("#/feed")) route();
   return data;
 }
@@ -383,6 +384,15 @@ async function viewFeed(params) {
     });
   }, { root: feed, threshold: [0, 0.6, 1] });
   await more();
+  const missing = list.filter((x) => !x.caption_vi && (x.caption_orig || "").trim()).slice(0, 60);
+  if (missing.length) sb.functions.invoke("translate", { body: { ids: missing.map((x) => x.id) } }).then(({ data }) => {
+    (data?.items || []).forEach((t) => {
+      const it = list.find((x) => x.id === t.id); if (!it) return; it.caption_vi = t.caption_vi;
+      const sec = feed.querySelector(`.fi[data-id="${t.id}"]`); if (!sec) return;
+      const p = sec.querySelector("[data-cap]"); if (p) p.textContent = t.caption_vi;
+      const rail = sec.querySelector(".rail"); if (rail && !rail.querySelector('[data-a="lang"]')) rail.querySelector('[data-a="sk"]').insertAdjacentHTML("afterend", `<button class="rb" data-a="lang"><i>VI</i>Gốc</button>`);
+    });
+  });
   feed.onclick = async (e) => {
     const sec = e.target.closest(".fi"); if (!sec) return;
     const it = list[Number(sec.dataset.i)];
@@ -435,7 +445,7 @@ async function viewBst(params) {
   const groups = { proc: all.filter((j) => ["downloading", "editing", "rendering"].includes(j.status)), wait: all.filter((j) => j.status === "queued"), done: all.filter((j) => ["ready", "failed"].includes(j.status)) };
   const cov = await signed("feed", all.map((j) => j.feed_items?.cover_path));
   const m = document.getElementById("m"); if (!m) return;
-  const kindTag = (j) => j.kind === "footage" ? '<span class="tag inf">Gốc</span>' : j.kind === "idea" ? '<span class="tag">Ý tưởng</span>' : '<span class="tag yl">Doodle</span>';
+  const kindTag = (j) => j.kind === "footage" ? (j.status === "queued" ? `<button class="tag inf" data-mode="${j.id}" style="border:0;cursor:pointer">${j.mode === "max" ? "Max dẫn ⇄" : "Sub VI ⇄"}</button>` : `<span class="tag inf">${j.mode === "max" ? "Max dẫn" : "Sub VI"}</span>`) : j.kind === "idea" ? '<span class="tag">Ý tưởng</span>' : '<span class="tag yl">Doodle</span>';
   const card = (j) => {
     const f = j.feed_items || {}; const idx = STEPS.findIndex((s) => s[0] === j.status);
     return `<div style="padding:12px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid #F4F4F5">
@@ -447,12 +457,13 @@ async function viewBst(params) {
     ${j.status === "ready" ? `<div class="row" style="gap:6px;margin-top:8px"><a class="btn xs" href="#/library">Kho</a><button class="btn btn-o xs" data-redo="${j.id}">Sửa lại</button></div>` : ""}
     ${j.status === "failed" ? `<div class="row" style="gap:6px;margin-top:8px"><button class="btn btn-o xs" data-redo="${j.id}">Thử lại</button></div>` : ""}
     </div></div>
-    ${j.kind === "footage" && idx >= 0 && j.status !== "ready" ? `<div class="steps">${STEPS.map((s, k) => `<div class="${k < idx ? "d" : k === idx ? "c" : ""}"><i></i>${s[1]}</div>`).join("")}</div>` : ""}
+    ${j.kind === "footage" && idx >= 0 && j.status !== "ready" ? `<div class="steps">${STEPS.map((s, k) => `<div class="${k < idx ? "d" : k === idx ? "c" : ""}"><i></i>${j.mode === "max" ? s[1] : ({ editing: "Dịch", rendering: "Phụ đề" })[s[0]] || s[1]}</div>`).join("")}</div>` : ""}
     </div>`;
   };
   m.innerHTML = `<div class="seg"><button class="${tab === "proc" ? "on" : ""}" data-t="proc">Đang làm · ${groups.proc.length}</button><button class="${tab === "wait" ? "on" : ""}" data-t="wait">Chờ · ${groups.wait.length}</button><button class="${tab === "done" ? "on" : ""}" data-t="done">Xong · ${groups.done.length}</button></div>
   ${groups[tab].length ? `<section class="card" style="overflow:hidden">${groups[tab].map(card).join("")}</section>` : `<div class="empty">—</div>`}`;
   m.querySelectorAll("[data-t]").forEach((b) => b.onclick = () => (location.hash = "#/bst?t=" + b.dataset.t));
+  m.querySelectorAll("[data-mode]").forEach((b) => b.onclick = async () => { const j = all.find((x) => x.id === b.dataset.mode); const mode = j.mode === "max" ? "sub_vi" : "max"; await sb.from("jobs").update({ mode }).eq("id", j.id); toast(mode === "max" ? "Max dẫn chuyện (tiếng Anh)" : "Giữ tiếng gốc + phụ đề Việt"); viewBst(params); });
   m.querySelectorAll("[data-now]").forEach((b) => b.onclick = async () => { await sb.from("jobs").update({ run_when: "now", updated_at: new Date().toISOString() }).eq("id", b.dataset.now); toast(`✓ Max bắt đầu lúc ${nextCheck()}`, 3500); viewBst(params); });
   m.querySelectorAll("[data-cancel]").forEach((b) => b.onclick = async () => { const j = all.find((x) => x.id === b.dataset.cancel); await sb.from("jobs").update({ status: "cancelled" }).eq("id", j.id); if (j.feed_item_id) await sb.from("feed_items").update({ status: "new" }).eq("id", j.feed_item_id); toast("Đã gỡ"); viewBst(params); });
   m.querySelectorAll("[data-redo]").forEach((b) => b.onclick = async () => { await sb.from("jobs").update({ status: "queued", progress: 0, step: null, error: null, run_when: "now" }).eq("id", b.dataset.redo); toast("✓ Đã xếp lại"); viewBst(params); });

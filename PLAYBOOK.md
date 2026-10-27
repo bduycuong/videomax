@@ -25,7 +25,7 @@ S1. **Scrape (≈05:30)**: `python3 engine/studio.py scrape`. It pulls the last 
 S2. **Translate captions**: `studio.py untranslated --out work/tr_in.json`. Translate every `caption_orig` (Chinese, English or any other language) yourself into short natural Vietnamese (keep the meaning, drop hashtags and @mentions). Write `[{"id": ..., "caption_vi": ...}]` to `work/tr_out.json` and run `studio.py translations work/tr_out.json`.
 S3. **Plan today** from `studio.py jobs` and the settings:
    - `doodles_per_day` doodle episodes: first the user's `doodle` jobs (their topic, voice, subs, music flags), then `idea` jobs (a video Cuong approved from a channel that is NOT marked "use original": take only the idea, write a fresh curious question and script in Max's words, fact-check it, never use that channel's footage or text), then fill from `topics.json`.
-   - If `auto_edit` is true: up to `footage_per_day` `footage` jobs (oldest first). Get the source with `studio.py source <job_id> work/footage/<job_id>.mp4` (it refuses jobs from channels not marked "use original"), then follow F2–F8 below. Credit the channel if the job has `credit`.
+   - If `auto_edit` is true: up to `footage_per_day` `footage` jobs (oldest first). Each has a `mode`: `sub_vi` (default) → follow V1–V5 at the end (original video + Vietnamese subtitles); `max` → get the source with `studio.py source <job_id> work/footage/<job_id>.mp4` and follow F2–F8. Credit the channel if the job has `credit`.
    - Jobs you do not reach today stay `queued`.
 S4. **Report progress** so the app's BST tab moves: `studio.py job <id> downloading|editing|rendering --progress <0-100> --step "<short Vietnamese step>"`; on failure `studio.py job <id> failed --error "<short Vietnamese reason>"`.
 S5. **Export each finished video** to the app: social copy ≤ 45 MB (F7 command), thumbnail `ffmpeg -ss 2 -i <mp4> -frames:v 1 -vf scale=540:-2 thumb.jpg`, the caption from step 9 in a text file, then
@@ -101,3 +101,14 @@ F6. `scenes.py` like f01: step chip in the top zone (y 110–220), at most 1–2
 F7. Build: `make_audio.py` → `engine/footage_panel.py <ep> <proj>` → `maxwise.py` → check → snapshot every scene and LOOK (no source text visible anywhere, nothing hidden) → render. Original audio is dropped (voice + music + SFX only). Make a social copy ≤ 45 MB for Telegram: `ffmpeg -i in.mp4 -c:v libx264 -preset slow -crf 23 -maxrate 6M -bufsize 12M -c:a aac -b:a 160k -movflags +faststart out.mp4`.
 F8. Caption: same English-only format; if the channel entry has `credit`, add it as the last line before the hashtags.
 F9. Export to the app (S5, with `--job`), commit the episode folder (no mp4s), note the source channel in the log.
+
+### Footage jobs with `mode: "sub_vi"` (default) — original video + Vietnamese subtitles
+
+Cuong's default for approved videos: keep the source video and its original sound, hide the burned-in foreign captions, add Vietnamese subtitles. No Max, no new voice. (Jobs with `mode: "max"` follow F1–F9 above instead.)
+
+V1. `studio.py job <id> downloading --progress 10 --step "Tải video gốc"` → `studio.py source <id> work/footage/<id>.mp4`.
+V2. Look at 4–6 frames (ffmpeg contact sheet). If the source has burned-in captions/watermark text, note the band as fractions of the height (e.g. `0.78:0.93`); several bands → pick the one with the captions, mention any leftover logo in the log.
+V3. `studio.py job <id> editing --progress 40 --step "Nhận dạng giọng + dịch"` → `python3 engine/subvi.py work/footage/<id>.mp4 work/footage/<id>-vi.mp4 [--cover Y0:Y1] [--model medium for Chinese] [--credit "<credit>"]`. It transcribes with faster-whisper, translates every line with DeepSeek (edge function `translate`), blurs the band and burns the subtitles; output ≤ 45 MB.
+V4. `studio.py job <id> rendering --progress 80 --step "Gắn phụ đề"`; look at 3 frames of the result (subtitles readable, not over the blurred band, original captions hidden). Fix once if needed.
+V5. Caption: line 1 = the Vietnamese caption of the source (`caption_vi`), line 2 = credit if any, blank line, 6–10 hashtags (Vietnamese + English, e.g. #khoahoc #kienthuc #learnontiktok #MaxWise). Export with `studio.py export --kind footage --job <id> --title "<short Vietnamese title>" --source-channel "<channel>"`, then Telegram as usual.
+If the video has no speech (music only), skip V3's subtitles: just blur the band and export, and note it in the log.
