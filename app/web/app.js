@@ -346,6 +346,8 @@ async function viewFeed(params) {
       const sec = feed.querySelector(`[data-i="${from + k}"]`); if (!sec) return;
       if (cv[x.cover_path]) sec.style.backgroundImage = `url('${cv[x.cover_path]}'),${grad(x.id)}`;
       const v = sec.querySelector("video"); if (!v) return;
+      // landscape videos: show the whole frame instead of cropping it to fill the phone
+      v.addEventListener("loadedmetadata", () => { if (v.videoWidth > v.videoHeight * 1.05) { v.classList.add("wide"); sec.classList.add("wide"); } }, { once: true });
       if (pv[x.preview_path]) v.dataset.url = pv[x.preview_path];
       if (cv[x.cover_path]) v.poster = cv[x.cover_path];
     });
