@@ -1,12 +1,14 @@
-// MAX WISE Studio – scrape the last 7 days of posts from watched channels via TikHub.
+// MAX WISE Studio – scrape watched channels via TikHub.
+// Per channel (set in the app's Kênh tab): days window (7/15/30/60/90), max videos, min hearts, min views, length.
 // Platforms: douyin, tiktok, xiaohongshu (RedNote), instagram, youtube.
-// POST {channel_id?: string}  (Authorization: Bearer <member JWT>)
+// POST {channel_id?: string, days?: 7|15|30|60|90}  (Authorization: Bearer <member JWT>)
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.45.4";
 
 const API = "https://api.tikhub.io";
 const DAYS = 7;
-const MAX_NEW_PER_CHANNEL = 12;
+const DAY_OPTIONS = [7, 15, 30, 60, 90];
+const NEW_CAP: Record<number, number> = { 7: 12, 15: 20, 30: 30, 60: 40, 90: 50 };
 const MAX_PREVIEW_BYTES = 25 * 1024 * 1024;
 const HEART_PLATFORMS = new Set(["douyin", "xiaohongshu"]); // ranked by hearts, not views
 const cors = {
@@ -19,7 +21,7 @@ const json = (b: unknown, s = 200) =>
 
 type Ch = {
   id: string; url: string; platform: string; name: string | null; sec_uid: string | null;
-  min_views: number; min_sec: number; max_sec: number;
+  min_views: number; min_likes: number; min_sec: number; max_sec: number; days: number; max_videos: number;
 };
 type Item = {
   id: string; caption: string; views: number; likes: number; dur: number; ts: number;
@@ -85,23 +87,37 @@ Deno.serve(async (req) => {
   const { data: token } = await db.rpc("tikhub_token");
   if (!token) return json({ error: "TikHub token missing" }, 500);
 
-  let body: { channel_id?: string } = {};
+  let body: { channel_id?: string; days?: number } = {};
   try { body = await req.json(); } catch { /* empty */ }
   let q = db.from("channels").select("*").eq("active", true);
   q = body.channel_id ? q.eq("id", body.channel_id) : q.eq("auto_scrape", true);
   const { data: chans, error } = await q;
   if (error) return json({ error: error.message }, 500);
 
+  // per-channel window; set in the loop below and read by fetchItems
+  let maxPages = 3;
+  let cutoff = Date.now() / 1000 - DAYS * 86400;
+
+  // TikHub returns errors in several shapes (string, object, FastAPI array) – flatten to readable text.
+  const errText = (d: any, status: number): string => {
+    const x = d?.detail ?? d?.message ?? d?.data?.detail ?? status;
+    if (typeof x === "string") return x;
+    if (Array.isArray(x)) return x.map((e: any) => e?.msg ?? e?.message ?? JSON.stringify(e)).join("; ");
+    if (x && typeof x === "object") return String(x.message ?? x.msg ?? x.message_zh ?? JSON.stringify(x));
+    return String(x);
+  };
   const th = async (path: string, params: Record<string, string | number>) => {
     const u = new URL(API + path);
     for (const [k, v] of Object.entries(params)) if (v !== "" && v != null) u.searchParams.set(k, String(v));
     let last = "";
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
       try {
         const r = await fetch(u, { headers: { Authorization: `Bearer ${token}` } });
-        const d = await r.json();
+        const raw = await r.text();
+        let d: any = {};
+        try { d = JSON.parse(raw); } catch { d = { message: `HTTP ${r.status} ${raw.slice(0, 80)}` }; }
         if (d.code === 200 && !(d.data && d.data.detail && Object.keys(d.data).length === 1)) return d.data ?? {};
-        last = String(d.detail ?? d.message ?? r.status);
+        last = errText(d, r.status);
         if (r.status === 402 || /balance|credit|insufficient/i.test(last)) throw new Error("TikHub: hết tín dụng");
       } catch (e) {
         if (String(e).includes("hết tín dụng")) throw e;
@@ -109,7 +125,24 @@ Deno.serve(async (req) => {
       }
       await new Promise((s) => setTimeout(s, 1500));
     }
-    throw new Error("TikHub lỗi: " + last.slice(0, 120));
+    console.error("TikHub fail", path, last);
+    throw new Error("TikHub lỗi: " + last.slice(0, 160));
+  };
+  // try endpoints in order; only "out of credit" stops the chain
+  const thAny = async (paths: string[], params: Record<string, string | number>) => {
+    let lastErr: unknown;
+    for (const p of paths) {
+      try {
+        const d = await th(p, params);
+        if (Array.isArray(d?.aweme_list) && d.aweme_list.length) return d;
+        lastErr = lastErr ?? new Error("TikHub lỗi: danh sách video rỗng");
+        if (p === paths[paths.length - 1]) return d;
+      } catch (e) {
+        if (String(e).includes("hết tín dụng")) throw e;
+        lastErr = e;
+      }
+    }
+    throw lastErr;
   };
 
   /* ---------- platform adapters ---------- */
@@ -132,10 +165,22 @@ Deno.serve(async (req) => {
         if (!sid) throw new Error("Không đọc được kênh từ link");
       }
       if (sid) params.sec_user_id = sid;
-      const d = ch.platform === "douyin"
-        ? await th("/api/v1/douyin/web/fetch_user_post_videos", params)
-        : await th("/api/v1/tiktok/app/v3/fetch_user_post_videos", params);
-      const list: any[] = d.aweme_list ?? [];
+      const list: any[] = [];
+      let cursor: string | number = 0;
+      for (let page = 0; page < maxPages; page++) {
+        const p = { ...params, max_cursor: cursor };
+        let d: any;
+        try {
+          d = ch.platform === "douyin"
+            ? await thAny(["/api/v1/douyin/web/fetch_user_post_videos", "/api/v1/douyin/app/v3/fetch_user_post_videos"], p)
+            : await th("/api/v1/tiktok/app/v3/fetch_user_post_videos", p);
+        } catch (e) { if (page === 0) throw e; break; } // keep what we already have
+        const batch: any[] = d.aweme_list ?? [];
+        list.push(...batch);
+        const oldest = n(batch[batch.length - 1]?.create_time);
+        if (!batch.length || !d.has_more || !d.max_cursor || (oldest && oldest < cutoff)) break;
+        cursor = d.max_cursor;
+      }
       if (!sid) sid = list[0]?.author?.sec_uid ?? "";
       return { sid, items: list.map((a) => {
         const st = a.statistics ?? {}; const v = a.video ?? {};
@@ -154,8 +199,18 @@ Deno.serve(async (req) => {
     if (ch.platform === "instagram") {
       const username = ch.sec_uid || link.match(/instagram\.com\/(?!reel|p\/|stories)([\w.]+)/i)?.[1] || link.replace(/^@/, "").trim();
       if (!username) throw new Error("Không đọc được tên tài khoản Instagram");
-      const d = await th("/api/v1/instagram/v2/fetch_user_reels", { username });
-      const list: any[] = d?.data?.items ?? deepList(d, ["items"]);
+      const list: any[] = [];
+      let pgToken = "";
+      for (let page = 0; page < maxPages; page++) {
+        let d: any;
+        try { d = await th("/api/v1/instagram/v2/fetch_user_reels", { username, pagination_token: pgToken }); }
+        catch (e) { if (page === 0) throw e; break; }
+        const batch: any[] = d?.data?.items ?? deepList(d, ["items"]);
+        list.push(...batch);
+        const last = batch[batch.length - 1]; const oldest = n((last?.media ?? last)?.taken_at);
+        pgToken = d?.pagination_token ?? d?.data?.pagination_token ?? "";
+        if (!batch.length || !pgToken || (oldest && oldest < cutoff)) break;
+      }
       return { sid: username, items: list.map((x) => { const m = x.media ?? x; return {
         id: String(m.code ?? m.id), caption: m.caption?.text ?? "", views: n(m.play_count ?? m.ig_play_count ?? m.view_count), likes: n(m.like_count),
         dur: Math.round(n(m.video_duration)), ts: n(m.taken_at), share: `https://www.instagram.com/reel/${m.code}/`,
@@ -206,11 +261,15 @@ Deno.serve(async (req) => {
     throw new Error("Nền tảng chưa hỗ trợ");
   }
 
-  const media: Promise<unknown>[] = [];
+  const media: (() => Promise<unknown>)[] = []; // run later with limited concurrency (memory)
   const report: Record<string, unknown>[] = [];
-  const cutoff = Date.now() / 1000 - DAYS * 86400;
 
   for (const ch of (chans ?? []) as Ch[]) {
+    // body.days (manual override) > channel setting > 7
+    const days = DAY_OPTIONS.includes(Number(body.days)) ? Number(body.days) : DAY_OPTIONS.includes(Number(ch.days)) ? Number(ch.days) : DAYS;
+    const cap = Math.max(1, Math.min(100, Number(ch.max_videos) || NEW_CAP[days] || 12));
+    maxPages = Math.min(10, Math.max(days >= 60 ? 8 : days >= 30 ? 5 : 3, Math.ceil(cap / 15)));
+    cutoff = Date.now() / 1000 - days * 86400;
     try {
       const { sid, items } = await fetchItems(ch);
       const au = items.find((i) => i.author?.name)?.author ?? {};
@@ -229,10 +288,13 @@ Deno.serve(async (req) => {
 
       const hearts = HEART_PLATFORMS.has(ch.platform);
       const score = (i: Item) => hearts ? i.likes : (i.views || i.likes * 20);
-      const rows = items.filter((i) => i.id && (!i.ts || i.ts >= cutoff))
+      const minLikes = Number(ch.min_likes) || 0, minViews = Number(ch.min_views) || 0;
+      const seen = new Set<string>();
+      const recent = items.filter((i) => i.id && !seen.has(i.id) && seen.add(i.id) && (!i.ts || i.ts >= cutoff));
+      const rows = recent
         .filter((i) => !i.dur || (i.dur >= ch.min_sec && i.dur <= ch.max_sec))
-        .filter((i) => { const s = hearts ? i.likes : i.views; return !s || s >= ch.min_views; })
-        .sort((a, b) => score(b) - score(a)).slice(0, MAX_NEW_PER_CHANNEL);
+        .filter((i) => (!minLikes || !i.likes || i.likes >= minLikes) && (!minViews || !i.views || i.views >= minViews))
+        .sort((a, b) => score(b) - score(a)).slice(0, cap);
 
       const { data: existing } = await db.from("feed_items").select("aweme_id")
         .eq("platform", ch.platform).in("aweme_id", rows.map((r) => r.id));
@@ -250,18 +312,24 @@ Deno.serve(async (req) => {
         }).select("id").single();
         if (!ins) continue;
         added++;
-        media.push(saveMedia(db, ins.id, ch.platform, it));
+        const fid = ins.id; media.push(() => saveMedia(db, fid, ch.platform, it));
       }
-      report.push({ channel: patch.name ?? ch.name ?? ch.url, found: items.length, added });
+      report.push({ channel: patch.name ?? ch.name ?? ch.url, days, cap, found: items.length, recent: recent.length, passed: rows.length, added });
     } catch (e) {
       await db.from("channels").update({ last_error: String(e).replace(/^Error:\s*/, "").slice(0, 300), last_scraped_at: new Date().toISOString() }).eq("id", ch.id);
       report.push({ channel: ch.name ?? ch.url, error: String(e).replace(/^Error:\s*/, "") });
     }
   }
   // @ts-ignore EdgeRuntime is provided by Supabase
-  EdgeRuntime.waitUntil(Promise.allSettled(media));
+  EdgeRuntime.waitUntil(pool(media, 3));
   return json({ ok: true, channels: report });
 });
+
+async function pool(tasks: (() => Promise<unknown>)[], size: number) {
+  let i = 0;
+  const worker = async () => { while (i < tasks.length) { const t = tasks[i++]; try { await t(); } catch { /* skip */ } } };
+  await Promise.all(Array.from({ length: Math.min(size, tasks.length) }, worker));
+}
 
 async function grab(u: string, platform: string, limit: number): Promise<Uint8Array | null> {
   try {

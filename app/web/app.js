@@ -59,6 +59,7 @@ async function signed(bucket, paths, opts) {
 
 const I = {
   home: '<path d="M3 10.5 12 4l9 6.5V20H3z"/><path d="M9.5 20v-6h5v6"/>',
+  users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/>',
   ch: '<rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M10 9v6l5-3z"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
   bst: '<path d="M6 3h12v18l-6-4-6 4z"/>',
@@ -81,9 +82,9 @@ const ic = (n, s = 22, w = 2) => `<svg width="${s}" height="${s}" viewBox="0 0 2
 
 function nav(on) {
   const it = (h, k, icon, label) => `<a href="#/${h}" class="${on === k ? "on" : ""}" ${on === k ? 'aria-current="page"' : ""}>${ic(icon)}${label}</a>`;
-  return `<nav class="nav" aria-label="Điều hướng">${it("home", "home", "home", "Hôm nay")}${it("feed", "channels", "ch", "Kênh")}
+  return `<nav class="nav" aria-label="Điều hướng">${it("home", "home", "home", "Hôm nay")}${it("feed", "reels", "ch", "Reels")}
   <a href="#/produce" class="fab ${on === "produce" ? "on" : ""}" aria-label="Lệnh sản xuất">${ic("plus", 24, 2.4)}</a>
-  ${it("bst", "bst", "bst", "BST")}${it("library", "library", "dl", "Kho")}</nav>`;
+  ${it("channels", "kenh", "users", "Kênh")}${it("bst", "bst", "bst", "BST")}${it("library", "library", "dl", "Kho")}</nav>`;
 }
 function page({ top, body, navOn, dark = false }) {
   $app.className = dark ? "dark" : "";
@@ -205,24 +206,51 @@ async function approve(item) {
 }
 const skip = (item) => sb.from("feed_items").update({ status: "skipped" }).eq("id", item.id);
 
-/* ---------- channels ---------- */
+/* ---------- channels (BST kênh) ---------- */
+const OPT = {
+  max_videos: [[6, "6"], [12, "12"], [20, "20"], [30, "30"], [50, "50"]],
+  days: [[7, "7 ngày"], [15, "15 ngày"], [30, "30 ngày"], [60, "60 ngày"], [90, "90 ngày"]],
+  min_likes: [[0, "Tất cả"], [1000, "1N"], [10000, "10N"], [50000, "50N"], [100000, "100N"]],
+  min_views: [[0, "Tất cả"], [10000, "10N"], [100000, "100N"], [500000, "500N"], [1000000, "1tr"]],
+  dur: [["20-300", "20s – 5p"], ["10-60", "< 60s"], ["20-600", "≤ 10p"], ["20-1800", "≤ 30p"]],
+};
+const sel = (name, opts, cur) => `<select name="${name}" data-k="${name}">${opts.map(([v, l]) => `<option value="${v}" ${String(v) === String(cur) ? "selected" : ""}>${l}</option>`).join("")}</select>`;
+const optRows = (c) => `
+  <label class="li"><span>Số video mỗi lần</span>${sel("max_videos", OPT.max_videos, c.max_videos ?? 12)}</label>
+  <label class="li"><span>Đăng trong</span>${sel("days", OPT.days, c.days ?? 7)}</label>
+  <label class="li"><span>Tim tối thiểu</span>${sel("min_likes", OPT.min_likes, c.min_likes ?? 0)}</label>
+  <label class="li"><span>View tối thiểu</span>${sel("min_views", OPT.min_views, c.min_views ?? 0)}</label>
+  <label class="li"><span>Độ dài</span>${sel("dur", OPT.dur, `${c.min_sec ?? 20}-${c.max_sec ?? 300}`)}</label>
+  <label class="li"><span>Dùng video gốc</span><input type="checkbox" class="sw" name="use_original" data-k="use_original" ${c.use_original ? "checked" : ""}></label>
+  <label class="li"><span>Tự cào mỗi sáng</span><input type="checkbox" class="sw" name="auto_scrape" data-k="auto_scrape" ${c.auto_scrape !== false ? "checked" : ""}></label>`;
+const lbl = (opts, v) => (opts.find(([x]) => String(x) === String(v)) || [0, v])[1];
+const avStyle = (c) => c.avatar_url ? `background-image:url('${esc(c.avatar_url)}')` : `background:${grad(c.id)}`;
+
 async function viewChannels() {
-  page({ navOn: "channels", top: head("Kênh", `<button class="icon" id="sc" aria-label="Cào ngay">${ic("refresh", 18)}</button><a href="#/add" class="icon" style="background:#18181B;color:#FFF;border-color:#18181B" aria-label="Thêm kênh">${ic("plus", 18, 2.4)}</a>`),
+  page({ navOn: "kenh", top: head("Kênh", `<button class="icon" id="sc" aria-label="Cào tất cả">${ic("refresh", 18)}</button><a href="#/add" class="icon" style="background:#18181B;color:#FFF;border-color:#18181B" aria-label="Thêm kênh">${ic("plus", 18, 2.4)}</a>`),
     body: `<main class="main" id="m">${spinner}</main>` });
   document.getElementById("sc").onclick = () => runScrape();
   await loadChannels();
-  const since = new Date(Date.now() - 7 * 864e5).toISOString();
-  const { data: items } = await sb.from("feed_items").select("channel_id,status,views").gte("posted_at", since);
+  const { data: items } = await sb.from("feed_items").select("channel_id,status").gte("scraped_at", new Date(Date.now() - 7 * 864e5).toISOString());
   const agg = {}; (items || []).forEach((i) => { const a = (agg[i.channel_id] ||= { n: 0, wait: 0 }); a.n++; if (i.status === "new") a.wait++; });
   const m = document.getElementById("m"); if (!m) return;
-  m.innerHTML = S.channels.length ? `<section class="card" style="overflow:hidden">${S.channels.map((c) => {
+  if (!S.channels.length) { m.innerHTML = `<a href="#/add" class="card empty" style="display:block">${ic("plus", 28)}<br>Thêm kênh</a>`; return; }
+  m.innerHTML = `<section class="card" style="overflow:hidden">${S.channels.map((c) => {
     const a = agg[c.id] || { n: 0, wait: 0 };
-    return `<div class="ch" data-c="${c.id}"><div class="av" style="${c.avatar_url ? `background-image:url('${esc(c.avatar_url)}')` : `background:${grad(c.id)}`}">${c.avatar_url ? "" : esc((c.name || c.platform)[0].toUpperCase())}</div>
-    <div style="flex:1;min-width:0"><div class="ell" style="font-size:15px;font-weight:700">${esc(c.name || c.url)}</div>
-    <div class="row" style="gap:6px;margin-top:4px"><span class="tag">${PF[c.platform] || c.platform}</span>${c.use_original ? '<span class="tag ok">Gốc</span>' : ""}${a.wait ? `<span class="tag yl">${a.wait} chờ</span>` : ""}${c.last_error ? '<span class="tag bad">Lỗi</span>' : ""}${c.active ? "" : '<span class="tag">Tắt</span>'}</div></div>
-    <span style="color:#A1A1AA">${ic("chev", 18, 2.2)}</span></div>`;
-  }).join("")}</section><a href="#/feed" class="btn btn-full">Lướt video</a>` : `<a href="#/add" class="card empty" style="display:block">${ic("plus", 28)}<br>Thêm kênh</a>`;
-  m.querySelectorAll("[data-c]").forEach((el) => el.onclick = () => channelSheet(S.chMap[el.dataset.c]));
+    return `<div class="ch" data-c="${c.id}" style="align-items:flex-start">
+      <a href="#/feed?ch=${c.id}" class="av" style="${avStyle(c)}" aria-label="Xem reels kênh">${c.avatar_url ? "" : esc((c.name || c.platform)[0].toUpperCase())}</a>
+      <div style="flex:1;min-width:0">
+        <div class="row" style="gap:6px"><span class="ell" style="font-size:15px;font-weight:700">${esc(c.name || c.url)}</span><span class="tag">${PF[c.platform] || c.platform}</span></div>
+        <div class="row" style="gap:4px;margin-top:5px;flex-wrap:wrap">
+          <span class="tag">${c.max_videos ?? 12} video</span><span class="tag">${c.days ?? 7} ngày</span>
+          ${c.min_likes ? `<span class="tag">♥ ≥ ${lbl(OPT.min_likes, c.min_likes)}</span>` : ""}${c.min_views ? `<span class="tag">▶ ≥ ${lbl(OPT.min_views, c.min_views)}</span>` : ""}
+          ${c.use_original ? '<span class="tag ok">Gốc</span>' : ""}${a.wait ? `<span class="tag yl">${a.wait} chờ</span>` : ""}${c.last_error ? '<span class="tag bad">Lỗi</span>' : ""}${c.active ? "" : '<span class="tag">Tắt</span>'}
+        </div>
+        <div class="vm">${c.last_scraped_at ? `Cào ${vnTime(c.last_scraped_at)} ${dm(c.last_scraped_at)}` : "Chưa cào"}</div>
+      </div>
+      <span style="color:#A1A1AA;padding-top:10px">${ic("chev", 18, 2.2)}</span></div>`;
+  }).join("")}</section>`;
+  m.querySelectorAll("[data-c]").forEach((el) => el.onclick = (e) => { if (e.target.closest("a")) return; channelSheet(S.chMap[el.dataset.c]); });
 }
 
 async function runScrape(channel_id) {
@@ -233,67 +261,64 @@ async function runScrape(channel_id) {
   const errs = (data.channels || []).filter((c) => c.error);
   toast(errs.length ? `+${added} video · lỗi: ${errs[0].error}` : `+${added} video mới`, 3500);
   if (added) sb.functions.invoke("translate", { body: {} }).then(() => { if (location.hash.startsWith("#/feed")) route(); });
-  if (location.hash.startsWith("#/channels")) viewChannels(); else if (location.hash.startsWith("#/feed")) route();
+  if (location.hash.startsWith("#/channels")) viewChannels();
   return data;
 }
 
 function channelSheet(c) {
   const el = document.createElement("div"); el.className = "sheet";
-  el.innerHTML = `<div><div class="row" style="margin-bottom:14px"><div style="flex:1;min-width:0;font-size:17px;font-weight:800" class="ell">${esc(c.name || "Kênh")}</div><button class="icon" data-x aria-label="Đóng">${ic("x", 18)}</button></div>
+  el.innerHTML = `<div><div class="row" style="margin-bottom:14px;gap:10px"><span class="av" style="width:40px;height:40px;${avStyle(c)}">${c.avatar_url ? "" : esc((c.name || "?")[0])}</span><div style="flex:1;min-width:0"><div class="ell" style="font-size:17px;font-weight:800">${esc(c.name || "Kênh")}</div><div class="vm ell">${esc(c.url)}</div></div><button class="icon" data-x aria-label="Đóng">${ic("x", 18)}</button></div>
   ${c.last_error ? `<p class="tag bad" style="height:auto;padding:6px 8px;white-space:normal;margin:0 0 12px">${esc(c.last_error)}</p>` : ""}
-  <div class="card" style="margin-bottom:12px">
-    <label class="li"><span>Dùng video gốc</span><input type="checkbox" class="sw" data-k="use_original" ${c.use_original ? "checked" : ""}></label>
-    <label class="li"><span>Tự cào mỗi sáng</span><input type="checkbox" class="sw" data-k="auto_scrape" ${c.auto_scrape ? "checked" : ""}></label>
-    <label class="li"><span>Bật kênh</span><input type="checkbox" class="sw" data-k="active" ${c.active ? "checked" : ""}></label>
-  </div>
+  <div class="card" style="margin-bottom:12px">${optRows(c)}
+    <label class="li"><span>Bật kênh</span><input type="checkbox" class="sw" data-k="active" ${c.active ? "checked" : ""}></label></div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-    <a class="btn" href="#/feed?ch=${c.id}">Lướt</a><button class="btn btn-o" data-s>Cào ngay</button>
+    <a class="btn" href="#/feed?ch=${c.id}">Xem reels</a><button class="btn btn-o" data-s>Cào ngay</button>
     <a class="btn btn-o" href="${esc(c.url)}" target="_blank" rel="noopener">Mở kênh</a><button class="btn btn-o" data-del style="color:#B91C1C">Xoá</button>
   </div></div>`;
   document.body.appendChild(el);
   const close = () => el.remove();
   el.onclick = (e) => { if (e.target === el || e.target.closest("[data-x]") || e.target.closest("a")) close(); };
-  el.querySelectorAll("[data-k]").forEach((i) => i.onchange = async () => { await sb.from("channels").update({ [i.dataset.k]: i.checked }).eq("id", c.id); c[i.dataset.k] = i.checked; toast("✓ Đã lưu"); if (location.hash.startsWith("#/channels")) viewChannels(); else if (location.hash.startsWith("#/feed")) route(); });
+  el.querySelectorAll("[data-k]").forEach((i) => i.onchange = async () => {
+    const k = i.dataset.k; let patch;
+    if (i.type === "checkbox") patch = { [k]: i.checked };
+    else if (k === "dur") { const [a, b] = i.value.split("-").map(Number); patch = { min_sec: a, max_sec: b }; }
+    else patch = { [k]: Number(i.value) };
+    const { error } = await sb.from("channels").update(patch).eq("id", c.id);
+    if (error) return toast(error.message);
+    Object.assign(c, patch); toast("✓ Đã lưu");
+    if (location.hash.startsWith("#/channels")) viewChannels();
+  });
   el.querySelector("[data-s]").onclick = () => { close(); runScrape(c.id); };
-  el.querySelector("[data-del]").onclick = async () => { if (!confirm("Xoá kênh?")) return; await sb.from("channels").delete().eq("id", c.id); close(); await loadChannels(); location.hash = "#/feed"; route(); };
+  el.querySelector("[data-del]").onclick = async () => { if (!confirm("Xoá kênh?")) return; await sb.from("channels").delete().eq("id", c.id); close(); await loadChannels(); if (location.hash.startsWith("#/channels")) viewChannels(); else { location.hash = "#/channels"; } };
 }
 
 /* ---------- add channel ---------- */
 function viewAdd() {
-  page({ navOn: "channels", top: backTop("Thêm kênh", "#/feed"), body: `<main class="main"><form id="f" style="display:flex;flex-direction:column;gap:10px">
+  const d = { max_videos: 12, days: 7, min_likes: 0, min_views: 0, min_sec: 20, max_sec: 300, use_original: false, auto_scrape: true };
+  page({ navOn: "kenh", top: backTop("Thêm kênh", "#/channels"), body: `<main class="main"><form id="f" style="display:flex;flex-direction:column;gap:10px">
     <input class="inp" name="url" type="url" required placeholder="Link kênh" aria-label="Link kênh" inputmode="url" autocapitalize="off">
     <div class="seg pf5" id="pf">${Object.entries(PF).map(([k, l], i) => `<button type="button" data-v="${k}" class="${i ? "" : "on"}">${l === "Instagram" ? "IG" : l}</button>`).join("")}</div>
-    <div class="card">
-      <label class="li"><span>Tự cào 7 ngày</span><input type="checkbox" class="sw" name="auto" checked></label>
-      <label class="li"><span id="mlab">Tim tối thiểu</span><select name="minv" id="minv"></select></label>
-      <label class="li"><span>Độ dài</span><select name="dur"><option value="20-300" selected>20s – 5p</option><option value="10-60">&lt; 60s</option><option value="20-600">≤ 10p</option><option value="20-1800">≤ 30p</option></select></label>
-      <label class="li"><span>Dùng video gốc</span><input type="checkbox" class="sw" name="orig"></label>
-    </div>
+    <div class="card">${optRows(d)}</div>
     <input class="inp" name="credit" type="text" placeholder="Ghi công (tuỳ chọn)" aria-label="Ghi công">
     <button class="btn btn-full" id="go" style="margin-top:6px">Lưu & cào</button>
   </form></main>` });
   let pf = "douyin";
   const segs = [...document.querySelectorAll("#pf button")];
-  const OPTS = { hearts: [["0", "Tất cả"], ["10000", "10N"], ["50000", "50N"], ["100000", "100N"]], views: [["0", "Tất cả"], ["100000", "100N"], ["500000", "500N"], ["1000000", "1tr"]] };
-  const setPf = (v) => {
-    pf = v; segs.forEach((b) => b.classList.toggle("on", b.dataset.v === v));
-    const h = HEARTS.has(v); document.getElementById("mlab").textContent = h ? "Tim tối thiểu" : "View tối thiểu";
-    document.getElementById("minv").innerHTML = OPTS[h ? "hearts" : "views"].map(([val, l], i) => `<option value="${val}" ${i === 1 ? "selected" : ""}>${l}</option>`).join("");
-  };
+  const setPf = (v) => { pf = v; segs.forEach((b) => b.classList.toggle("on", b.dataset.v === v)); };
   segs.forEach((b) => b.onclick = () => setPf(b.dataset.v));
-  setPf("douyin");
   const f = document.getElementById("f");
-  f.url.oninput = () => { const d = detectPf(f.url.value); if (d) setPf(d); };
+  f.url.oninput = () => { const x = detectPf(f.url.value); if (x) setPf(x); };
   f.onsubmit = async (e) => {
     e.preventDefault();
     const url = (f.url.value.match(/https?:\/\/\S+/) || [f.url.value])[0].trim();
     const [a, b] = f.dur.value.split("-").map(Number);
     const go = document.getElementById("go"); go.disabled = true; go.innerHTML = '<span class="spin" style="border-top-color:#FFF"></span>';
-    const { data, error } = await sb.from("channels").insert({ url, platform: pf, auto_scrape: f.auto.checked,
-      min_views: Number(f.minv.value), min_sec: a, max_sec: b, use_original: f.orig.checked, credit: f.credit.value.trim() || null }).select().single();
+    const { data, error } = await sb.from("channels").insert({ url, platform: pf, auto_scrape: f.auto_scrape.checked, use_original: f.use_original.checked,
+      max_videos: Number(f.max_videos.value), days: Number(f.days.value), min_likes: Number(f.min_likes.value), min_views: Number(f.min_views.value),
+      min_sec: a, max_sec: b, credit: f.credit.value.trim() || null }).select().single();
     if (error) { go.disabled = false; go.textContent = "Lưu & cào"; return toast(error.message); }
     await loadChannels();
-    location.hash = "#/feed?ch=" + data.id;
+    location.hash = "#/channels";
     runScrape(data.id);
   };
 }
@@ -302,22 +327,22 @@ function viewAdd() {
 let feedObs = null;
 async function viewFeed(params) {
   const chId = params.get("ch") || "";
-  page({ navOn: "channels", dark: true, body: `<div style="flex:1;position:relative;display:flex;flex-direction:column;min-height:0;background:#000">
-    <div class="ftop">
-      <div class="row" style="gap:18px"><button class="ftab ${chId ? "" : "on"}" data-t="">Hôm nay</button><button class="ftab ${chId ? "on" : ""}" data-t="ch">${chId ? esc((S.chMap[chId]?.name || "Kênh").slice(0, 14)) : "Theo kênh"}</button></div>
-      <div class="row" style="gap:8px"><span class="pill" id="cnt">…</span><a href="#/add" class="pill" aria-label="Thêm kênh" style="padding:5px 7px">${ic("plus", 20, 2.6)}</a></div></div>
-    <div class="feed" id="feed"></div></div>` });
   await loadChannels();
-  document.querySelectorAll(".ftab").forEach((b) => b.onclick = () => {
-    if (!b.dataset.t) { location.hash = "#/feed"; return; }
-    pickChannel((id) => (location.hash = "#/feed?ch=" + id));
-  });
+  const chc = S.chMap[chId];
+  page({ navOn: "reels", dark: true, body: `<div style="flex:1;position:relative;display:flex;flex-direction:column;min-height:0;background:#000">
+    <div class="ftop">
+      ${chc ? `<div class="row" style="gap:8px;min-width:0"><a href="#/feed" class="pill" aria-label="Tất cả reels">${ic("back", 18, 2.4)}</a><span class="av" style="width:28px;height:28px;font-size:12px;border-radius:4px;${avStyle(chc)}">${chc.avatar_url ? "" : esc((chc.name || "?")[0])}</span><span class="ell" style="font-size:15px;font-weight:800;color:#FFF;max-width:180px;text-shadow:0 1px 2px rgba(0,0,0,.6)">${esc(chc.name || "Kênh")}</span></div>`
+        : `<span class="ftab on" style="cursor:default">Reels</span>`}
+      <span class="pill" id="cnt">…</span></div>
+    <div class="feed" id="feed"></div></div>` });
   const { data: items, error } = await sb.rpc("feed_today", { p_channel: chId || null, p_limit: 200 });
   const feed = document.getElementById("feed"); if (!feed) return;
   if (error) { feed.innerHTML = `<div class="fdone">${esc(error.message)}</div>`; return; }
   const list = items || [];
+  if (chId) list.sort((a, b) => new Date(b.posted_at) - new Date(a.posted_at));
+  else for (let i = list.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [list[i], list[j]] = [list[j], list[i]]; }
   const cnt = document.getElementById("cnt");
-  if (!list.length) { feed.innerHTML = `<div class="fdone">${ic("check", 40)}<div>${S.channels.length ? "Hết video" : "Chưa có kênh"}</div><a class="btn btn-y sm" href="#/add">${ic("plus", 16, 2.6)}Thêm kênh</a></div>`; cnt.textContent = "0"; return; }
+  if (!list.length) { feed.innerHTML = `<div class="fdone">${ic("check", 40)}<div>${S.channels.length ? "Hết video" : "Chưa có kênh"}</div><a class="btn btn-y sm" href="#/channels">Kênh</a></div>`; cnt.textContent = "0"; return; }
   let rendered = 0, muted = true, done = 0;
   const total = list.length;
   const cardHTML = (it, i) => {
@@ -334,8 +359,8 @@ async function viewFeed(params) {
         <a class="rb" href="${esc(it.share_url || ch.url || "#")}" target="_blank" rel="noopener" aria-label="Mở gốc"><i>${ic("ext", 22)}</i></a>
       </div>
       <div class="info">
-        <div class="row" style="gap:8px"><span class="av" style="width:28px;height:28px;font-size:12px;border-radius:4px;${ch.avatar_url ? `background-image:url('${esc(ch.avatar_url)}')` : `background:${grad(ch.id)}`}">${ch.avatar_url ? "" : esc((ch.name || "?")[0])}</span>
-          <span class="ell" style="font-size:15px;font-weight:800;max-width:190px">${esc(ch.name || "Kênh")}</span>${ch.use_original ? '<span class="tag" style="background:rgba(255,212,59,.2);color:#FFD43B">Gốc</span>' : ""}</div>
+        <div class="row" style="gap:8px"><a href="#/feed?ch=${ch.id}" class="row" style="gap:8px;min-width:0"><span class="av" style="width:28px;height:28px;font-size:12px;border-radius:4px;${ch.avatar_url ? `background-image:url('${esc(ch.avatar_url)}')` : `background:${grad(ch.id)}`}">${ch.avatar_url ? "" : esc((ch.name || "?")[0])}</span>
+          <span class="ell" style="font-size:15px;font-weight:800;max-width:190px">${esc(ch.name || "Kênh")}</span></a>${ch.use_original ? '<span class="tag" style="background:rgba(255,212,59,.2);color:#FFD43B">Gốc</span>' : ""}</div>
         <p data-cap>${esc(vi || it.caption_orig || "")}</p>
         <div class="meta"><span class="tag" style="background:rgba(255,255,255,.15);color:#FFF">${PF[it.platform] || ""}</span>${HEARTS.has(it.platform) ? `<span>♥ ${num(it.likes)}</span>${it.views ? `<span>▶ ${num(it.views)}</span>` : ""}` : `${it.views ? `<span>▶ ${num(it.views)}</span>` : ""}${it.likes ? `<span>♥ ${num(it.likes)}</span>` : ""}`}${it.duration_sec ? `<span>${dur(it.duration_sec)}</span>` : ""}<span>${ago(it.posted_at)}</span></div>
       </div></section>`;
@@ -591,8 +616,9 @@ async function viewLibrary(params) {
 }
 
 /* ---------- router ---------- */
-const routes = { home: viewHome, channels: viewFeed, add: viewAdd, feed: viewFeed, bst: viewBst, produce: viewProduce, schedule: viewSchedule, library: viewLibrary };
+const routes = { home: viewHome, channels: viewChannels, add: viewAdd, feed: viewFeed, bst: viewBst, produce: viewProduce, schedule: viewSchedule, library: viewLibrary };
 async function route() {
+  document.querySelectorAll(".sheet").forEach((x) => x.remove());
   if (!S.session || locked()) return viewLogin();
   if (!S.member) {
     page({ navOn: null, body: `<main class="main login"><p class="err" style="text-align:center">Tài khoản không có quyền</p><button class="btn btn-full" id="lo">Đăng xuất</button></main>` });
