@@ -1,0 +1,241 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   0.0,
+   11.5
+  ],
+  "en": [
+   "How does a car drive upside down on a ramp, then flip in midair and land on its wheels?"
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   14.4,
+   19.7
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's break this stunt down, step by step."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "real",
+  "src": [
+   141.0,
+   149.3
+  ],
+  "en": [
+   "Tesla showed its new Roadster prototype doing exactly this in October, at a SpaceX test site in Texas."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "problem",
+  "src": [
+   19.7,
+   25.9
+  ],
+  "en": [
+   "Normally, an upside down car just falls off.",
+   "Gravity wins, and the tires lose their grip."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "fans",
+  "src": [
+   30.4,
+   32.6
+  ],
+  "en": [
+   "The trick is underneath.",
+   "Powerful fans suck the air out from under the car."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "skirt",
+  "src": [
+   32.6,
+   34.9
+  ],
+  "en": [
+   "A skirt around the edges seals the gap, so outside air can't sneak back in."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "suction",
+  "src": [
+   38.7,
+   45.6
+  ],
+  "en": [
+   "Now the pressure under the car is low, and the air outside pushes it hard against the ramp.",
+   "It even works when the car stops."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "leave",
+  "src": [
+   48.9,
+   56.3
+  ],
+  "en": [
+   "But the moment the car leaves the ramp, air rushes in, and the grip is gone."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "tanks",
+  "src": [
+   58.3,
+   59.5
+  ],
+  "en": [
+   "So it switches to cold gas thrusters.",
+   "Air is squeezed into high pressure tanks ahead of time."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "nozzle",
+  "src": [
+   63.1,
+   66.0
+  ],
+  "en": [
+   "When it needs a push, a valve opens and the gas blasts out of a nozzle."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "thrust",
+  "src": [
+   68.0,
+   71.8
+  ],
+  "en": [
+   "Gas shoots down, so the car gets pushed up, just like a rocket."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "cases",
+  "src": [
+   75.6,
+   84.1
+  ],
+  "en": [
+   "Thrusters off, it falls faster and faster.",
+   "Both on, it still drops, but slower."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "tilt",
+  "src": [
+   84.1,
+   86.8
+  ],
+  "en": [
+   "Push harder at one end, and the nose lifts.",
+   "That's how the car rotates in the air."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "stop",
+  "src": [
+   90.0,
+   103.8
+  ],
+  "en": [
+   "A spinning car won't stop by itself.",
+   "So just before it's level, the thrusters push the other way."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "land",
+  "src": [
+   117.5,
+   124.7
+  ],
+  "en": [
+   "Then, right before touchdown, extra upward thrust slows the fall."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "budget",
+  "src": [
+   132.4,
+   135.0
+  ],
+  "en": [
+   "And the tanks hold only so much air, so every blast has to be planned."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   124.7,
+   130.5
+  ],
+  "en": [
+   "Suction to stick, thrusters to flip, and a careful air budget to land.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ }
+]

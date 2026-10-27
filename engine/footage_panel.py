@@ -27,7 +27,7 @@ tmp = os.path.join(P, "panel_segs"); os.makedirs(tmp, exist_ok=True)
 lst = []
 for i, (name, st, cov, dur, sp) in enumerate(segs):
     out = os.path.join(tmp, f"{i:02d}.mp4")
-    vf = f"setpts=(PTS-STARTPTS)/{sp:.4f},{CROP},tpad=stop_mode=clone:stop_duration=3,trim=0:{dur:.3f},setpts=PTS-STARTPTS"
+    vf = f"setpts=(PTS-STARTPTS)/{sp:.4f},{CROP},tpad=stop_mode=clone:stop_duration=12,trim=0:{dur:.3f},setpts=PTS-STARTPTS"
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", f"{st:.3f}", "-t", f"{cov:.3f}", "-i", src, "-vf", vf, "-an",
                     "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", "-r", "30", out], check=True)
     lst.append(f"file '{out}'")

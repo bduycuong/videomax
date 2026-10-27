@@ -160,15 +160,17 @@ elif a.cmd == "source":
         if isinstance(o, dict):
             mime = str(o.get("mimeType") or o.get("mime_type") or "")
             for k, v in o.items():
-                if isinstance(v, str) and v.startswith("http"):
-                    key = k.lower()
+                urls = [v] if isinstance(v, str) else [x for x in v if isinstance(x, str)] if isinstance(v, list) else []
+                urls = [x for x in urls if x.startswith("http")]  # Douyin keeps its video URLs in url_list arrays
+                for v in urls:
+                    key = ctx.rsplit("/", 1)[-1] + "/" + k.lower()
                     if pf == "youtube":
                         if "url" in key and "video/mp4" in mime and ("mp4a" in mime or o.get("audioQuality") or o.get("audio_quality")):
                             cand.append((int(o.get("height") or o.get("bitrate") or 0), v))
                     elif any(t in key for t in ("url", "src", "master", "backup")) and any(t in (ctx + key + v).lower() for t in ("play_addr", "video", ".mp4", "h264", "stream", "download")) and not any(t in v.lower() for t in (".jpg", ".jpeg", ".webp", ".png", "image", "avatar", "cover")):
                         cand.append((int(o.get("width") or o.get("bit_rate") or o.get("height") or 0), v))
-                else:
-                    walk(v, ctx + "/" + k.lower())
+                if not urls:
+                    walk(o[k], ctx + "/" + k.lower())
         elif isinstance(o, list):
             for x in o: walk(x, ctx)
     walk(data)
