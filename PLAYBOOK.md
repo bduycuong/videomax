@@ -18,7 +18,7 @@ Repo layout (`bduycuong/videomax`, default branch `main`):
 
 ## Studio app (Supabase) — do this around the daily run
 
-Cuong now drives the series from the iPhone web app **MAX WISE Studio** (https://maxwise-studio.netlify.app, data in Supabase project `maxwise-studio`). `engine/studio.py` is the bridge (reads `supabase.json` — engine account, never print it). The app's choices override the defaults below.
+Cuong now drives the series from the iPhone web app **MAX WISE Studio** (https://maxvideo.netlify.app, data in Supabase project `maxwise-studio`). `engine/studio.py` is the bridge (reads `supabase.json` — engine account, never print it). The app's choices override the defaults below.
 
 S0. `python3 engine/studio.py settings`. If `enabled` is false, or today's weekday in Asia/Saigon (0 = Sunday … 6 = Saturday) is not in `days`: produce nothing, still send anything waiting in `pending/`, `studio.py runlog --videos 0 --note "lịch tắt"`, stop.
 S1. **Scrape (≈05:30)**: `python3 engine/studio.py scrape`. It pulls the last 7 days from every channel the user added (TikHub) on Douyin, TikTok, RedNote (Xiaohongshu), Instagram and YouTube. Douyin and RedNote are ranked by hearts, the others by views. If it reports a TikHub credit error, note it in the log and carry on.
