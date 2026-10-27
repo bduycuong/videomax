@@ -32,6 +32,13 @@ const dm = (t) => new Intl.DateTimeFormat("vi-VN", { timeZone: tz, day: "2-digit
 const dayStart = (ymd) => new Date(`${ymd}T00:00:00+07:00`).toISOString();
 const addDays = (ymd, n) => { const d = new Date(`${ymd}T12:00:00+07:00`); d.setUTCDate(d.getUTCDate() + n); return vnDate(d); };
 const weekday = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
+// hourly "Làm ngay" check runs at :07 from 08:07 to 22:07 Vietnam time
+const nextCheck = () => {
+  const now = new Date(Date.now() + 7 * 3600e3); let h = now.getUTCHours(), m = now.getUTCMinutes();
+  if (m >= 7) h += 1;
+  if (h < 8) h = 8;
+  return h > 22 ? "8:07 sáng mai" : `${h}:07`;
+};
 const PF = { douyin: "Douyin", tiktok: "TikTok", xiaohongshu: "RedNote", instagram: "Instagram", youtube: "YouTube" };
 const HEARTS = new Set(["douyin", "xiaohongshu"]); // ranked by hearts
 const metric = (it) => HEARTS.has(it.platform) || !it.views ? `♥ ${num(it.likes)}` : `▶ ${num(it.views)}`;
@@ -427,7 +434,7 @@ async function viewBst(params) {
     return `<div style="padding:12px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid #F4F4F5">
     <div class="row" style="gap:12px;align-items:flex-start"><div class="th" style="width:44px;height:78px;background-image:url('${cov[f.cover_path] || ""}'),${grad(j.id)}"></div>
     <div style="flex:1;min-width:0"><div class="vt clamp2">${esc(j.topic || f.caption_vi || f.caption_orig || "Video")}</div>
-    <div class="row" style="gap:6px;margin-top:6px;flex-wrap:wrap">${kindTag(j)}${j.status === "failed" ? '<span class="tag bad">Lỗi</span>' : j.status === "ready" ? '<span class="tag ok">✓</span>' : j.progress ? `<span class="tag yl">${j.progress}%</span>` : ""}${j.run_when === "now" && j.status === "queued" ? '<span class="tag yl">Ngay</span>' : ""}<span class="vm" style="margin:0">${esc(S.chMap[f.channel_id]?.name || "")}</span></div>
+    <div class="row" style="gap:6px;margin-top:6px;flex-wrap:wrap">${kindTag(j)}${j.status === "failed" ? '<span class="tag bad">Lỗi</span>' : j.status === "ready" ? '<span class="tag ok">✓</span>' : j.progress ? `<span class="tag yl">${j.progress}%</span>` : ""}${j.run_when === "now" && j.status === "queued" ? `<span class="tag yl">Bắt đầu ${nextCheck()}</span>` : ""}<span class="vm" style="margin:0">${esc(S.chMap[f.channel_id]?.name || "")}</span></div>
     ${j.error ? `<div class="vm" style="color:#B91C1C">${esc(j.error)}</div>` : ""}
     ${j.status === "queued" ? `<div class="row" style="gap:6px;margin-top:8px">${j.run_when === "now" ? "" : `<button class="btn btn-y xs" data-now="${j.id}">Làm ngay</button>`}<button class="btn btn-o xs" data-cancel="${j.id}">Gỡ</button></div>` : ""}
     ${j.status === "ready" ? `<div class="row" style="gap:6px;margin-top:8px"><a class="btn xs" href="#/library">Kho</a><button class="btn btn-o xs" data-redo="${j.id}">Sửa lại</button></div>` : ""}
@@ -439,7 +446,7 @@ async function viewBst(params) {
   m.innerHTML = `<div class="seg"><button class="${tab === "proc" ? "on" : ""}" data-t="proc">Đang làm · ${groups.proc.length}</button><button class="${tab === "wait" ? "on" : ""}" data-t="wait">Chờ · ${groups.wait.length}</button><button class="${tab === "done" ? "on" : ""}" data-t="done">Xong · ${groups.done.length}</button></div>
   ${groups[tab].length ? `<section class="card" style="overflow:hidden">${groups[tab].map(card).join("")}</section>` : `<div class="empty">—</div>`}`;
   m.querySelectorAll("[data-t]").forEach((b) => b.onclick = () => (location.hash = "#/bst?t=" + b.dataset.t));
-  m.querySelectorAll("[data-now]").forEach((b) => b.onclick = async () => { await sb.from("jobs").update({ run_when: "now", updated_at: new Date().toISOString() }).eq("id", b.dataset.now); toast("✓ Làm trong 1 giờ tới"); viewBst(params); });
+  m.querySelectorAll("[data-now]").forEach((b) => b.onclick = async () => { await sb.from("jobs").update({ run_when: "now", updated_at: new Date().toISOString() }).eq("id", b.dataset.now); toast(`✓ Max bắt đầu lúc ${nextCheck()}`, 3500); viewBst(params); });
   m.querySelectorAll("[data-cancel]").forEach((b) => b.onclick = async () => { const j = all.find((x) => x.id === b.dataset.cancel); await sb.from("jobs").update({ status: "cancelled" }).eq("id", j.id); if (j.feed_item_id) await sb.from("feed_items").update({ status: "new" }).eq("id", j.feed_item_id); toast("Đã gỡ"); viewBst(params); });
   m.querySelectorAll("[data-redo]").forEach((b) => b.onclick = async () => { await sb.from("jobs").update({ status: "queued", progress: 0, step: null, error: null, run_when: "now" }).eq("id", b.dataset.redo); toast("✓ Đã xếp lại"); viewBst(params); });
 }
@@ -468,7 +475,7 @@ function viewProduce() {
     e.preventDefault();
     const { error } = await sb.from("jobs").insert({ kind: "doodle", topic: f.topic.value.trim(), voice: f.voice.value, subs: f.subs.value, music: f.music.checked, telegram: f.tg.checked, run_when: when });
     if (error) return toast(error.message);
-    toast("✓ Đã gửi"); f.topic.value = ""; loadQueue();
+    toast(when === "now" ? `✓ Max bắt đầu lúc ${nextCheck()}` : "✓ Sáng mai Max làm", 3500); f.topic.value = ""; loadQueue();
   };
   const loadQueue = async () => {
     const { data } = await sb.from("jobs").select("id,topic,run_when,status").eq("kind", "doodle").in("status", ["queued", "downloading", "editing", "rendering"]).order("created_at");
