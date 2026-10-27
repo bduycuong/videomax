@@ -81,7 +81,7 @@ const ic = (n, s = 22, w = 2) => `<svg width="${s}" height="${s}" viewBox="0 0 2
 
 function nav(on) {
   const it = (h, k, icon, label) => `<a href="#/${h}" class="${on === k ? "on" : ""}" ${on === k ? 'aria-current="page"' : ""}>${ic(icon)}${label}</a>`;
-  return `<nav class="nav" aria-label="Điều hướng">${it("home", "home", "home", "Hôm nay")}${it("channels", "channels", "ch", "Kênh")}
+  return `<nav class="nav" aria-label="Điều hướng">${it("home", "home", "home", "Hôm nay")}${it("feed", "channels", "ch", "Kênh")}
   <a href="#/produce" class="fab ${on === "produce" ? "on" : ""}" aria-label="Lệnh sản xuất">${ic("plus", 24, 2.4)}</a>
   ${it("bst", "bst", "bst", "BST")}${it("library", "library", "dl", "Kho")}</nav>`;
 }
@@ -232,7 +232,7 @@ async function runScrape(channel_id) {
   const added = (data.channels || []).reduce((s, c) => s + (c.added || 0), 0);
   const errs = (data.channels || []).filter((c) => c.error);
   toast(errs.length ? `+${added} video · lỗi: ${errs[0].error}` : `+${added} video mới`, 3500);
-  if (location.hash.startsWith("#/channels")) viewChannels();
+  if (location.hash.startsWith("#/channels")) viewChannels(); else if (location.hash.startsWith("#/feed")) route();
   return data;
 }
 
@@ -252,14 +252,14 @@ function channelSheet(c) {
   document.body.appendChild(el);
   const close = () => el.remove();
   el.onclick = (e) => { if (e.target === el || e.target.closest("[data-x]") || e.target.closest("a")) close(); };
-  el.querySelectorAll("[data-k]").forEach((i) => i.onchange = async () => { await sb.from("channels").update({ [i.dataset.k]: i.checked }).eq("id", c.id); c[i.dataset.k] = i.checked; toast("✓ Đã lưu"); if (location.hash.startsWith("#/channels")) viewChannels(); });
+  el.querySelectorAll("[data-k]").forEach((i) => i.onchange = async () => { await sb.from("channels").update({ [i.dataset.k]: i.checked }).eq("id", c.id); c[i.dataset.k] = i.checked; toast("✓ Đã lưu"); if (location.hash.startsWith("#/channels")) viewChannels(); else if (location.hash.startsWith("#/feed")) route(); });
   el.querySelector("[data-s]").onclick = () => { close(); runScrape(c.id); };
-  el.querySelector("[data-del]").onclick = async () => { if (!confirm("Xoá kênh?")) return; await sb.from("channels").delete().eq("id", c.id); close(); viewChannels(); };
+  el.querySelector("[data-del]").onclick = async () => { if (!confirm("Xoá kênh?")) return; await sb.from("channels").delete().eq("id", c.id); close(); await loadChannels(); location.hash = "#/feed"; route(); };
 }
 
 /* ---------- add channel ---------- */
 function viewAdd() {
-  page({ navOn: "channels", top: backTop("Thêm kênh", "#/channels"), body: `<main class="main"><form id="f" style="display:flex;flex-direction:column;gap:10px">
+  page({ navOn: "channels", top: backTop("Thêm kênh", "#/feed"), body: `<main class="main"><form id="f" style="display:flex;flex-direction:column;gap:10px">
     <input class="inp" name="url" type="url" required placeholder="Link kênh" aria-label="Link kênh" inputmode="url" autocapitalize="off">
     <div class="seg pf5" id="pf">${Object.entries(PF).map(([k, l], i) => `<button type="button" data-v="${k}" class="${i ? "" : "on"}">${l === "Instagram" ? "IG" : l}</button>`).join("")}</div>
     <div class="card">
@@ -292,7 +292,7 @@ function viewAdd() {
       min_views: Number(f.minv.value), min_sec: a, max_sec: b, use_original: f.orig.checked, credit: f.credit.value.trim() || null }).select().single();
     if (error) { go.disabled = false; go.textContent = "Lưu & cào"; return toast(error.message); }
     await loadChannels();
-    location.hash = "#/channels";
+    location.hash = "#/feed?ch=" + data.id;
     runScrape(data.id);
   };
 }
@@ -302,9 +302,9 @@ let feedObs = null;
 async function viewFeed(params) {
   const chId = params.get("ch") || "";
   page({ navOn: "channels", dark: true, body: `<div style="flex:1;position:relative;display:flex;flex-direction:column;min-height:0;background:#000">
-    <div class="ftop"><a href="#/channels" class="pill" aria-label="Kênh">${ic("back", 18, 2.4)}</a>
+    <div class="ftop">
       <div class="row" style="gap:18px"><button class="ftab ${chId ? "" : "on"}" data-t="">Hôm nay</button><button class="ftab ${chId ? "on" : ""}" data-t="ch">${chId ? esc((S.chMap[chId]?.name || "Kênh").slice(0, 14)) : "Theo kênh"}</button></div>
-      <span class="pill" id="cnt">…</span></div>
+      <div class="row" style="gap:8px"><span class="pill" id="cnt">…</span><a href="#/add" class="pill" aria-label="Thêm kênh" style="padding:5px 7px">${ic("plus", 20, 2.6)}</a></div></div>
     <div class="feed" id="feed"></div></div>` });
   await loadChannels();
   document.querySelectorAll(".ftab").forEach((b) => b.onclick = () => {
@@ -316,7 +316,7 @@ async function viewFeed(params) {
   if (error) { feed.innerHTML = `<div class="fdone">${esc(error.message)}</div>`; return; }
   const list = items || [];
   const cnt = document.getElementById("cnt");
-  if (!list.length) { feed.innerHTML = `<div class="fdone">${ic("check", 40)}<div>Hết video</div></div>`; cnt.textContent = "0"; return; }
+  if (!list.length) { feed.innerHTML = `<div class="fdone">${ic("check", 40)}<div>${S.channels.length ? "Hết video" : "Chưa có kênh"}</div><a class="btn btn-y sm" href="#/add">${ic("plus", 16, 2.6)}Thêm kênh</a></div>`; cnt.textContent = "0"; return; }
   let rendered = 0, muted = true, done = 0;
   const total = list.length;
   const cardHTML = (it, i) => {
@@ -405,9 +405,14 @@ async function viewFeed(params) {
 function pickChannel(cb) {
   const el = document.createElement("div"); el.className = "sheet";
   el.innerHTML = `<div><div class="row between" style="margin-bottom:12px"><b style="font-size:17px">Kênh</b><button class="icon" data-x aria-label="Đóng">${ic("x", 18)}</button></div>
-  <div class="card">${S.channels.map((c) => `<button class="li" style="width:100%;background:none;border:0;border-bottom:1px solid #F4F4F5;text-align:left;cursor:pointer" data-c="${c.id}"><span class="ell">${esc(c.name || c.url)}</span>${ic("chev", 16)}</button>`).join("") || '<div class="empty">—</div>'}</div></div>`;
+  <div class="card">${S.channels.map((c) => `<div class="li" style="gap:10px"><button style="flex:1;min-width:0;display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;text-align:left;font:600 14px Inter,sans-serif;color:#18181B;cursor:pointer" data-c="${c.id}"><span class="av" style="width:32px;height:32px;font-size:12px;border-radius:4px;${c.avatar_url ? `background-image:url('${esc(c.avatar_url)}')` : `background:${grad(c.id)}`}">${c.avatar_url ? "" : esc((c.name || "?")[0])}</span><span class="ell">${esc(c.name || c.url)}</span><span class="tag">${PF[c.platform] || ""}</span></button><button class="icon" style="width:32px;height:32px" data-m="${c.id}" aria-label="Cài đặt kênh">⋯</button></div>`).join("") || '<div class="empty">—</div>'}</div>
+  <a href="#/add" class="btn btn-full" style="margin-top:12px">${ic("plus", 18, 2.4)}Thêm kênh</a></div>`;
   document.body.appendChild(el);
-  el.onclick = (e) => { const b = e.target.closest("[data-c]"); if (b) { el.remove(); cb(b.dataset.c); } else if (e.target === el || e.target.closest("[data-x]")) el.remove(); };
+  el.onclick = (e) => {
+    const m = e.target.closest("[data-m]"); if (m) { el.remove(); channelSheet(S.chMap[m.dataset.m]); return; }
+    const b = e.target.closest("[data-c]"); if (b) { el.remove(); cb(b.dataset.c); }
+    else if (e.target === el || e.target.closest("[data-x]") || e.target.closest("a")) el.remove();
+  };
 }
 
 /* ---------- collection ---------- */
@@ -573,7 +578,7 @@ async function viewLibrary(params) {
 }
 
 /* ---------- router ---------- */
-const routes = { home: viewHome, channels: viewChannels, add: viewAdd, feed: viewFeed, bst: viewBst, produce: viewProduce, schedule: viewSchedule, library: viewLibrary };
+const routes = { home: viewHome, channels: viewFeed, add: viewAdd, feed: viewFeed, bst: viewBst, produce: viewProduce, schedule: viewSchedule, library: viewLibrary };
 async function route() {
   if (!S.session || locked()) return viewLogin();
   if (!S.member) {
