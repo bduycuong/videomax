@@ -288,9 +288,9 @@
   "caveat_vi": "Còn tranh cãi; trình bày như một bí ẩn.",
   "source_title": "Duke Health – Contagious yawning still largely unexplained",
   "source_url": "https://corporate.dukehealth.org/news/contagious-yawning-may-not-be-linked-empathy-still-largely-unexplained",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep15-contagious-yawns",
+  "done_date": "2026-10-28"
  },
  {
   "slug": "breaths-take-lifetime",
@@ -307,11 +307,11 @@
   "calc": "15 × 525.960 × 80 ≈ 631 triệu",
   "max_idea_vi": "Mỗi hơi thở là một quả bóng bay; một ngày đã đủ 21.600 quả che kín bầu trời.",
   "caveat_vi": "Trẻ em thở nhanh hơn, tập thể dục cũng làm tăng nhịp.",
-  "source_title": "Cleveland Clinic – Vital Signs",
-  "source_url": "https://my.clevelandclinic.org/health/articles/vital-signs",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "source_title": "American Lung Association – Respiratory rate (12–20/min at rest)",
+  "source_url": "https://www.lung.org/blog/respiratory-rate-vital-signs",
+  "status": "done",
+  "episode": "ep14-lifetime-breaths",
+  "done_date": "2026-10-28"
  },
  {
   "slug": "years-life-spend-eating",

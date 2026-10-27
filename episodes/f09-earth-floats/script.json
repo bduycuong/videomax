@@ -1,0 +1,12 @@
+[
+ {"id":"hook", "src":[0.0, 11.5], "en":["Planet Earth weighs about six trillion trillion kilograms.", "Nothing holds it up.", "So why doesn't it fall?"], "vi":["","",""]},
+ {"id":"intro", "src":[12.0, 19.5], "en":["I'm Max, and this is Max Wise.", "Let's find out what keeps our planet up there."], "vi":["",""]},
+ {"id":"nodown", "src":[20.0, 37.0], "en":["First, a surprise.", "In space there is no up and no down.", "Falling only means moving toward something heavy.", "And the heaviest thing near us is the Sun.", "It has about three hundred thirty thousand times the mass of Earth."], "vi":["","","","",""]},
+ {"id":"newton", "src":[56.0, 64.0], "en":["Isaac Newton said gravity is a pull.", "The same pull that drops an apple also holds the Moon and the planets."], "vi":["",""]},
+ {"id":"einstein", "src":[68.0, 83.0], "en":["Then, in nineteen fifteen, Albert Einstein went further.", "He said heavy things bend space and time around them, like a dent."], "vi":["",""]},
+ {"id":"sheet", "src":[83.5, 98.0], "en":["Watch this stretchy sheet.", "A heavy ball in the middle makes a deep dip.", "Let a small marble go, and it simply rolls down into the dip."], "vi":["","",""]},
+ {"id":"sideways", "src":[98.0, 112.0], "en":["But give the marble a sideways push.", "Now it keeps circling around the dip instead of falling in."], "vi":["",""]},
+ {"id":"speed", "src":[112.0, 124.0], "en":["That's exactly what Earth does.", "It races sideways at about thirty kilometers every second.", "It is always falling toward the Sun, and always missing it."], "vi":["","",""]},
+ {"id":"proof", "src":[130.5, 135.5], "en":["Is space really bent?", "During a solar eclipse in nineteen nineteen, Arthur Eddington's team saw starlight bend as it passed the Sun."], "vi":["",""]},
+ {"id":"outro", "src":[145.0, 157.0], "en":["So Earth isn't floating.", "It's falling around the Sun, forever.", "Stay curious!"], "vi":["","",""]}
+]

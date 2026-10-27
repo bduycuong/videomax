@@ -1,0 +1,22 @@
+[
+ {"id":"hook", "en":["Quick challenge.", "Try not to yawn while you watch this.", "Why is yawning so contagious?"],
+  "vi":["Thử thách nhỏ nhé.", "Cố đừng ngáp khi xem video này.", "Vì sao ngáp lại dễ lây đến vậy?"]},
+ {"id":"guess", "en":["Take a guess.", "Is it because you're tired? Because you copy others? Or because you care about them?"],
+  "vi":["Thử đoán xem.", "Vì bạn mệt? Vì bạn bắt chước người khác? Hay vì bạn quan tâm đến họ?"]},
+ {"id":"intro", "en":["I'm Max, and this is Max Wise.", "This one is a real mystery."],
+  "vi":["Mình là Max, và đây là Max Wise.", "Câu hỏi này là một bí ẩn thật sự."]},
+ {"id":"test", "en":["Scientists at Duke tested it.", "Three hundred twenty eight people watched a three minute video of other people yawning."],
+  "vi":["Các nhà khoa học ở Duke đã thử nghiệm.", "328 người xem một video dài 3 phút toàn cảnh người khác ngáp."]},
+ {"id":"result", "en":["Two hundred twenty two of them yawned at least once.", "That's about two out of every three people."],
+  "vi":["222 người trong số đó ngáp ít nhất một lần.", "Tức là khoảng 2 trên 3 người."]},
+ {"id":"spread", "en":["Some never yawned at all.", "One person yawned fifteen times!"],
+  "vi":["Có người không ngáp lần nào.", "Có người ngáp tới 15 lần!"]},
+ {"id":"empathy", "en":["Many people believed contagious yawns show empathy.", "But in this study, people who scored higher on empathy did not yawn much more."],
+  "vi":["Nhiều người tin rằng ngáp lây cho thấy sự đồng cảm.", "Nhưng trong nghiên cứu này, người có điểm đồng cảm cao hơn không ngáp nhiều hơn rõ rệt."]},
+ {"id":"age", "en":["The only clear clue was age.", "Older people caught fewer yawns.", "But age explained only a tiny part of the difference."],
+  "vi":["Manh mối rõ duy nhất là tuổi tác.", "Người lớn tuổi ít bị lây ngáp hơn.", "Nhưng tuổi chỉ giải thích một phần rất nhỏ sự khác biệt."]},
+ {"id":"mystery", "en":["So the honest answer is, nobody knows for sure yet.", "Copying, social bonding, even your genes might play a part."],
+  "vi":["Vậy câu trả lời thật lòng là, chưa ai biết chắc.", "Bắt chước, gắn kết xã hội, thậm chí gen của bạn đều có thể góp phần."]},
+ {"id":"outro", "en":["Two out of three people catch a yawn, and science still can't say why.", "So, did you yawn?", "Stay curious!"],
+  "vi":["Cứ 3 người thì 2 người bị lây ngáp, mà khoa học vẫn chưa giải thích được.", "Vậy, bạn đã ngáp chưa?", "Hãy luôn tò mò nhé!"]}
+]
