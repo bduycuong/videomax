@@ -28,6 +28,7 @@ _tok = None
 
 def http(method, url, body=None, headers=None, raw=False, timeout=120):
     h = dict(headers or {})
+    h.setdefault("User-Agent", "Mozilla/5.0 (compatible; videomax-studio/1.0)")  # Cloudflare 1010 blocks the default Python-urllib UA
     data = None
     if body is not None:
         if isinstance(body, (bytes, bytearray)):

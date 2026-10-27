@@ -1,0 +1,12 @@
+[
+ {"id":"hook", "src":[0.0, 8.4], "en":["Why does Brazil speak Portuguese, when almost all of its neighbors speak Spanish?"], "vi":[""]},
+ {"id":"intro", "src":[8.4, 14.3], "en":["I'm Max, and this is Max Wise.", "The answer starts with a line drawn across the ocean."], "vi":["",""]},
+ {"id":"race", "src":[14.3, 26.1], "en":["In the late fourteen hundreds, Spain and Portugal were racing to find a sea route to Asia.", "Portugal sailed south around Africa, while Spain sent Columbus west."], "vi":["",""]},
+ {"id":"land", "src":[26.1, 30.9], "en":["Columbus did bump into land.", "But it wasn't Asia. It was the Americas."], "vi":["",""]},
+ {"id":"pope", "src":[30.9, 40.2], "en":["Both kingdoms wanted the new lands, so they asked the Pope.", "In fourteen ninety three, he drew a line from pole to pole, one hundred leagues west of the Cape Verde Islands."], "vi":["",""]},
+ {"id":"split", "src":[40.2, 44.9], "en":["Land to the west went to Spain.", "Land to the east went to Portugal."], "vi":["",""]},
+ {"id":"treaty", "src":[44.9, 55.6], "en":["Portugal wanted more room, so it pushed the line farther west.", "In fourteen ninety four, the Treaty of Tordesillas set it at three hundred seventy leagues west of Cape Verde."], "vi":["",""]},
+ {"id":"luck", "src":[55.6, 63.8], "en":["Then, in fifteen hundred, Portuguese sailors reached South America.", "And its eastern bulge stuck out past the line, right on Portugal's side."], "vi":["",""]},
+ {"id":"grow", "src":[63.8, 71.7], "en":["Over the next centuries, Portuguese settlers pushed far beyond that line, deep into the Amazon.", "Later treaties drew the borders we see today."], "vi":["",""]},
+ {"id":"outro", "src":[71.7, 79.6], "en":["So Brazil speaks Portuguese because of one line drawn on an ocean map.", "Stay curious!"], "vi":["",""]}
+]

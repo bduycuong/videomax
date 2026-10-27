@@ -1,0 +1,12 @@
+[
+ {"id":"hook", "src":[0.0, 6.8], "en":["What is the longest fence in the world, and what is it trying to keep out?"], "vi":[""]},
+ {"id":"intro", "src":[6.8, 12.6], "en":["I'm Max, and this is Max Wise.", "Let's zoom in on Australia."], "vi":["",""]},
+ {"id":"length", "src":[12.6, 17.2], "en":["This is the Dingo Fence.", "It runs for about five thousand six hundred kilometers, across three Australian states."], "vi":["",""]},
+ {"id":"compare", "src":[17.2, 22.4], "en":["That's roughly the distance from London to New York.", "Most of it is wire mesh, about six feet tall."], "vi":["",""]},
+ {"id":"dingo", "src":[22.4, 27.1], "en":["Its job is to keep out this guy, the dingo.", "It's a wild dog, about the size of a medium pet dog."], "vi":["",""]},
+ {"id":"speed", "src":[27.1, 32.5], "en":["Dingoes can sprint at around sixty kilometers per hour, and they hunt kangaroos and smaller animals."], "vi":[""]},
+ {"id":"sheep", "src":[32.5, 43.8], "en":["Then, in the late seventeen hundreds, Europeans arrived and brought sheep.", "To a hungry dingo, that was a brand new menu."], "vi":["",""]},
+ {"id":"farmers", "src":[43.8, 53.4], "en":["Farmers tried traps and guns, but they kept losing sheep.", "So in the eighteen eighties, they started building fences."], "vi":["",""]},
+ {"id":"connect", "src":[53.4, 57.4], "en":["Over the years, those fences were joined into one giant barrier."], "vi":[""]},
+ {"id":"outro", "src":[57.4, 61.8], "en":["Sheep country on one side, most dingoes on the other.", "Stay curious!"], "vi":["",""]}
+]
