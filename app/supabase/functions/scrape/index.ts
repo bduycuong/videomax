@@ -277,7 +277,7 @@ Deno.serve(async (req) => {
       const patch: Record<string, unknown> = { sec_uid: sid || ch.sec_uid, last_scraped_at: new Date().toISOString(), last_error: null };
       if (!ch.name && au.name) patch.name = au.name;
       if (au.avatar) {
-        const b = await grab(String(au.avatar), ch.platform, 2 * 1024 * 1024);
+        const b = await grabImage(String(au.avatar), ch.platform, 2 * 1024 * 1024);
         if (b) {
           const ap = `avatars/${ch.id}.jpg`;
           const { error: ue } = await db.storage.from("feed").upload(ap, b, { contentType: "image/jpeg", upsert: true });
@@ -347,6 +347,21 @@ async function grab(u: string, platform: string, limit: number): Promise<Uint8Ar
   } catch { return null; }
 }
 
+// images must be JPEG/PNG/WebP: Douyin serves HEIC to iPhone user agents, which laptop browsers cannot show
+const isWebImage = (b: Uint8Array) => (b[0] === 0xff && b[1] === 0xd8) || (b[0] === 0x89 && b[1] === 0x50) || (b[0] === 0x52 && b[1] === 0x49 && b[8] === 0x57);
+async function grabImage(u: string, platform: string, limit: number): Promise<Uint8Array | null> {
+  const tries = [...new Set([u.replace(/\.heic(?=[?~]|$)/i, ".jpeg").replace(/format=heic/i, "format=jpeg"), u])];
+  for (const t of tries) {
+    try {
+      const r = await fetch(t, { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36", Accept: "image/jpeg,image/png,image/webp;q=0.9,*/*;q=0.5", Referer: REF[platform] ?? "" } });
+      if (!r.ok) continue;
+      const b = new Uint8Array(await r.arrayBuffer());
+      if (b.byteLength >= 500 && b.byteLength <= limit && isWebImage(b)) return b;
+    } catch { /* next */ }
+  }
+  return null;
+}
+
 // iPhone Safari plays H.264/HEVC, not ByteDance's own bvc1/bvc2 codecs
 function playable(b: Uint8Array): boolean {
   const head = new TextDecoder("latin1").decode(b.subarray(0, Math.min(b.length, 400000))) + new TextDecoder("latin1").decode(b.subarray(Math.max(0, b.length - 400000)));
@@ -366,7 +381,7 @@ async function saveMedia(db: any, id: string, platform: string, it: Item) {
   const patch: Record<string, string> = {};
   const key = `${platform}/${it.id.replace(/[^\w\-]/g, "_")}`;
   for (const c of it.covers.filter((u) => u?.startsWith("http")).slice(0, 3)) {
-    const b = await grab(c, platform, 3 * 1024 * 1024);
+    const b = await grabImage(c, platform, 3 * 1024 * 1024);
     if (b) { const { error } = await db.storage.from("feed").upload(`${key}.jpg`, b, { contentType: "image/jpeg", upsert: true }); if (!error) { patch.cover_path = `${key}.jpg`; break; } }
   }
   let silent: Uint8Array | null = null;

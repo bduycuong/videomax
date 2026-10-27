@@ -82,8 +82,8 @@ const ic = (n, s = 22, w = 2) => `<svg width="${s}" height="${s}" viewBox="0 0 2
 
 function nav(on) {
   const it = (h, k, icon, label) => `<a href="#/${h}" class="${on === k ? "on" : ""}" ${on === k ? 'aria-current="page"' : ""}>${ic(icon)}${label}</a>`;
-  return `<nav class="nav" aria-label="Điều hướng">${it("home", "home", "home", "Hôm nay")}${it("feed", "reels", "ch", "Reels")}
-  <a href="#/produce" class="fab ${on === "produce" ? "on" : ""}" aria-label="Lệnh sản xuất">${ic("plus", 24, 2.4)}</a>
+  return `<nav class="nav" aria-label="Điều hướng"><a href="#/home" class="brand" aria-label="MAX WISE Studio"><img src="icon.svg" width="34" height="34" alt=""><b>MAX WISE</b></a>${it("home", "home", "home", "Hôm nay")}${it("feed", "reels", "ch", "Reels")}
+  <a href="#/produce" class="fab ${on === "produce" ? "on" : ""}" aria-label="Lệnh sản xuất">${ic("plus", 24, 2.4)}<span class="fabl">Lệnh mới</span></a>
   ${it("channels", "kenh", "users", "Kênh")}${it("bst", "bst", "bst", "BST")}${it("library", "library", "dl", "Kho")}</nav>`;
 }
 function page({ top, body, navOn, dark = false }) {
@@ -184,7 +184,7 @@ async function viewHome() {
     <a href="#/bst" class="card stat"><b>${nProc.count ?? 0}</b><small>Đang làm</small></a>
     <a href="#/library" class="card stat"><b>${exs.length}</b><small>Đã xuất</small></a>
   </div>
-  ${exs.length ? `<section class="card" style="padding:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">${exs.slice(0, 3).map((e) => `<a href="#/library" style="display:flex;flex-direction:column;gap:6px"><div class="th" style="aspect-ratio:9/16;background-image:url('${th[e.thumb_path] || ""}'),${grad(e.id)}"><span>${dur(e.duration_sec)}</span></div><span style="font-size:12px;font-weight:600;line-height:1.3">${esc(e.title)}</span></a>`).join("")}</section>` : ""}
+  ${exs.length ? `<section class="card exrow" style="padding:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">${exs.slice(0, 6).map((e) => `<a href="#/library" style="display:flex;flex-direction:column;gap:6px"><div class="th" style="aspect-ratio:9/16;background-image:url('${th[e.thumb_path] || ""}'),${grad(e.id)}"><span>${dur(e.duration_sec)}</span></div><span style="font-size:12px;font-weight:600;line-height:1.3">${esc(e.title)}</span></a>`).join("")}</section>` : ""}
   ${hots.length ? `<div class="row between" style="padding:0 2px"><span class="sec">Chờ duyệt</span><a href="#/feed" class="lk">Lướt</a></div>
   <section class="card">${hots.map((h) => `<div class="row" style="padding:10px 12px;border-bottom:1px solid #F4F4F5;gap:12px" data-id="${h.id}">
       <div class="th" style="width:44px;height:78px;background-image:url('${cov[h.cover_path] || ""}'),${grad(h.id)}"></div>
@@ -236,7 +236,7 @@ async function viewChannels() {
   const agg = {}; (items || []).forEach((i) => { const a = (agg[i.channel_id] ||= { n: 0, wait: 0 }); a.n++; if (i.status === "new") a.wait++; });
   const m = document.getElementById("m"); if (!m) return;
   if (!S.channels.length) { m.innerHTML = `<a href="#/add" class="card empty" style="display:block">${ic("plus", 28)}<br>Thêm kênh</a>`; return; }
-  m.innerHTML = `<section class="card" style="overflow:hidden">${S.channels.map((c) => {
+  m.innerHTML = `<section class="card chl" style="overflow:hidden">${S.channels.map((c) => {
     const a = agg[c.id] || { n: 0, wait: 0 };
     return `<div class="ch" data-c="${c.id}" style="align-items:flex-start">
       <a href="#/feed?ch=${c.id}" class="av" style="${avStyle(c)}" aria-label="Xem reels kênh">${c.avatar_url ? "" : esc((c.name || c.platform)[0].toUpperCase())}</a>
@@ -344,7 +344,7 @@ async function viewFeed(params) {
       ${chc ? `<div class="row" style="gap:8px;min-width:0"><a href="#/feed" class="pill" aria-label="Tất cả reels">${ic("back", 18, 2.4)}</a><span class="av" style="width:28px;height:28px;font-size:12px;border-radius:4px;${avStyle(chc)}">${chc.avatar_url ? "" : esc((chc.name || "?")[0])}</span><span class="ell" style="font-size:15px;font-weight:800;color:#FFF;max-width:180px;text-shadow:0 1px 2px rgba(0,0,0,.6)">${esc(chc.name || "Kênh")}</span></div>`
         : `<span class="ftab on" style="cursor:default">Reels</span>`}
       <span class="pill" id="cnt">…</span></div>
-    <div class="feed" id="feed"></div></div>` });
+    <div class="feed" id="feed"></div><div class="keys"><span><kbd>↑</kbd><kbd>↓</kbd>lướt</span><span><kbd>A</kbd>duyệt</span><span><kbd>X</kbd>bỏ</span><span><kbd>M</kbd>tiếng</span><span><kbd>Space</kbd>dừng</span></div></div>` });
   const { data: items, error } = await sb.rpc("feed_today", { p_channel: chId || null, p_limit: 200 });
   const feed = document.getElementById("feed"); if (!feed) return;
   if (error) { feed.innerHTML = `<div class="fdone">${esc(error.message)}</div>`; return; }
@@ -357,6 +357,23 @@ async function viewFeed(params) {
   // every card is exactly one screen tall (iOS does not resolve 100% inside flex reliably)
   const fit = () => { if (feed.isConnected) feed.style.setProperty("--fh", feed.clientHeight + "px"); };
   fit(); window.addEventListener("resize", fit); window.visualViewport?.addEventListener("resize", fit);
+  // laptop: one wheel gesture / arrow key = one video
+  const go = (d) => feed.scrollTo({ top: Math.round(feed.scrollTop / feed.clientHeight + d) * feed.clientHeight, behavior: "smooth" });
+  let wheelLock = 0;
+  feed.addEventListener("wheel", (e) => { if (e.target.closest("[data-cap].open")) return; e.preventDefault(); if (Date.now() < wheelLock || Math.abs(e.deltaY) < 8) return; wheelLock = Date.now() + 650; go(e.deltaY > 0 ? 1 : -1); }, { passive: false });
+  if (window._feedKeys) document.removeEventListener("keydown", window._feedKeys);
+  window._feedKeys = (e) => {
+    if (!feed.isConnected) return document.removeEventListener("keydown", window._feedKeys);
+    if (/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+    const cur = [...feed.querySelectorAll(".fi")].find((x) => Math.abs(x.offsetTop - feed.scrollTop) < feed.clientHeight / 2);
+    if (["ArrowDown", "j", "PageDown"].includes(e.key)) { e.preventDefault(); go(1); }
+    else if (["ArrowUp", "k", "PageUp"].includes(e.key)) { e.preventDefault(); go(-1); }
+    else if (e.key === " ") { e.preventDefault(); const v = cur?.querySelector("video"); if (v?.src) v.paused ? v.play() : v.pause(); }
+    else if (e.key === "m") setMuted(!muted);
+    else if (e.key === "a" && cur) cur.querySelector('[data-a="ap"]')?.click();
+    else if (e.key === "x" && cur) cur.querySelector('[data-a="sk"]')?.click();
+  };
+  document.addEventListener("keydown", window._feedKeys);
   const cues = {};
   const parseVtt = (t) => t.split(/\r?\n\r?\n/).map((b) => { const m = b.match(/(\d+):(\d+):(\d+)\.(\d+)\s*-->\s*(\d+):(\d+):(\d+)\.(\d+)[^\n]*\n([\s\S]+)/); if (!m) return null; const sec = (h, mi, se, ms) => +h * 3600 + +mi * 60 + +se + +ms / 1000; return [sec(m[1], m[2], m[3], m[4]), sec(m[5], m[6], m[7], m[8]), m[9].trim()]; }).filter(Boolean);
   const loadSubs = async (sec, it) => {
@@ -515,7 +532,7 @@ async function viewBst(params) {
     </div>`;
   };
   m.innerHTML = `<div class="seg"><button class="${tab === "proc" ? "on" : ""}" data-t="proc">Đang làm · ${groups.proc.length}</button><button class="${tab === "wait" ? "on" : ""}" data-t="wait">Chờ · ${groups.wait.length}</button><button class="${tab === "done" ? "on" : ""}" data-t="done">Xong · ${groups.done.length}</button></div>
-  ${groups[tab].length ? `<section class="card" style="overflow:hidden">${groups[tab].map(card).join("")}</section>` : `<div class="empty">—</div>`}`;
+  ${groups[tab].length ? `<section class="card bl" style="overflow:hidden">${groups[tab].map(card).join("")}</section>` : `<div class="empty">—</div>`}`;
   m.querySelectorAll("[data-t]").forEach((b) => b.onclick = () => (location.hash = "#/bst?t=" + b.dataset.t));
   m.querySelectorAll("[data-mode]").forEach((b) => b.onclick = async () => { const j = all.find((x) => x.id === b.dataset.mode); const mode = j.mode === "max" ? "sub_vi" : "max"; await sb.from("jobs").update({ mode }).eq("id", j.id); toast(mode === "max" ? "Max dẫn chuyện (tiếng Anh)" : "Giữ tiếng gốc + phụ đề Việt"); viewBst(params); });
   m.querySelectorAll("[data-now]").forEach((b) => b.onclick = async () => { await sb.from("jobs").update({ run_when: "now", updated_at: new Date().toISOString() }).eq("id", b.dataset.now); toast(`✓ Max bắt đầu lúc ${nextCheck()}`, 3500); viewBst(params); });
@@ -606,7 +623,7 @@ async function viewLibrary(params) {
   const m = document.getElementById("m"); if (!m) return;
   if (!list.length) { m.innerHTML = `<div class="empty">—</div>`; return; }
   const byDay = {}; list.forEach((e) => (byDay[vnDate(new Date(e.created_at))] ||= []).push(e));
-  m.innerHTML = Object.entries(byDay).map(([d, arr]) => `<span class="sec">${d.split("-").reverse().slice(0, 2).join("/")}</span>` + arr.map((e) => `
+  m.innerHTML = Object.entries(byDay).map(([d, arr]) => `<span class="sec">${d.split("-").reverse().slice(0, 2).join("/")}</span><div class="lgrid">` + arr.map((e) => `
     <article class="card row" style="padding:12px;gap:12px;align-items:stretch" data-e="${e.id}">
       <div class="th" style="width:72px;height:128px;background-image:url('${th[e.thumb_path] || ""}'),${grad(e.id)}"><span>${dur(e.duration_sec)}</span></div>
       <div style="flex:1;min-width:0;display:flex;flex-direction:column">
@@ -617,7 +634,7 @@ async function viewLibrary(params) {
           <button class="btn xs" data-a="dl" aria-label="Tải về">${ic("dl", 15, 2.4)}</button>
           <button class="btn btn-o xs" data-a="share" aria-label="Chia sẻ">${ic("share", 15)}</button>
         </div>
-      </div></article>`).join("")).join("");
+      </div></article>`).join("") + "</div>").join("");
   m.onclick = async (ev) => {
     const b = ev.target.closest("[data-a]"); if (!b) return;
     const e = list.find((x) => x.id === b.closest("[data-e]").dataset.e);
