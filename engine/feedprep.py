@@ -62,25 +62,40 @@ def probe(src):
 
 
 def source_urls(it):
+    """Candidate download URLs, best first: H.264 with sound (play_addr_h264 / download_addr) before anything else."""
     tk = json.load(open(os.path.join(ROOT, "tikhub.json")))["token"]
     pf, aid = it["platform"], it["aweme_id"]
-    api = {"douyin": f"/api/v1/douyin/web/fetch_one_video?aweme_id={aid}", "tiktok": f"/api/v1/tiktok/app/v3/fetch_one_video?aweme_id={aid}",
-           "instagram": f"/api/v1/instagram/v2/fetch_post_info?code_or_url={urllib.parse.quote(it.get('share_url') or aid)}",
-           "xiaohongshu": f"/api/v1/xiaohongshu/app_v2/get_video_note_detail?note_id={aid}"}.get(pf)
-    if not api: return []
-    d = http("GET", "https://api.tikhub.io" + api, headers={"Authorization": f"Bearer {tk}"}).get("data") or {}
+    apis = {"douyin": [f"/api/v1/douyin/app/v3/fetch_one_video?aweme_id={aid}", f"/api/v1/douyin/web/fetch_one_video?aweme_id={aid}"],
+            "tiktok": [f"/api/v1/tiktok/app/v3/fetch_one_video?aweme_id={aid}"],
+            "instagram": [f"/api/v1/instagram/v2/fetch_post_info?code_or_url={urllib.parse.quote(it.get('share_url') or aid)}"],
+            "xiaohongshu": [f"/api/v1/xiaohongshu/app_v2/get_video_note_detail?note_id={aid}"]}.get(pf, [])
+    d = None
+    for api in apis:
+        try:
+            d = http("GET", "https://api.tikhub.io" + api, headers={"Authorization": f"Bearer {tk}"}).get("data") or {}
+            break
+        except Exception as e:
+            print("tikhub:", api.split("?")[0], str(e)[:80])
+    if not d: return []
     out = []
+    if pf in ("douyin", "tiktok"):
+        a = d.get("aweme_detail") or (d.get("aweme_details") or [{}])[0] or d
+        v = a.get("video") or {}
+        for k in ("play_addr_h264", "download_addr", "play_addr"):
+            out += (v.get(k) or {}).get("url_list") or []
+        for b in v.get("bit_rate") or []:
+            if not b.get("is_h265"): out += (b.get("play_addr") or {}).get("url_list") or []
     def walk(o, ctx=""):
         if isinstance(o, dict):
             for k, v in o.items():
                 if isinstance(v, str) and v.startswith("http") and re.search(r"url|src|master|backup", k, re.I) and \
-                   re.search(r"play|video|mp4|h264|stream|download", ctx + k + v, re.I) and not re.search(r"\.(jpe?g|webp|png)|image|avatar|cover", v, re.I):
+                   re.search(r"play|video|mp4|h264|stream|download", ctx + k + v, re.I) and not re.search(r"\.(jpe?g|webp|png)|image|avatar|cover|media-audio|/share/", v, re.I):
                     out.append(v)
                 else: walk(v, ctx + "/" + k)
         elif isinstance(o, list):
             for x in o: walk(x, ctx)
-    walk(d)
-    return list(dict.fromkeys(out))[:8]
+    if not out: walk(d)
+    return list(dict.fromkeys(out))[:10]
 
 
 def ensure_preview(it, work):
@@ -108,6 +123,9 @@ def ensure_preview(it, work):
             open(raw, "wb").write(data)
         except Exception:
             continue
+        info = probe(raw)
+        if "video" not in info: continue
+        if "audio" not in info and any(x != u for x in cands[cands.index(u) + 1:]): continue  # try a variant with sound first
         r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-map", "0:v:0", "-map", "0:a:0?", "-vf", "scale='min(720,iw)':-2",
                             "-c:v", "libx264", "-preset", "veryfast", "-crf", "28", "-maxrate", "1500k", "-bufsize", "3000k",
                             "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", local], capture_output=True)
@@ -165,16 +183,30 @@ def subtitles(it, local, work):
 
 since = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=7)).isoformat()
 items = rest("GET", f"feed_items?select=id,platform,aweme_id,share_url,preview_path,subs_status&status=eq.new&scraped_at=gt.{urllib.parse.quote(since)}"
-                    f"&or=(preview_path.is.null,subs_status.is.null)&platform=neq.youtube&order=scraped_at.desc&limit={a.limit}")
+                    f"&or=(preview_path.is.null,subs_status.is.null)&platform=neq.youtube&order=platform.asc,scraped_at.desc&limit={a.limit}")
 stats = {"items": len(items), "previews": 0, "subs": 0, "no_speech": 0, "failed": 0, "left": 0}
 with tempfile.TemporaryDirectory() as work:
+    # phase 1: playable previews with sound for everything first (fast), within half the budget
+    for it in [x for x in items if not x.get("preview_path")]:
+        if time.time() - T0 > a.budget / 2: break
+        try:
+            local = ensure_preview(it, work)
+            if local:
+                stats["previews"] += 1
+                it["preview_path"] = rest("GET", f"feed_items?select=preview_path&id=eq.{it['id']}")[0]["preview_path"]
+                it["_new"] = True
+        except Exception as e:
+            print("preview failed:", it["id"], str(e)[:120])
+        for f in os.listdir(work): os.remove(os.path.join(work, f))
+    if a.no_subs: items = []
+    # phase 2: Vietnamese subtitles
     for n, it in enumerate(items):
         if time.time() - T0 > a.budget:
             stats["left"] = len(items) - n; break
         try:
-            had = bool(it.get("preview_path"))
+            had = bool(it.get("preview_path")) or it.get("_new")
             local = ensure_preview(it, work)
-            if local and not had: stats["previews"] += 1
+            if local and not had and not it.get("_new"): stats["previews"] += 1
             if local and not a.no_subs and not it.get("subs_status"):
                 r = subtitles(it, local, work)
                 stats["subs" if r == "done" else "no_speech"] += 1
