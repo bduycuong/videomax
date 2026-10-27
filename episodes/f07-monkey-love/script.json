@@ -1,0 +1,212 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   0.0,
+   8.7
+  ],
+  "en": [
+   "What does a baby need more: the one who feeds it, or the one who hugs it?"
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   8.7,
+   15.0
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "This answer comes from a famous, and pretty uncomfortable, experiment."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "setup",
+  "src": [
+   15.0,
+   24.6
+  ],
+  "en": [
+   "In the nineteen fifties, psychologist Harry Harlow raised baby rhesus monkeys away from their mothers.",
+   "Each baby got two fake moms.",
+   "A wire mom with a milk bottle, and a soft cloth mom with no milk at all."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "predict",
+  "src": [
+   24.6,
+   32.3
+  ],
+  "en": [
+   "Back then, many experts believed babies love whoever feeds them.",
+   "So the wire mom should win, right?"
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "result",
+  "src": [
+   32.3,
+   40.5
+  ],
+  "en": [
+   "Nope.",
+   "The babies visited the wire mom only to drink.",
+   "The rest of the day, they cuddled the soft one."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "fear",
+  "src": [
+   40.5,
+   52.5
+  ],
+  "en": [
+   "When a scary toy showed up, they ran straight to the cloth mom and held on tight."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "comfort",
+  "src": [
+   52.5,
+   57.0
+  ],
+  "en": [
+   "So love wasn't about food.",
+   "It was about comfort and touch."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "alone",
+  "src": [
+   84.2,
+   101.4
+  ],
+  "en": [
+   "Then came the darkest part.",
+   "Some babies were raised completely alone.",
+   "Months later, given the two moms, they just curled up and shook."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "grown",
+  "src": [
+   101.4,
+   114.4
+  ],
+  "en": [
+   "As adults, many struggled.",
+   "Some hid in corners, some attacked others, and some neglected their own babies."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "recipe",
+  "src": [
+   122.0,
+   131.6
+  ],
+  "en": [
+   "Harlow's lesson was simple.",
+   "Babies need touch, movement and play, not just milk."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "watson",
+  "src": [
+   138.7,
+   150.0
+  ],
+  "en": [
+   "That was a big deal, because a popular parenting book back then told parents never to hug or kiss their children."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "ethics",
+  "src": [
+   192.1,
+   196.0
+  ],
+  "en": [
+   "Today, these experiments are seen as cruel, and they fueled the push for better treatment of lab animals."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "legacy",
+  "src": [
+   196.0,
+   204.4
+  ],
+  "en": [
+   "But they also changed how we raise kids.",
+   "Warmth isn't spoiling.",
+   "It's a need."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   114.4,
+   122.0
+  ],
+  "en": [
+   "So the hug beats the bottle.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ }
+]
