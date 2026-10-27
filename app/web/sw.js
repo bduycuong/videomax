@@ -1,6 +1,6 @@
 // network-first service worker: keeps the shell available offline, never caches API data
-const C = "maxwise-shell-v11";
-const SHELL = ["./", "index.html", "app.css?v=11", "app.js?v=11", "icon.svg", "manifest.webmanifest"];
+const C = "maxwise-shell-v12";
+const SHELL = ["./", "index.html", "app.css?v=12", "app.js?v=12", "icon.svg", "manifest.webmanifest"];
 self.addEventListener("install", (e) => { e.waitUntil(caches.open(C).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== C).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener("fetch", (e) => {

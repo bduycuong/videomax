@@ -13,7 +13,7 @@ Repo layout (`bduycuong/videomax`, default branch `main`):
 
 ## 0. Setup
 - The repo should be at `/home/claude/videomax`. If it is missing, call the `add_repo` tool (owner `bduycuong`, repo `videomax`, access `push`), then `git clone --depth 1 https://github.com/bduycuong/videomax /home/claude/videomax` (10-min timeout).
-- `pip install --break-system-packages -q edge-tts` if `import edge_tts` fails. `npx hyperframes --version` must work. Work dir for projects: `/home/claude/videomax/work/` (git-ignored).
+- `pip install --break-system-packages -q edge-tts` if `import edge_tts` fails; `pip install --break-system-packages -q faster-whisper` if `import faster_whisper` fails (feedprep.py, subvi.py). `npx hyperframes --version` must work. Work dir for projects: `/home/claude/videomax/work/` (git-ignored).
 - Telegram: if `telegram.json` has `chat_id: null`, call `https://api.telegram.org/bot<token>/getUpdates` and take the chat id of the most recent private message; save it into `telegram.json`. If there is still none, the user has not pressed Start in t.me/usvideoagent_bot yet — continue production, and at delivery time commit the mp4s to `pending/` instead of sending (see step 13).
 
 ## Studio app (Supabase) — do this around the daily run
@@ -22,10 +22,11 @@ Cuong now drives the series from the iPhone web app **MAX WISE Studio** (https:/
 
 S0. `python3 engine/studio.py settings`. If `enabled` is false, or today's weekday in Asia/Saigon (0 = Sunday … 6 = Saturday) is not in `days`: produce nothing, still send anything waiting in `pending/`, `studio.py runlog --videos 0 --note "lịch tắt"`, stop.
 S1. **Scrape (≈05:30)**: `python3 engine/studio.py scrape`. It pulls the last 7 days from every channel the user added (TikHub) on Douyin, TikTok, RedNote (Xiaohongshu), Instagram and YouTube. Douyin and RedNote are ranked by hearts, the others by views. If it reports a TikHub credit error, note it in the log and carry on.
+S2b. **Reels prep** (Vietnamese viewing subtitles, not for produced videos): `python3 engine/feedprep.py --budget 900`. It re-encodes missing previews to H.264 + AAC (so they play with sound on iPhone) and writes Vietnamese WebVTT subtitles (faster-whisper + DeepSeek) that the app overlays while Cuong scrolls Reels. Leftovers continue next run.
 S2. **Translate captions**: `studio.py untranslated --out work/tr_in.json`. Translate every `caption_orig` (Chinese, English or any other language) yourself into short natural Vietnamese (keep the meaning, drop hashtags and @mentions). Write `[{"id": ..., "caption_vi": ...}]` to `work/tr_out.json` and run `studio.py translations work/tr_out.json`.
 S3. **Plan today** from `studio.py jobs` and the settings:
    - `doodles_per_day` doodle episodes: first the user's `doodle` jobs (their topic, voice, subs, music flags), then `idea` jobs (a video Cuong approved from a channel that is NOT marked "use original": take only the idea, write a fresh curious question and script in Max's words, fact-check it, never use that channel's footage or text), then fill from `topics.json`.
-   - If `auto_edit` is true: up to `footage_per_day` `footage` jobs (oldest first). Each has a `mode`: `sub_vi` (default) → follow V1–V5 at the end (original video + Vietnamese subtitles); `max` → get the source with `studio.py source <job_id> work/footage/<job_id>.mp4` and follow F2–F8. Credit the channel if the job has `credit`.
+   - If `auto_edit` is true: up to `footage_per_day` `footage` jobs (oldest first). Each has a `mode`: `max` (default — Cuong's rule: approved videos are remade with Max narrating in English) → get the source with `studio.py source <job_id> work/footage/<job_id>.mp4` and follow F2–F8; `sub_vi` (only when Cuong switched the job in BST) → follow V1–V5 at the end (original video + Vietnamese subtitles). Credit the channel if the job has `credit`.
    - Jobs you do not reach today stay `queued`.
 S4. **Report progress** so the app's BST tab moves: `studio.py job <id> downloading|editing|rendering --progress <0-100> --step "<short Vietnamese step>"`; on failure `studio.py job <id> failed --error "<short Vietnamese reason>"`.
 S5. **Export each finished video** to the app: social copy ≤ 45 MB (F7 command), thumbnail `ffmpeg -ss 2 -i <mp4> -frames:v 1 -vf scale=540:-2 thumb.jpg`, the caption from step 9 in a text file, then
@@ -102,9 +103,9 @@ F7. Build: `make_audio.py` → `engine/footage_panel.py <ep> <proj>` → `maxwis
 F8. Caption: same English-only format; if the channel entry has `credit`, add it as the last line before the hashtags.
 F9. Export to the app (S5, with `--job`), commit the episode folder (no mp4s), note the source channel in the log.
 
-### Footage jobs with `mode: "sub_vi"` (default) — original video + Vietnamese subtitles
+### Footage jobs with `mode: "sub_vi"` (only when toggled in BST) — original video + Vietnamese subtitles
 
-Cuong's default for approved videos: keep the source video and its original sound, hide the burned-in foreign captions, add Vietnamese subtitles. No Max, no new voice. (Jobs with `mode: "max"` follow F1–F9 above instead.)
+Optional mode: keep the source video and its original sound, hide the burned-in foreign captions, add Vietnamese subtitles. No Max, no new voice. (The default `mode: "max"` follows F1–F9 above instead.)
 
 V1. `studio.py job <id> downloading --progress 10 --step "Tải video gốc"` → `studio.py source <id> work/footage/<id>.mp4`.
 V2. Look at 4–6 frames (ffmpeg contact sheet). If the source has burned-in captions/watermark text, note the band as fractions of the height (e.g. `0.78:0.93`); several bands → pick the one with the captions, mention any leftover logo in the log.

@@ -191,7 +191,8 @@ Deno.serve(async (req) => {
           dur: Math.round(n(a.duration ?? v.duration) / 1000), ts: n(a.create_time),
           share: ch.platform === "douyin" ? `https://www.douyin.com/video/${a.aweme_id}` : `https://www.tiktok.com/@${uniq}/video/${a.aweme_id}`,
           covers: [v.origin_cover, v.cover, v.dynamic_cover].flatMap((c: any) => c?.url_list ?? []),
-          videos: [...rates.flatMap((b: any) => b.play_addr?.url_list ?? []), ...(v.play_addr?.url_list ?? []), ...(v.download_addr?.url_list ?? [])],
+          videos: [...(v.play_addr_h264?.url_list ?? []), ...(v.download_addr?.url_list ?? []), ...(v.play_addr?.url_list ?? []),
+            ...rates.filter((b: any) => !b.is_h265 && !/h265|bytevc1/i.test(String(b.gear_name ?? ""))).flatMap((b: any) => b.play_addr?.url_list ?? [])],
           author: { name: a.author?.nickname, avatar: a.author?.avatar_thumb?.url_list?.[0] ?? a.author?.avatar_medium?.url_list?.[0], followers: n(a.author?.follower_count) },
         } as Item;
       }) };
@@ -296,9 +297,13 @@ Deno.serve(async (req) => {
         .filter((i) => (!minLikes || !i.likes || i.likes >= minLikes) && (!minViews || !i.views || i.views >= minViews))
         .sort((a, b) => score(b) - score(a)).slice(0, cap);
 
-      const { data: existing } = await db.from("feed_items").select("aweme_id")
+      const { data: existing } = await db.from("feed_items").select("id,aweme_id,preview_path,cover_path")
         .eq("platform", ch.platform).in("aweme_id", rows.map((r) => r.id));
       const have = new Set((existing ?? []).map((e: any) => e.aweme_id));
+      for (const e of existing ?? []) {
+        const it = rows.find((r) => r.id === e.aweme_id);
+        if (it && (!e.preview_path || !e.cover_path) && (it.videos.length || it.covers.length)) media.push(() => saveMedia(db, e.id, ch.platform, it));
+      }
       let added = 0;
       for (const it of rows) {
         if (have.has(it.id)) {
@@ -342,6 +347,21 @@ async function grab(u: string, platform: string, limit: number): Promise<Uint8Ar
   } catch { return null; }
 }
 
+// iPhone Safari plays H.264/HEVC, not ByteDance's own bvc1/bvc2 codecs
+function playable(b: Uint8Array): boolean {
+  const head = new TextDecoder("latin1").decode(b.subarray(0, Math.min(b.length, 400000))) + new TextDecoder("latin1").decode(b.subarray(Math.max(0, b.length - 400000)));
+  if (/bvc1|bvc2/.test(head)) return false;
+  return /avc1|hvc1|hev1/.test(head);
+}
+
+function hasAudio(b: Uint8Array): boolean {
+  // MP4 'hdlr' box with handler type 'soun'
+  for (let i = 0; i < b.length - 12; i++) {
+    if (b[i] === 0x68 && b[i + 1] === 0x64 && b[i + 2] === 0x6c && b[i + 3] === 0x72 && b[i + 8] === 0x73 && b[i + 9] === 0x6f && b[i + 10] === 0x75 && b[i + 11] === 0x6e) return true;
+  }
+  return false;
+}
+
 async function saveMedia(db: any, id: string, platform: string, it: Item) {
   const patch: Record<string, string> = {};
   const key = `${platform}/${it.id.replace(/[^\w\-]/g, "_")}`;
@@ -349,9 +369,16 @@ async function saveMedia(db: any, id: string, platform: string, it: Item) {
     const b = await grab(c, platform, 3 * 1024 * 1024);
     if (b) { const { error } = await db.storage.from("feed").upload(`${key}.jpg`, b, { contentType: "image/jpeg", upsert: true }); if (!error) { patch.cover_path = `${key}.jpg`; break; } }
   }
-  for (const u of it.videos.filter((u) => u?.startsWith("http")).slice(0, 4)) {
-    const b = await grab(u, platform, MAX_PREVIEW_BYTES);
+  let silent: Uint8Array | null = null;
+  for (const u of it.videos.filter((u) => u?.startsWith("http")).slice(0, 8)) {
+    let b = await grab(u, platform, MAX_PREVIEW_BYTES);
+    if (b && !playable(b)) b = null; // codec the phone cannot play
+    if (b && !hasAudio(b)) { silent = silent ?? b; b = null; } // video-only stream: try the next URL
     if (b) { const { error } = await db.storage.from("feed").upload(`${key}.mp4`, b, { contentType: "video/mp4", upsert: true }); if (!error) { patch.preview_path = `${key}.mp4`; break; } }
+  }
+  if (!patch.preview_path && silent) {
+    const { error } = await db.storage.from("feed").upload(`${key}.mp4`, silent, { contentType: "video/mp4", upsert: true });
+    if (!error) patch.preview_path = `${key}.mp4`;
   }
   if (Object.keys(patch).length) await db.from("feed_items").update(patch).eq("id", id);
 }

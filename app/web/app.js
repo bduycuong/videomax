@@ -88,6 +88,7 @@ function nav(on) {
 }
 function page({ top, body, navOn, dark = false }) {
   $app.className = dark ? "dark" : "";
+  document.body.classList.toggle("reels", !!dark);
   $app.innerHTML = `${top || ""}${body}${navOn === null ? "" : nav(navOn)}`;
 }
 const head = (title, right = "") => `<header class="top"><div class="row between"><h1 class="h1">${esc(title)}</h1><div class="row" style="gap:8px">${right}</div></div></header>`;
@@ -201,8 +202,8 @@ async function approve(item) {
   const kind = ch.use_original ? "footage" : "idea";
   const { error } = await sb.from("feed_items").update({ status: "approved", approved_at: new Date().toISOString() }).eq("id", item.id);
   if (error) return toast(error.message);
-  await sb.from("jobs").insert({ kind, feed_item_id: item.id, topic: item.caption_vi || item.caption_orig, run_when: "next_morning" });
-  toast("✓ Đã thêm vào BST");
+  await sb.from("jobs").insert({ kind, feed_item_id: item.id, topic: item.caption_vi || item.caption_orig, run_when: "next_morning", mode: "max" });
+  toast("✓ BST · Max dẫn");
 }
 const skip = (item) => sb.from("feed_items").update({ status: "skipped" }).eq("id", item.id);
 
@@ -289,7 +290,16 @@ function channelSheet(c) {
     if (location.hash.startsWith("#/channels")) viewChannels();
   });
   el.querySelector("[data-s]").onclick = () => { close(); runScrape(c.id); };
-  el.querySelector("[data-del]").onclick = async () => { if (!confirm("Xoá kênh?")) return; await sb.from("channels").delete().eq("id", c.id); close(); await loadChannels(); if (location.hash.startsWith("#/channels")) viewChannels(); else { location.hash = "#/channels"; } };
+  const del = el.querySelector("[data-del]");
+  del.onclick = async (e) => {
+    e.stopPropagation();
+    if (del.dataset.sure !== "1") { del.dataset.sure = "1"; del.textContent = "Chắc chắn xoá?"; del.style.background = "#B91C1C"; del.style.color = "#FFF"; setTimeout(() => { if (del.isConnected) { del.dataset.sure = ""; del.textContent = "Xoá"; del.style.background = ""; del.style.color = "#B91C1C"; } }, 4000); return; }
+    del.disabled = true; del.innerHTML = '<span class="spin" style="border-top-color:#FFF"></span>';
+    const { data, error } = await sb.from("channels").delete().eq("id", c.id).select("id");
+    if (error || !data?.length) { del.disabled = false; del.textContent = "Xoá"; return toast("Không xoá được" + (error ? ": " + error.message : "")); }
+    close(); toast("✓ Đã xoá kênh"); await loadChannels();
+    if (location.hash.startsWith("#/channels")) viewChannels(); else location.hash = "#/channels";
+  };
 }
 
 /* ---------- add channel ---------- */
@@ -343,19 +353,37 @@ async function viewFeed(params) {
   else for (let i = list.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [list[i], list[j]] = [list[j], list[i]]; }
   const cnt = document.getElementById("cnt");
   if (!list.length) { feed.innerHTML = `<div class="fdone">${ic("check", 40)}<div>${S.channels.length ? "Hết video" : "Chưa có kênh"}</div><a class="btn btn-y sm" href="#/channels">Kênh</a></div>`; cnt.textContent = "0"; return; }
-  let rendered = 0, muted = true, done = 0;
+  let rendered = 0, muted = !SS.get("mw_snd"), done = 0, subsOn = LS.get("mw_subs") !== "0";
+  // every card is exactly one screen tall (iOS does not resolve 100% inside flex reliably)
+  const fit = () => { if (feed.isConnected) feed.style.setProperty("--fh", feed.clientHeight + "px"); };
+  fit(); window.addEventListener("resize", fit); window.visualViewport?.addEventListener("resize", fit);
+  const cues = {};
+  const parseVtt = (t) => t.split(/\r?\n\r?\n/).map((b) => { const m = b.match(/(\d+):(\d+):(\d+)\.(\d+)\s*-->\s*(\d+):(\d+):(\d+)\.(\d+)[^\n]*\n([\s\S]+)/); if (!m) return null; const sec = (h, mi, se, ms) => +h * 3600 + +mi * 60 + +se + +ms / 1000; return [sec(m[1], m[2], m[3], m[4]), sec(m[5], m[6], m[7], m[8]), m[9].trim()]; }).filter(Boolean);
+  const loadSubs = async (sec, it) => {
+    if (!it.subs_path || cues[it.id]) return;
+    cues[it.id] = [];
+    try { const u = (await signed("feed", [it.subs_path]))[it.subs_path]; if (u) cues[it.id] = parseVtt(await (await fetch(u)).text()); } catch { /* no subs */ }
+    const v = sec.querySelector("video"), box = sec.querySelector("[data-sub]"); if (!v || !box) return;
+    let last = "";
+    v.addEventListener("timeupdate", () => {
+      const t = v.currentTime, c = subsOn ? (cues[it.id].find((x) => t >= x[0] && t <= x[1] + 0.15) || [0, 0, ""])[2] : "";
+      if (c !== last) { last = c; box.innerHTML = c ? `<span>${esc(c)}</span>` : ""; }
+    });
+  };
+  const hint = (sec) => { if (!muted || sec.querySelector(".sndhint")) return; sec.insertAdjacentHTML("beforeend", `<div class="sndhint">${ic("mute", 16)}Chạm để bật tiếng</div>`); setTimeout(() => sec.querySelector(".sndhint")?.remove(), 2200); };
+  const setMuted = (m) => { muted = m; SS.set("mw_snd", m ? "" : "1"); feed.querySelectorAll("video").forEach((v) => (v.muted = muted)); feed.querySelectorAll('[data-a="snd"] i').forEach((i) => (i.innerHTML = ic(muted ? "mute" : "sound", 22))); feed.querySelectorAll(".sndhint").forEach((x) => x.remove()); };
   const total = list.length;
   const cardHTML = (it, i) => {
     const ch = S.chMap[it.channel_id] || {};
     const vi = it.caption_vi;
     return `<section class="fi" data-i="${i}" data-id="${it.id}" style="background-image:${grad(it.id)}">
       ${it.embed_url ? `<div class="emb" data-emb="${esc(it.embed_url)}"></div>` : `<video playsinline muted loop preload="none"></video>`}
-      <div class="shade"></div>
+      <div class="shade"></div>${it.embed_url ? "" : `<div class="sub" data-sub></div>`}
       <div class="rail">
         <button class="rb ok" data-a="ap"><i>${ic("check", 24, 2.8)}</i>Duyệt</button>
         <button class="rb" data-a="sk"><i>${ic("x", 22, 2.4)}</i>Bỏ</button>
-        ${vi ? `<button class="rb" data-a="lang"><i>VI</i>Gốc</button>` : ""}
-        <button class="rb" data-a="snd" aria-label="Âm thanh"><i>${ic("mute", 22)}</i></button>
+        ${vi || it.subs_path ? `<button class="rb" data-a="lang"><i>VI</i>Gốc</button>` : ""}
+        <button class="rb" data-a="snd" aria-label="Âm thanh"><i>${ic(muted ? "mute" : "sound", 22)}</i></button>
         <a class="rb" href="${esc(it.share_url || ch.url || "#")}" target="_blank" rel="noopener" aria-label="Mở gốc"><i>${ic("ext", 22)}</i></a>
       </div>
       <div class="info">
@@ -403,7 +431,8 @@ async function viewFeed(params) {
       if (en.isIntersecting && en.intersectionRatio > 0.6) {
         cnt.textContent = `${[...feed.querySelectorAll(".fi")].indexOf(en.target) + 1}/${total - done}`;
         if (v.dataset.url && !v.src) v.src = v.dataset.url;
-        v.muted = muted; v.play().catch(() => {});
+        v.muted = muted; v.play().catch(() => { v.muted = true; v.play().catch(() => {}); });
+        loadSubs(en.target, list[Number(en.target.dataset.i)]); hint(en.target);
         if (Number(en.target.dataset.i) >= rendered - 3) more();
       } else { v.pause(); }
     });
@@ -423,10 +452,10 @@ async function viewFeed(params) {
     const it = list[Number(sec.dataset.i)];
     const btn = e.target.closest("[data-a]");
     if (e.target.closest("[data-cap]")) { e.target.closest("[data-cap]").classList.toggle("open"); return; }
-    if (!btn) { const v = sec.querySelector("video"); if (v && v.src) { v.paused ? v.play() : v.pause(); } return; }
+    if (!btn) { const v = sec.querySelector("video"); if (!v || !v.src) return; if (muted) { setMuted(false); v.play().catch(() => {}); } else v.paused ? v.play() : v.pause(); return; }
     const a = btn.dataset.a;
-    if (a === "lang") { const p = sec.querySelector("[data-cap]"); const orig = btn.dataset.o !== "1"; btn.dataset.o = orig ? "1" : ""; p.textContent = orig ? it.caption_orig : it.caption_vi; btn.querySelector("i").textContent = orig ? "中" : "VI"; btn.lastChild.textContent = orig ? "Dịch" : "Gốc"; return; }
-    if (a === "snd") { muted = !muted; feed.querySelectorAll("video").forEach((v) => (v.muted = muted)); feed.querySelectorAll('[data-a="snd"] i').forEach((i) => (i.innerHTML = ic(muted ? "mute" : "sound", 22))); return; }
+    if (a === "lang") { const p = sec.querySelector("[data-cap]"); const orig = btn.dataset.o !== "1"; btn.dataset.o = orig ? "1" : ""; if (it.caption_vi) p.textContent = orig ? it.caption_orig : it.caption_vi; subsOn = !orig; LS.set("mw_subs", subsOn ? "1" : "0"); if (!subsOn) feed.querySelectorAll("[data-sub]").forEach((b) => (b.innerHTML = "")); btn.querySelector("i").textContent = orig ? "中" : "VI"; btn.lastChild.textContent = orig ? "Dịch" : "Gốc"; return; }
+    if (a === "snd") { setMuted(!muted); return; }
     btn.disabled = true;
     (a === "ap" ? approve(it) : skip(it));
     const v = sec.querySelector("video"); if (v) { v.pause(); v.removeAttribute("src"); v.load(); }
@@ -435,7 +464,7 @@ async function viewFeed(params) {
     cnt.textContent = String(total - done);
     const cur = [...feed.querySelectorAll(".fi")].find((s) => s.offsetTop === top);
     const emb = sec.querySelector("[data-emb]"); if (emb) emb.innerHTML = "";
-    if (cur) { const cv = cur.querySelector("video"); if (cv) { if (cv.dataset.url && !cv.src) cv.src = cv.dataset.url; cv.muted = muted; cv.play().catch(() => {}); } else { const ce = cur.querySelector("[data-emb]"); if (ce && !ce.firstChild) ce.innerHTML = `<iframe src="${ce.dataset.emb}" allow="autoplay; encrypted-media" title="YouTube"></iframe>`; } }
+    if (cur) { const cv = cur.querySelector("video"); if (cv) { if (cv.dataset.url && !cv.src) cv.src = cv.dataset.url; cv.muted = muted; cv.play().catch(() => {}); loadSubs(cur, list[Number(cur.dataset.i)]); } else { const ce = cur.querySelector("[data-emb]"); if (ce && !ce.firstChild) ce.innerHTML = `<iframe src="${ce.dataset.emb}" allow="autoplay; encrypted-media" title="YouTube"></iframe>`; } }
   };
 }
 
