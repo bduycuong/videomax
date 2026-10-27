@@ -211,3 +211,4 @@ body.reels{position:fixed;inset:0;overflow:hidden;overscroll-behavior:none}
   .mlogo{display:flex;flex:none}.mlogo img{border-radius:8px}
 }
 @media (min-width:900px){.mlogo{display:none}}
+.h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

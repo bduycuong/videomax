@@ -75,6 +75,8 @@ const I = {
   chev: '<path d="M9 6l6 6-6 6"/>',
   sound: '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6"/>',
   mute: '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l4 6M21 9l-4 6"/>',
+  bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+  bellon: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" fill="currentColor"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
   lock: '<rect x="5" y="11" width="14" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   face: '<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M9 9.5v1M15 9.5v1M12 9.5v3.5h-1M9.5 16a3.5 3.5 0 0 0 5 0"/>',
 };
@@ -165,9 +167,10 @@ function viewLogin(msg = "") {
 
 /* ---------- home ---------- */
 async function viewHome() {
-  page({ navOn: "home", top: head(`Hôm nay · ${dm(new Date())}`, `<a href="#/schedule" class="icon" aria-label="Lịch chạy">${ic("cal", 18)}</a><button class="icon" id="lo" aria-label="Khoá">${ic("lock", 18)}</button>`),
+  page({ navOn: "home", top: head(innerWidth < 900 ? "Hôm nay" : `Hôm nay · ${dm(new Date())}`, `<button class="icon" id="bell" aria-label="Thông báo">${ic(LS.get("mw_push") ? "bellon" : "bell", 18)}</button><a href="#/schedule" class="icon" aria-label="Lịch chạy">${ic("cal", 18)}</a><button class="icon" id="lo" aria-label="Khoá">${ic("lock", 18)}</button>`),
     body: `<main class="main" id="m">${spinner}</main>` });
   document.getElementById("lo").onclick = lockApp;
+  document.getElementById("bell").onclick = (e) => togglePush(e.currentTarget);
   const since = new Date(Date.now() - 7 * 864e5).toISOString();
   const [nWait, nProc, ex, hot] = await Promise.all([
     sb.from("feed_items").select("id", { count: "exact", head: true }).eq("status", "new").gte("posted_at", since),
@@ -196,6 +199,33 @@ async function viewHome() {
   m.querySelectorAll("[data-ap]").forEach((b) => b.onclick = async () => { b.disabled = true; await approve(hots.find((x) => x.id === b.dataset.ap)); b.closest("[data-id]").remove(); });
 }
 function lockApp() { if (LS.get(faceIdKey)) { LS.set("mw_lock", "1"); SS.set("mw_open", ""); viewLogin(); } else sb.auth.signOut(); }
+
+/* ---------- push notifications (job finished) ---------- */
+const VAPID = "BE2-vnLXsAAYhi7f17js7iqQKVByk-g4Rmw_hgl9lp9nenzXmTcpLrMFMAIw-NeibML4siqPAKmpJqqLa0Tud-0";
+const standalone = () => matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const isIOS = () => /iPhone|iPad|iPod/.test(navigator.userAgent);
+async function togglePush(btn) {
+  if (isIOS() && !standalone()) return toast("Thêm app vào Màn hình chính trước: Safari → Chia sẻ → Thêm vào MH chính, rồi mở từ icon", 5000);
+  if (!("serviceWorker" in navigator) || !("PushManager" in window) || !("Notification" in window)) return toast("Máy này chưa hỗ trợ thông báo (cần iOS 16.4+)", 4000);
+  const reg = await navigator.serviceWorker.ready;
+  const cur = await reg.pushManager.getSubscription();
+  if (cur && LS.get("mw_push")) {
+    await sb.from("push_subs").delete().eq("endpoint", cur.endpoint); await cur.unsubscribe(); LS.del("mw_push");
+    btn.innerHTML = ic("bell", 18); return toast("Đã tắt thông báo");
+  }
+  const perm = await Notification.requestPermission();
+  if (perm !== "granted") return toast("Thông báo đang bị chặn – bật trong Cài đặt → Thông báo → MAX WISE", 5000);
+  try {
+    const key = Uint8Array.from(atob(VAPID.replace(/-/g, "+").replace(/_/g, "/") + "=".repeat((4 - VAPID.length % 4) % 4)), (c) => c.charCodeAt(0));
+    const sub = cur || await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: key });
+    const j = sub.toJSON();
+    const { error } = await sb.from("push_subs").upsert({ endpoint: j.endpoint, sub: j, user_email: S.session?.user?.email });
+    if (error) throw error;
+    LS.set("mw_push", "1"); btn.innerHTML = ic("bellon", 18);
+    await sb.functions.invoke("notify", { body: { test: true } });
+    toast("✓ Đã bật thông báo khi video xong", 3500);
+  } catch (e) { toast("Không bật được: " + (e.message || e), 4000); }
+}
 
 /* ---------- approve / skip ---------- */
 async function approve(item) {
