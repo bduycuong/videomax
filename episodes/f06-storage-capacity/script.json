@@ -1,0 +1,186 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   0.0,
+   4.2
+  ],
+  "en": [
+   "A memory card smaller than your fingernail can now hold two terabytes.",
+   "How do they cram so much into something so tiny?"
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   4.2,
+   13.4
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's open up the gadgets that store your stuff."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "bits",
+  "src": [
+   19.2,
+   30.7
+  ],
+  "en": [
+   "Every photo, video and game is really just ones and zeros.",
+   "A storage device has one job: keep them safe."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "disk",
+  "src": [
+   32.6,
+   47.6
+  ],
+  "en": [
+   "A hard drive has spinning platters and a tiny head on an arm.",
+   "It writes each bit by flipping tiny magnets to north or south."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "shrink",
+  "src": [
+   58.4,
+   69.7
+  ],
+  "en": [
+   "To fit more, you add platters or shrink the magnets.",
+   "But make them too small and heat alone can flip them, wiping your data."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "shingle",
+  "src": [
+   69.7,
+   82.4
+  ],
+  "en": [
+   "One trick is to overlap the tracks like roof shingles.",
+   "More fits, but rewriting files gets slow."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "flash",
+  "src": [
+   117.5,
+   123.8
+  ],
+  "en": [
+   "Solid state drives, USB sticks and SD cards use flash memory instead.",
+   "Each tiny cell traps electric charge, and it stays even when the power is off."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "levels",
+  "src": [
+   129.5,
+   135.0
+  ],
+  "en": [
+   "Early cells stored one bit, just two levels.",
+   "Now many store four bits, which means sixteen different levels in one cell."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "flat",
+  "src": [
+   151.8,
+   166.0
+  ],
+  "en": [
+   "But the cells sat side by side on a flat chip, like a town of tiny houses.",
+   "Shrink them more, and they start to disturb each other."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "tower",
+  "src": [
+   175.8,
+   196.1
+  ],
+  "en": [
+   "So engineers built up instead, like skyscrapers.",
+   "Today's chips stack cells in over three hundred layers, then pile several chips into one package."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "speed",
+  "src": [
+   203.8,
+   232.4
+  ],
+  "en": [
+   "So why is an SSD faster than a USB stick?",
+   "Its controller is a powerful brain that uses many lanes at once, like a giant highway.",
+   "A cheap stick gets just a narrow road."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   233.4,
+   246.0
+  ],
+  "en": [
+   "Tiny magnets, trapped charges, and skyscrapers of cells.",
+   "That's how storage keeps growing.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ }
+]

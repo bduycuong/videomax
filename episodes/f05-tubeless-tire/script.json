@@ -1,0 +1,175 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   20.2,
+   26.2
+  ],
+  "en": [
+   "A nail stabs right into your car tire.",
+   "So why doesn't the tire go flat in seconds?"
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   0.0,
+   7.6
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's look inside the tire."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "tube",
+  "src": [
+   12.5,
+   18.4
+  ],
+  "en": [
+   "Old car tires had two parts.",
+   "A tough outer tire, and inside it, a rubber balloon called an inner tube."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "pop",
+  "src": [
+   16.4,
+   23.4
+  ],
+  "en": [
+   "Poke a hole in that balloon, and the air rushes out fast.",
+   "It escapes around the tube and through the rim, so the tire can collapse quickly."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "tubeless",
+  "src": [
+   26.2,
+   33.8
+  ],
+  "en": [
+   "So engineers threw the tube away.",
+   "Now the tire itself holds the air.",
+   "That's a tubeless tire."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "nail",
+  "src": [
+   28.0,
+   35.4
+  ],
+  "en": [
+   "When a nail goes in, the rubber squeezes tight around it.",
+   "Air can only sneak out through that tiny gap, so it leaks slowly, and you have time to stop safely."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "bead",
+  "src": [
+   35.4,
+   45.1
+  ],
+  "en": [
+   "The seal starts at the bead.",
+   "A ring of steel wire at each edge sits in a groove in the wheel.",
+   "Air pressure pushes it outward, locking it in tighter and tighter."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "ribs",
+  "src": [
+   45.1,
+   61.1
+  ],
+  "en": [
+   "Next is the skeleton.",
+   "Strong cords run across the tire from edge to edge, like the ribs of an umbrella.",
+   "They keep its shape at speed and steady in corners."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "tread",
+  "src": [
+   61.1,
+   69.9
+  ],
+  "en": [
+   "Then comes the tread, the only part that touches the road.",
+   "It needs the right balance of hardness, bounce and pattern to grip."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "rubber",
+  "src": [
+   69.9,
+   80.7
+  ],
+  "en": [
+   "The hardest part is the rubber itself.",
+   "It must be soft enough to hug the road, but tough enough not to wear away."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   121.1,
+   130.5
+  ],
+  "en": [
+   "So a nail in a tubeless tire usually means a slow leak, not a sudden blowout.",
+   "Don't pull it out yourself. Get it to a tire shop.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ }
+]
