@@ -172,7 +172,7 @@ async function viewHome() {
     sb.from("feed_items").select("id", { count: "exact", head: true }).eq("status", "new").gte("posted_at", since),
     sb.from("jobs").select("id", { count: "exact", head: true }).in("status", ["queued", "downloading", "editing", "rendering"]),
     sb.from("exports").select("*").gte("created_at", dayStart(vnDate())).order("created_at"),
-    sb.rpc("feed_today", { p_limit: 3 }),
+    sb.rpc("feed_today", { p_limit: innerWidth >= 900 ? 10 : 3 }),
   ]);
   const exs = ex.data || []; const hots = hot.data || [];
   const th = await signed("exports", exs.map((e) => e.thumb_path));
@@ -184,9 +184,9 @@ async function viewHome() {
     <a href="#/bst" class="card stat"><b>${nProc.count ?? 0}</b><small>Đang làm</small></a>
     <a href="#/library" class="card stat"><b>${exs.length}</b><small>Đã xuất</small></a>
   </div>
-  ${exs.length ? `<section class="card exrow" style="padding:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">${exs.slice(0, 6).map((e) => `<a href="#/library" style="display:flex;flex-direction:column;gap:6px"><div class="th" style="aspect-ratio:9/16;background-image:url('${th[e.thumb_path] || ""}'),${grad(e.id)}"><span>${dur(e.duration_sec)}</span></div><span style="font-size:12px;font-weight:600;line-height:1.3">${esc(e.title)}</span></a>`).join("")}</section>` : ""}
+  ${exs.length ? `<section class="card exrow" style="padding:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">${exs.slice(0, 10).map((e) => `<a href="#/library" style="display:flex;flex-direction:column;gap:6px"><div class="th" style="aspect-ratio:9/16;background-image:url('${th[e.thumb_path] || ""}'),${grad(e.id)}"><span>${dur(e.duration_sec)}</span></div><span style="font-size:12px;font-weight:600;line-height:1.3">${esc(e.title)}</span></a>`).join("")}</section>` : ""}
   ${hots.length ? `<div class="row between" style="padding:0 2px"><span class="sec">Chờ duyệt</span><a href="#/feed" class="lk">Lướt</a></div>
-  <section class="card">${hots.map((h) => `<div class="row" style="padding:10px 12px;border-bottom:1px solid #F4F4F5;gap:12px" data-id="${h.id}">
+  <section class="card hotl">${hots.map((h) => `<div class="row" style="padding:10px 12px;border-bottom:1px solid #F4F4F5;gap:12px" data-id="${h.id}">
       <div class="th" style="width:44px;height:78px;background-image:url('${cov[h.cover_path] || ""}'),${grad(h.id)}"></div>
       <div style="flex:1;min-width:0"><div class="clamp2" style="font-size:14px;font-weight:600;line-height:1.3">${esc(h.caption_vi || h.caption_orig || "—")}</div>
       <div class="vm">${esc(S.chMap[h.channel_id]?.name || "")} · ${metric(h)}</div></div>
