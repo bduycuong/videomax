@@ -184,6 +184,15 @@ elif a.cmd == "source":
             req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0", "Referer": ref})
             with urllib.request.urlopen(req, timeout=300, context=CTX) as r, open(a.out, "wb") as o:
                 o.write(r.read())
+            has_video = True
+            try:  # skip audio-only streams (Douyin lists the music track among the candidates)
+                import subprocess
+                has_video = bool(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=codec_type",
+                                                 "-of", "csv=p=0", a.out], capture_output=True, text=True).stdout.strip())
+            except Exception:
+                pass
+            if not has_video:
+                print("try next url: no video stream"); continue
             if os.path.getsize(a.out) > 100_000:
                 print(json.dumps({"saved": a.out, "bytes": os.path.getsize(a.out), "platform": pf}, ensure_ascii=False)); break
         except Exception as e:
