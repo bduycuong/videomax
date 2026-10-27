@@ -203,3 +203,11 @@ body.reels{position:fixed;inset:0;overflow:hidden;overscroll-behavior:none}
   .lgrid .row{flex-wrap:wrap}
 }
 @media (min-width:900px) and (max-width:1250px){.hotl,.lgrid,.exrow{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+
+/* v15: phone tab bar = 6 items only; Max logo top-left on phone */
+@media (max-width:899px){
+  .nav a.brand{display:none!important}
+  .exrow>a:nth-child(n+4){display:none!important}
+  .mlogo{display:flex;flex:none}.mlogo img{border-radius:8px}
+}
+@media (min-width:900px){.mlogo{display:none}}

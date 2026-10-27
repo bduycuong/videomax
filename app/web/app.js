@@ -91,7 +91,7 @@ function page({ top, body, navOn, dark = false }) {
   document.body.classList.toggle("reels", !!dark);
   $app.innerHTML = `${top || ""}${body}${navOn === null ? "" : nav(navOn)}`;
 }
-const head = (title, right = "") => `<header class="top"><div class="row between"><h1 class="h1">${esc(title)}</h1><div class="row" style="gap:8px">${right}</div></div></header>`;
+const head = (title, right = "") => `<header class="top"><div class="row between"><div class="row" style="gap:10px;min-width:0"><a href="#/home" class="mlogo" aria-label="MAX WISE"><img src="icon.svg" width="34" height="34" alt=""></a><h1 class="h1">${esc(title)}</h1></div><div class="row" style="gap:8px">${right}</div></div></header>`;
 const backTop = (title, href, right = "") => `<header class="top"><div class="row"><a href="${href}" class="icon" aria-label="Quay lại">${ic("back", 18, 2.4)}</a><h1 class="h2">${esc(title)}</h1>${right}</div></header>`;
 
 async function loadChannels() {
@@ -154,6 +154,7 @@ function viewLogin(msg = "") {
     const { error } = await sb.auth.signInWithPassword({ email, password: f.pw.value });
     if (error) return viewLogin(/Invalid login/i.test(error.message) ? "Sai tài khoản hoặc mật khẩu" : error.message);
     unlock(); registerFaceId(email);
+    S.member = !!(await sb.rpc("is_member")).data;
     if (S.session) { location.hash = "#/home"; route(); }
   };
   document.getElementById("fid").onclick = async () => {
@@ -612,7 +613,7 @@ async function viewLibrary(params) {
   else if (f === "all") { from = "2020-01-01"; to = addDays(today, 1); }
   else { from = f; to = addDays(f, 1); }
   const isDate = /^\d{4}/.test(f);
-  page({ navOn: "library", top: `<header class="top"><h1 class="h1">Kho</h1>
+  page({ navOn: "library", top: `<header class="top"><div class="row" style="gap:10px"><a href="#/home" class="mlogo" aria-label="MAX WISE"><img src="icon.svg" width="34" height="34" alt=""></a><h1 class="h1">Kho</h1></div>
     <div class="row" style="gap:6px">${[["today", "Hôm nay"], ["yesterday", "Hôm qua"], ["7d", "7 ngày"], ["all", "Tất cả"]].map(([k, l]) => `<a href="#/library?d=${k}" class="btn xs ${f === k ? "" : "btn-o"}" style="font-weight:600">${l}</a>`).join("")}
     <label class="btn xs ${isDate ? "" : "btn-o"}" style="position:relative;font-weight:600" aria-label="Chọn ngày">${ic("cal", 14)}${isDate ? f.split("-").reverse().slice(0, 2).join("/") : ""}<input type="date" id="dp" max="${today}" style="position:absolute;inset:0;opacity:0"></label></div></header>`,
     body: `<main class="main" id="m">${spinner}</main>` });
