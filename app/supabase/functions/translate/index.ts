@@ -16,6 +16,7 @@ const json = (b: unknown, s = 200) => new Response(JSON.stringify(b), { status: 
 const SYS_CAPTION = "You translate short-video captions into natural, concise Vietnamese. Keep the meaning and tone; drop hashtags, @mentions, sponsor/brand campaign tags and emojis. Keep numbers. Return only JSON.";
 const SYS_SUBS = "You translate video subtitle lines into natural spoken Vietnamese. Translate each line on its own, keep it short enough to read on screen, keep numbers and names, never merge or split lines. Return only JSON.";
 
+let LOG: any = null; // service client, set per request, for token usage logging
 async function deepseek(key: string, sys: string, lines: string[]): Promise<string[]> {
   const user = `Translate each item of this JSON array into Vietnamese. Answer with {"vi": [...]} containing exactly ${lines.length} strings in the same order.\n${JSON.stringify(lines)}`;
   for (let i = 0; i < 3; i++) {
@@ -29,6 +30,7 @@ async function deepseek(key: string, sys: string, lines: string[]): Promise<stri
     if (r.status === 402) throw new Error("DeepSeek: hết tiền trong tài khoản");
     if (r.ok) {
       const d = await r.json();
+      if (LOG && d.usage) await LOG.from("usage_log").insert({ service: "deepseek", tokens_in: d.usage.prompt_tokens ?? 0, tokens_out: d.usage.completion_tokens ?? 0, note: sys === SYS_SUBS ? "subs" : "caption" });
       try {
         const out = JSON.parse(d.choices?.[0]?.message?.content ?? "{}").vi;
         if (Array.isArray(out) && out.length === lines.length) return out.map((x: unknown) => String(x ?? "").trim());
@@ -46,6 +48,7 @@ Deno.serve(async (req) => {
   const { data: ok } = await user.rpc("is_member");
   if (!ok) return json({ error: "not a member" }, 403);
   const db = createClient(url, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+  LOG = db;
   const { data: key } = await db.rpc("deepseek_key");
   if (!key) return json({ error: "Chưa có DeepSeek API key" }, 400);
 

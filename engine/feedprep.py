@@ -126,9 +126,9 @@ def ensure_preview(it, work):
         info = probe(raw)
         if "video" not in info: continue
         if "audio" not in info and any(x != u for x in cands[cands.index(u) + 1:]): continue  # try a variant with sound first
-        r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-map", "0:v:0", "-map", "0:a:0?", "-vf", "scale='min(720,iw)':-2",
-                            "-c:v", "libx264", "-preset", "veryfast", "-crf", "28", "-maxrate", "1500k", "-bufsize", "3000k",
-                            "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", local], capture_output=True)
+        r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-map", "0:v:0", "-map", "0:a:0?", "-vf", "scale='min(540,iw)':-2",
+                            "-c:v", "libx264", "-preset", "veryfast", "-crf", "30", "-maxrate", "1000k", "-bufsize", "2000k",
+                            "-c:a", "aac", "-b:a", "64k", "-movflags", "+faststart", local], capture_output=True)
         if r.returncode == 0 and os.path.getsize(local) > 50_000:
             safe = re.sub(r"[^\w-]", "_", it["aweme_id"])
             key = f"{it['platform']}/{safe}.mp4"

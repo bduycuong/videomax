@@ -77,6 +77,7 @@ const I = {
   mute: '<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l4 6M21 9l-4 6"/>',
   bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
   bellon: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" fill="currentColor"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>',
+  disk: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
   lock: '<rect x="5" y="11" width="14" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   face: '<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M9 9.5v1M15 9.5v1M12 9.5v3.5h-1M9.5 16a3.5 3.5 0 0 0 5 0"/>',
 };
@@ -86,7 +87,7 @@ function nav(on) {
   const it = (h, k, icon, label) => `<a href="#/${h}" class="${on === k ? "on" : ""}" ${on === k ? 'aria-current="page"' : ""}>${ic(icon)}${label}</a>`;
   return `<nav class="nav" aria-label="Điều hướng"><a href="#/home" class="brand" aria-label="MAX WISE Studio"><img src="icon.svg" width="34" height="34" alt=""><b>MAX WISE</b></a>${it("home", "home", "home", "Hôm nay")}${it("feed", "reels", "ch", "Reels")}
   <a href="#/produce" class="fab ${on === "produce" ? "on" : ""}" aria-label="Lệnh sản xuất">${ic("plus", 24, 2.4)}<span class="fabl">Lệnh mới</span></a>
-  ${it("channels", "kenh", "users", "Kênh")}${it("bst", "bst", "bst", "BST")}${it("library", "library", "dl", "Kho")}</nav>`;
+  ${it("channels", "kenh", "users", "Kênh")}${it("bst", "bst", "bst", "BST")}${it("library", "library", "dl", "Kho")}<a href="#/usage" class="dsk ${on === "usage" ? "on" : ""}">${ic("disk")}Dung lượng</a></nav>`;
 }
 function page({ top, body, navOn, dark = false }) {
   $app.className = dark ? "dark" : "";
@@ -178,6 +179,11 @@ async function viewHome() {
     sb.from("exports").select("*").gte("created_at", dayStart(vnDate())).order("created_at"),
     sb.rpc("feed_today", { p_limit: innerWidth >= 900 ? 10 : 3 }),
   ]);
+  sb.rpc("storage_stats").then(({ data: st }) => {
+    const box = document.getElementById("stor"); if (!box || !st) return;
+    const used = Object.values(st.buckets || {}).reduce((a, b) => a + Number(b.bytes || 0), 0), lim = 1024 ** 3, pc = Math.round((used / lim) * 100);
+    box.innerHTML = `${ic("disk", 18)}<div style="flex:1;min-width:0"><div class="row between" style="font-size:13px;font-weight:700"><span>Dung lượng</span><span style="color:${pc >= 90 ? "#B91C1C" : "#52525B"}">${gb(used)} / 1 GB</span></div><div class="ubar" style="margin-top:6px"><i style="width:${Math.min(100, pc)}%;background:${pc >= 90 ? "#EF4444" : pc >= 70 ? "#F59E0B" : "#22C55E"}"></i></div></div>${ic("chev", 16, 2.2)}`;
+  });
   const exs = ex.data || []; const hots = hot.data || [];
   const th = await signed("exports", exs.map((e) => e.thumb_path));
   const cov = await signed("feed", hots.map((h) => h.cover_path));
@@ -188,6 +194,7 @@ async function viewHome() {
     <a href="#/bst" class="card stat"><b>${nProc.count ?? 0}</b><small>Đang làm</small></a>
     <a href="#/library" class="card stat"><b>${exs.length}</b><small>Đã xuất</small></a>
   </div>
+  <a href="#/usage" class="card row" id="stor" style="padding:12px 14px;gap:12px;color:#18181B">${ic("disk", 18)}<span class="vm" style="margin:0">Dung lượng…</span></a>
   ${exs.length ? `<section class="card exrow" style="padding:12px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">${exs.slice(0, 10).map((e) => `<a href="#/library" style="display:flex;flex-direction:column;gap:6px"><div class="th" style="aspect-ratio:9/16;background-image:url('${th[e.thumb_path] || ""}'),${grad(e.id)}"><span>${dur(e.duration_sec)}</span></div><span style="font-size:12px;font-weight:600;line-height:1.3">${esc(e.title)}</span></a>`).join("")}</section>` : ""}
   ${hots.length ? `<div class="row between" style="padding:0 2px"><span class="sec">Chờ duyệt</span><a href="#/feed" class="lk">Lướt</a></div>
   <section class="card hotl">${hots.map((h) => `<div class="row" style="padding:10px 12px;border-bottom:1px solid #F4F4F5;gap:12px" data-id="${h.id}">
@@ -754,8 +761,55 @@ function dlClick(ev) {
   else if (a === "x") { if (d.state === "run") d.ctrl.abort(); if (d.url) URL.revokeObjectURL(d.url); DL.delete(d.id); dlTray(); dlCard(d.id); }
 }
 
+/* ---------- usage: storage, API cost, cleanup ---------- */
+const gb = (b) => { b = Number(b || 0); return b >= 1024 ** 3 ? (b / 1024 ** 3).toFixed(2).replace(".", ",") + " GB" : Math.round(b / 1048576) + " MB"; };
+const usd = (x) => x == null ? "—" : "$" + Number(x).toFixed(2);
+const bar = (used, lim) => { const pc = Math.round((used / lim) * 100); return `<div class="ubar"><i style="width:${Math.min(100, pc)}%;background:${pc >= 90 ? "#EF4444" : pc >= 70 ? "#F59E0B" : "#22C55E"}"></i></div>`; };
+async function viewUsage() {
+  page({ navOn: "usage", top: backTop("Dung lượng", "#/home", `<button class="icon" id="rf" aria-label="Làm mới">${ic("refresh", 18)}</button>`), body: `<main class="main" id="m">${spinner}</main>` });
+  document.getElementById("rf").onclick = () => viewUsage();
+  const { data, error } = await sb.functions.invoke("usage", { body: {} });
+  const m = document.getElementById("m"); if (!m) return;
+  if (error || data?.error) { m.innerHTML = `<div class="empty">${esc(data?.error || error.message)}</div>`; return; }
+  const st = data.storage, L = data.limits, fe = st.buckets?.feed || { bytes: 0, files: 0 }, ex = st.buckets?.exports || { bytes: 0, files: 0 };
+  const used = Number(fe.bytes) + Number(ex.bytes), over = used > L.storage;
+  const dsm = st.deepseek?.month || {}, dst = st.deepseek?.today || {};
+  const dsCost = (t) => ((t.in || 0) * 0.28 + (t.out || 0) * 0.42) / 1e6; // DeepSeek-chat list price per 1M tokens (ước tính)
+  const F = st.free || {};
+  const cbtn = (kind, days, f, label) => `<button class="btn btn-o xs" data-clean="${kind}" data-days="${days || ""}" ${!f?.files ? "disabled" : ""}>${label}<span class="vm" style="margin:0 0 0 4px">${f?.files ? gb(f.bytes) : "0"}</span></button>`;
+  m.innerHTML = `
+  <section class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px">
+    <div class="row between"><b style="font-size:15px">Supabase Storage</b><span class="tag ${over ? "bad" : "ok"}">${gb(used)} / 1 GB${over ? " · vượt" : ""}</span></div>
+    ${bar(used, L.storage)}
+    <div class="li" style="padding:6px 0"><span>Video cào (xem Reels)<small>${fe.files} file · ${num(st.feed_items?.new || 0)} video chờ duyệt</small></span><b>${gb(fe.bytes)}</b></div>
+    <div class="li" style="padding:6px 0"><span>Video đã xuất (Kho)<small>${ex.files} file · ${st.exports} video</small></span><b>${gb(ex.bytes)}</b></div>
+    <div class="li" style="padding:6px 0;border:0"><span>Database<small>giới hạn 500 MB</small></span><b>${gb(st.db_bytes)}</b></div>
+    ${over ? `<p class="vm" style="margin:0;color:#B91C1C">Gói Free chỉ có 1 GB – dọn bớt bên dưới (video cào đang được nén tự động mỗi giờ).</p>` : ""}
+  </section>
+  <section class="card" style="padding:14px;display:flex;flex-direction:column;gap:8px">
+    <b style="font-size:15px">Chi phí API</b>
+    <div class="li" style="padding:6px 0"><span>DeepSeek (dịch)<small>Hôm nay ${num(dst.in + dst.out)} token · tháng này ${num(dsm.in + dsm.out)} token ≈ ${usd(dsCost(dsm))}</small></span><b>${data.deepseek ? usd(data.deepseek.balance) : "—"}</b></div>
+    <div class="li" style="padding:6px 0;border:0"><span>TikHub (cào video)<small>Hôm nay ${data.tikhub?.today ? `${usd(data.tikhub.today.usd)} · ${data.tikhub.today.req} lượt` : "—"}${data.tikhub?.yesterday ? ` · hôm qua ${usd(data.tikhub.yesterday.usd)}` : ""}</small></span><b>${usd(data.tikhub?.balance)}</b></div>
+    <p class="vm" style="margin:0">Số bên phải là số dư còn lại trong tài khoản.</p>
+  </section>
+  <section class="card" style="padding:14px;display:flex;flex-direction:column;gap:12px">
+    <b style="font-size:15px">Dọn dung lượng</b>
+    <div><div class="lbl" style="margin-bottom:6px">Video cào cũ hơn <span class="vm">(giữ video đã duyệt)</span></div><div class="row" style="gap:6px;flex-wrap:wrap">${cbtn("feed", 7, F.feed7, "7 ngày")}${cbtn("feed", 15, F.feed15, "15 ngày")}${cbtn("feed", 30, F.feed30, "30 ngày")}</div></div>
+    <div><div class="lbl" style="margin-bottom:6px">Video đã xuất cũ hơn</div><div class="row" style="gap:6px;flex-wrap:wrap">${cbtn("exports", 15, F.exp15, "15 ngày")}${cbtn("exports", 30, F.exp30, "30 ngày")}</div></div>
+    <div><div class="lbl" style="margin-bottom:6px">File rác (không còn dùng)</div>${cbtn("orphans", 0, F.orphans, "Dọn")}</div>
+    <p class="vm" style="margin:0">Xoá là mất hẳn file trên máy chủ – video đã lưu về điện thoại vẫn còn.</p>
+  </section>`;
+  m.querySelectorAll("[data-clean]").forEach((b) => b.onclick = async () => {
+    if (b.dataset.sure !== "1") { b.dataset.sure = "1"; b.dataset.old = b.innerHTML; b.innerHTML = "Chắc chắn xoá?"; b.classList.add("bad"); setTimeout(() => { if (b.isConnected && b.dataset.sure === "1") { b.dataset.sure = ""; b.innerHTML = b.dataset.old; b.classList.remove("bad"); } }, 4000); return; }
+    b.dataset.sure = "2"; b.disabled = true; b.innerHTML = '<span class="spin"></span>';
+    const { data: r, error: e } = await sb.functions.invoke("usage", { body: { clean: b.dataset.clean, days: Number(b.dataset.days) || undefined } });
+    if (e || r?.error) { toast("Lỗi: " + (r?.error || e.message)); b.disabled = false; b.innerHTML = b.dataset.old; return; }
+    toast(`✓ Đã xoá ${r.files} file${r.videos != null ? ` · ${r.videos} video` : ""}`, 3000); viewUsage();
+  });
+}
+
 /* ---------- router ---------- */
-const routes = { home: viewHome, channels: viewChannels, add: viewAdd, feed: viewFeed, bst: viewBst, produce: viewProduce, schedule: viewSchedule, library: viewLibrary };
+const routes = { home: viewHome, channels: viewChannels, add: viewAdd, feed: viewFeed, bst: viewBst, produce: viewProduce, schedule: viewSchedule, library: viewLibrary, usage: viewUsage };
 async function route() {
   document.querySelectorAll(".sheet").forEach((x) => x.remove());
   if (!S.session || locked()) return viewLogin();
