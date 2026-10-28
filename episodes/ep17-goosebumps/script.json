@@ -1,0 +1,22 @@
+[
+ {"id":"hook", "en":["You step into the cold, or hear your favorite song, and suddenly your arms get tiny bumps.", "Why do we get goosebumps?"],
+  "vi":["Bạn bước ra chỗ lạnh, hoặc nghe bài hát yêu thích, và bỗng nhiên tay nổi đầy những nốt nhỏ.", "Vì sao chúng ta nổi da gà?"]},
+ {"id":"guess", "en":["Take a guess.", "To keep us warm? To scare enemies? Or is it just a leftover?"],
+  "vi":["Thử đoán xem.", "Để giữ ấm? Để dọa kẻ thù? Hay chỉ là thứ còn sót lại?"]},
+ {"id":"intro", "en":["I'm Max, and this is Max Wise.", "Let's zoom into your skin."],
+  "vi":["Mình là Max, và đây là Max Wise.", "Cùng phóng to làn da của bạn nhé."]},
+ {"id":"muscle", "en":["Every hair on your arm grows from a tiny pocket called a follicle.", "Attached to it is a muscle smaller than a grain of sand.", "When it squeezes, the hair stands up, and the skin around it pops into a bump."],
+  "vi":["Mỗi sợi lông trên tay mọc ra từ một túi nhỏ gọi là nang lông.", "Gắn vào đó là một cơ còn nhỏ hơn hạt cát.", "Khi cơ co lại, sợi lông dựng đứng, và da quanh nó nhô lên thành nốt."]},
+ {"id":"nerve", "en":["That muscle is wired to your fight or flight nerves.", "So cold, fear, or a thrilling song can all flip the same switch."],
+  "vi":["Cơ đó được nối với hệ thần kinh 'chiến hay chạy' của bạn.", "Nên lạnh, sợ hãi hay một bài hát làm bạn rung động đều bật cùng một công tắc."]},
+ {"id":"fur", "en":["For furry animals, this is really useful.", "Fluffed up fur traps a layer of warm air, and makes a scared cat look bigger."],
+  "vi":["Với động vật có lông dày, phản xạ này rất hữu ích.", "Bộ lông xù lên giữ một lớp không khí ấm, và khiến chú mèo đang sợ trông to hơn."]},
+ {"id":"us", "en":["But humans lost most of their fur.", "So for us, those bumps barely keep us warm at all."],
+  "vi":["Nhưng con người đã mất gần hết lông.", "Nên với chúng ta, những nốt da gà gần như chẳng giữ ấm được bao nhiêu."]},
+ {"id":"twist", "en":["Here's the twist.", "In twenty twenty, Harvard scientists found that the same nerve and muscle also wake up the stem cells that grow new hair."],
+  "vi":["Bất ngờ đây.", "Năm 2020, các nhà khoa học Harvard phát hiện chính dây thần kinh và cơ đó còn đánh thức tế bào gốc làm mọc lông mới."]},
+ {"id":"mice", "en":["Mice kept in the cold started growing new hair in less than two weeks."],
+  "vi":["Những chú chuột bị giữ trong lạnh bắt đầu mọc lông mới chỉ sau chưa đầy hai tuần."]},
+ {"id":"outro", "en":["So goosebumps are a leftover from our furry past, and maybe a hair growing helper too.", "Stay curious!"],
+  "vi":["Vậy da gà là dấu vết từ thời tổ tiên nhiều lông, và có lẽ còn là trợ thủ giúp mọc lông.", "Hãy luôn tò mò nhé!"]}
+]

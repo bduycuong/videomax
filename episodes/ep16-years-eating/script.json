@@ -1,0 +1,22 @@
+[
+ {"id":"hook", "en":["Think about every breakfast, lunch and dinner you will ever eat.", "How many years of your life will you spend just eating?"],
+  "vi":["Hãy nghĩ về mọi bữa sáng, trưa và tối bạn sẽ ăn.", "Cả đời, bạn sẽ dành bao nhiêu năm chỉ để ăn?"]},
+ {"id":"guess", "en":["Take a guess.", "A few months? One year? Or four whole years?"],
+  "vi":["Thử đoán xem.", "Vài tháng? Một năm? Hay tròn bốn năm?"]},
+ {"id":"intro", "en":["I'm Max, and this is Max Wise.", "Let's add up every bite."],
+  "vi":["Mình là Max, và đây là Max Wise.", "Cùng cộng dồn từng miếng ăn nhé."]},
+ {"id":"survey", "en":["A big American survey asks people to write down their whole day.", "On average, they spend about seventy four minutes a day eating and drinking."],
+  "vi":["Một khảo sát lớn ở Mỹ yêu cầu mọi người ghi lại cả ngày của mình.", "Trung bình, họ dành khoảng 74 phút mỗi ngày để ăn uống."]},
+ {"id":"week", "en":["Seven days later, that's almost nine hours at the table."],
+  "vi":["Sau bảy ngày, đã gần 9 giờ ngồi bên bàn ăn."]},
+ {"id":"year", "en":["One year adds up to about four hundred fifty hours.", "That's almost nineteen full days of nonstop chewing!"],
+  "vi":["Một năm cộng lại khoảng 450 giờ.", "Tức là gần 19 ngày nhai liên tục không nghỉ!"]},
+ {"id":"life", "en":["Now stretch that over eighty years.", "About four years of eating!"],
+  "vi":["Giờ kéo dài suốt 80 năm.", "Khoảng bốn năm chỉ để ăn!"]},
+ {"id":"weekend", "en":["And weekends are slower.", "People spend about eleven more minutes eating on weekends and holidays."],
+  "vi":["Và cuối tuần thì ăn chậm hơn.", "Mọi người ăn lâu hơn khoảng 11 phút vào cuối tuần và ngày lễ."]},
+ {"id":"you", "en":["So what about your family?", "Long dinners together could push your total even higher."],
+  "vi":["Còn gia đình bạn thì sao?", "Những bữa tối dài bên nhau có thể đẩy tổng thời gian của bạn lên cao hơn nữa."]},
+ {"id":"outro", "en":["So, about four years of your life, spent eating.", "Make every bite count, and stay curious!"],
+  "vi":["Vậy là khoảng bốn năm cuộc đời dành cho việc ăn.", "Hãy trân trọng từng miếng ăn, và luôn tò mò nhé!"]}
+]

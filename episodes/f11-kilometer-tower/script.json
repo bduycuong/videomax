@@ -1,0 +1,14 @@
+[
+ {"id": "hook", "src": [[254.0, 258.0], [8.0, 12.0]], "en": ["This tower in Saudi Arabia is meant to be the first building ever to reach one whole kilometer into the sky.", "So what makes going that high so hard?"], "vi": ["", ""]},
+ {"id": "intro", "src": [[50.0, 55.5]], "en": ["I'm Max, and this is Max Wise.", "Let's climb the Jeddah Tower, one problem at a time."], "vi": ["", ""]},
+ {"id": "pause", "src": [[32.0, 38.0]], "en": ["Work started in twenty thirteen, then stopped in twenty eighteen.", "It only restarted in twenty twenty five."], "vi": ["", ""]},
+ {"id": "join", "src": [[48.0, 50.0], [59.0, 64.5]], "en": ["So problem number one is joining brand new concrete to concrete that sat for years.", "Steel bars are planted across the seam, like stitches holding two pieces together."], "vi": ["", ""]},
+ {"id": "weight", "src": [[99.0, 106.0]], "en": ["Problem two is weight.", "The ground must hold up about eight hundred sixty thousand tonnes.", "If one side sinks more than the other, the tower could tilt."], "vi": ["", "", ""]},
+ {"id": "piles", "src": [[78.0, 83.8], [85.0, 88.0]], "en": ["So the tower stands on two hundred seventy concrete piles, pushed deep into the rock."], "vi": [""]},
+ {"id": "deep", "src": [[109.0, 116.5]], "en": ["Under the heavy middle, they go down about one hundred five meters.", "Under the tips of the wings, only about forty five.", "That way the whole tower settles evenly."], "vi": ["", "", ""]},
+ {"id": "wind", "src": [[128.5, 136.0], [140.0, 143.0]], "en": ["Problem three is wind.", "Seen from above, the tower is shaped like a giant letter Y, with a strong concrete core in the middle."], "vi": ["", ""]},
+ {"id": "taper", "src": [[143.0, 147.0], [137.0, 139.5]], "en": ["And it gets thinner as it rises.", "That stops swirling gusts from building up a rhythm that could make the top sway."], "vi": ["", ""]},
+ {"id": "lift", "src": [[193.0, 197.0], [197.0, 200.5]], "en": ["Problem four is the elevator.", "The express ride climbs about six hundred forty meters in one go.", "Steel cables that long would be crushingly heavy."], "vi": ["", "", ""]},
+ {"id": "belt", "src": [[204.0, 206.0], [207.0, 210.5]], "en": ["So it hangs on carbon fiber belts, about eighty six percent lighter than steel ropes."], "vi": [""]},
+ {"id": "outro", "src": [[250.0, 254.0], [254.0, 258.0], [258.0, 260.0]], "en": ["Dubai's Burj Khalifa is eight hundred twenty eight meters tall.", "If all goes to plan, this tower will beat it by more than one hundred seventy meters, around twenty twenty eight.", "Stay curious!"], "vi": ["", "", ""]}
+]

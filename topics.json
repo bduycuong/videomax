@@ -330,9 +330,9 @@
   "caveat_vi": "Số liệu Mỹ; Pháp, Nhật, Việt Nam thường ăn lâu hơn.",
   "source_title": "BLS – American Time Use Survey",
   "source_url": "https://www.bls.gov/tus/latest-numbers.htm",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep16-years-eating",
+  "done_date": "2026-10-29"
  },
  {
   "slug": "we-get-goosebumps",
@@ -351,9 +351,9 @@
   "caveat_vi": "Phát hiện về mọc lông mới chỉ làm trên chuột.",
   "source_title": "Harvard Stem Cell Institute",
   "source_url": "https://www.hsci.harvard.edu/goosebumps-hair-follicle-stem-cells",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep17-goosebumps",
+  "done_date": "2026-10-29"
  },
  {
   "slug": "stomach-growl",
