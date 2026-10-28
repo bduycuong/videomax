@@ -153,7 +153,13 @@ elif a.cmd == "source":
            "instagram": f"/api/v1/instagram/v2/fetch_post_info?code_or_url={q(f.get('share_url') or aid)}",
            "youtube": f"/api/v1/youtube/web_v2/get_video_streams?video_id={aid}",
            "xiaohongshu": f"/api/v1/xiaohongshu/app_v2/get_video_note_detail?note_id={aid}"}[pf]
-    d = http("GET", "https://api.tikhub.io" + api, headers={"Authorization": f"Bearer {tk}"})
+    try:
+        d = http("GET", "https://api.tikhub.io" + api, headers={"Authorization": f"Bearer {tk}"})
+    except SystemExit:
+        if pf != "instagram": raise
+        # Instagram v2 sometimes answers 400 for reels; v1 fetch_post_by_url still works
+        d = http("GET", "https://api.tikhub.io/api/v1/instagram/v1/fetch_post_by_url?post_url="
+                 + q(f.get("share_url") or f"https://www.instagram.com/reel/{aid}/"), headers={"Authorization": f"Bearer {tk}"})
     data = d.get("data") or {}
     cand = []  # (score, url): prefer progressive mp4 with audio, highest quality
     def walk(o, ctx=""):
