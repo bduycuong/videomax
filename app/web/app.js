@@ -666,6 +666,7 @@ async function viewLibrary(params) {
           <button class="btn btn-o xs" data-a="share" aria-label="Chia sẻ">${ic("share", 15)}</button>
         </div>
       </div></article>`).join("") + "</div>").join("");
+  DL.forEach((_, id) => dlCard(id));
   m.onclick = async (ev) => {
     const b = ev.target.closest("[data-a]"); if (!b) return;
     const e = list.find((x) => x.id === b.closest("[data-e]").dataset.e);
@@ -674,22 +675,83 @@ async function viewLibrary(params) {
       try { await navigator.clipboard.writeText(e.caption || ""); } catch { const t = document.createElement("textarea"); t.value = e.caption || ""; document.body.appendChild(t); t.select(); document.execCommand("copy"); t.remove(); }
       const old = b.innerHTML; b.innerHTML = ic("check", 15, 2.6) + "Đã copy"; b.classList.add("ok"); setTimeout(() => { b.innerHTML = old; b.classList.remove("ok"); }, 1600);
     } else if (b.dataset.a === "dl") {
-      const { data: s } = await sb.storage.from("exports").createSignedUrl(e.video_path, 3600, { download: fname });
-      if (s?.signedUrl) location.href = s.signedUrl;
+      const d = DL.get(e.id);
+      if (d?.state === "done") return saveDl(d);
+      if (d?.state === "run") return;
+      startDl(e, fname);
     } else {
-      const old = b.innerHTML; b.innerHTML = '<span class="spin"></span>';
-      const { data: s } = await sb.storage.from("exports").createSignedUrl(e.video_path, 3600);
+      // iPhone only allows the share sheet right after a tap, so download first, then tap again
+      const d = DL.get(e.id);
+      if (d?.state !== "done") { if (d?.state !== "run") startDl(e, fname); return toast("Đang tải… xong bấm Chia sẻ lần nữa", 2500); }
       try {
-        const blob = await (await fetch(s.signedUrl)).blob();
-        const file = new File([blob], fname, { type: "video/mp4" });
+        const file = new File([d.blob], fname, { type: "video/mp4" });
         if (navigator.canShare && navigator.canShare({ files: [file] })) await navigator.share({ files: [file], text: e.caption || "" });
-        else if (navigator.share) await navigator.share({ url: s.signedUrl, text: e.caption || "" });
-        else { await navigator.clipboard.writeText(s.signedUrl); toast("✓ Đã copy link"); }
+        else saveDl(d);
         if (!e.posted) await sb.from("exports").update({ posted: true }).eq("id", e.id);
       } catch (err) { if (err?.name !== "AbortError") toast(err.message); }
-      b.innerHTML = old;
     }
   };
+}
+
+/* ---------- downloads: progress, several at once, save / open when done ---------- */
+const DL = new Map(); // export id -> {id,title,fname,caption,pct,state,blob,url,ctrl}
+const mb = (n) => (n / 1048576).toFixed(n > 10485760 ? 0 : 1);
+function dlTray() {
+  let t = document.getElementById("dltray");
+  if (!DL.size) { t?.remove(); return; }
+  if (!t) { t = document.createElement("div"); t.id = "dltray"; document.body.appendChild(t); t.onclick = dlClick; }
+  t.innerHTML = [...DL.values()].map((d) => `<div class="dlr" data-dlid="${d.id}">
+    <div class="dlt"><b class="ell">${esc(d.title)}</b><span>${d.state === "done" ? "✓ Xong · " + mb(d.blob.size) + " MB" : d.state === "err" ? "Lỗi tải" : `${d.pct}%${d.total ? ` · ${mb(d.loaded)}/${mb(d.total)} MB` : ""}`}</span></div>
+    <div class="dlbar"><i style="width:${d.state === "done" ? 100 : d.pct}%" class="${d.state}"></i></div>
+    <div class="row" style="gap:6px">${d.state === "done" ? `<button class="btn btn-y xs" data-dla="save">${ic("dl", 14, 2.4)}Lưu</button><button class="btn btn-o xs" data-dla="open">Mở</button>` : d.state === "err" ? `<button class="btn btn-o xs" data-dla="retry">Thử lại</button>` : ""}<button class="icon" style="width:28px;height:28px" data-dla="x" aria-label="${d.state === "run" ? "Huỷ" : "Đóng"}">${ic("x", 13)}</button></div></div>`).join("");
+}
+function dlCard(id) { // reflect state on the Kho card's download button
+  const b = document.querySelector(`[data-e="${id}"] [data-a="dl"]`); if (!b) return;
+  const d = DL.get(id);
+  b.innerHTML = !d ? ic("dl", 15, 2.4) : d.state === "run" ? `<span class="dlpct">${d.pct}%</span>` : d.state === "done" ? ic("check", 15, 2.6) + "Lưu" : "Lỗi";
+  b.classList.toggle("btn-y", d?.state === "done");
+}
+async function startDl(e, fname) {
+  const old = DL.get(e.id);
+  if (old && old.state !== "err") return old;
+  const d = { id: e.id, title: e.title || fname, fname, caption: e.caption || "", pct: 0, loaded: 0, total: 0, state: "run", ctrl: new AbortController(), path: e.video_path };
+  DL.set(e.id, d); dlTray(); dlCard(e.id);
+  try {
+    const { data: s, error } = await sb.storage.from("exports").createSignedUrl(e.video_path, 3600);
+    if (error) throw error;
+    const r = await fetch(s.signedUrl, { signal: d.ctrl.signal });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    d.total = Number(r.headers.get("content-length")) || e.size_bytes || 0;
+    const rd = r.body.getReader(); const parts = []; let last = 0;
+    for (;;) {
+      const { done, value } = await rd.read(); if (done) break;
+      parts.push(value); d.loaded += value.length;
+      d.pct = d.total ? Math.min(99, Math.floor((d.loaded / d.total) * 100)) : 0;
+      if (Date.now() - last > 150) { last = Date.now(); dlTray(); dlCard(e.id); }
+    }
+    d.blob = new Blob(parts, { type: "video/mp4" }); d.url = URL.createObjectURL(d.blob); d.state = "done"; d.pct = 100;
+    if ("Notification" in window && Notification.permission === "granted" && document.hidden) navigator.serviceWorker?.ready.then((reg) => reg.showNotification("✓ Tải xong", { body: d.title, icon: "icon-192.png", tag: "dl-" + d.id }));
+  } catch (err) {
+    if (err?.name === "AbortError") { DL.delete(e.id); } else { d.state = "err"; toast("Lỗi tải: " + (err.message || err)); }
+  }
+  dlTray(); dlCard(e.id);
+  return d;
+}
+async function saveDl(d) {
+  const file = new File([d.blob], d.fname, { type: "video/mp4" });
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file] }); return; } // iPhone: choose "Lưu video" → Ảnh
+  } catch (err) { if (err?.name === "AbortError") return; }
+  const a = document.createElement("a"); a.href = d.url; a.download = d.fname; document.body.appendChild(a); a.click(); a.remove();
+}
+function dlClick(ev) {
+  const b = ev.target.closest("[data-dla]"); if (!b) return;
+  const d = DL.get(b.closest("[data-dlid]").dataset.dlid); if (!d) return;
+  const a = b.dataset.dla;
+  if (a === "save") saveDl(d);
+  else if (a === "open") window.open(d.url, "_blank");
+  else if (a === "retry") { DL.delete(d.id); startDl({ id: d.id, title: d.title, caption: d.caption, video_path: d.path }, d.fname); }
+  else if (a === "x") { if (d.state === "run") d.ctrl.abort(); if (d.url) URL.revokeObjectURL(d.url); DL.delete(d.id); dlTray(); dlCard(d.id); }
 }
 
 /* ---------- router ---------- */
