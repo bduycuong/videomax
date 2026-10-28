@@ -1,0 +1,12 @@
+[
+ {"id": "hook", "src": [44.0, 49.7], "en": ["One pilot whale swims onto a beach.", "Then the rest of its group follows, one after another.", "Why would a whole pod do that?"], "vi": ["", "", ""]},
+ {"id": "intro", "src": [[11.0, 14.0], [0.0, 3.5]], "en": ["I'm Max, and this is Max Wise.", "Let's meet the pilot whale first."], "vi": ["", ""]},
+ {"id": "dolphin", "src": [[20.0, 24.0], [0.0, 3.5]], "en": ["Here's a surprise.", "Pilot whales are really giant dolphins.", "A big male grows to about six meters long."], "vi": ["", "", ""]},
+ {"id": "squid", "src": [14.0, 20.0], "en": ["Their favorite food is squid.", "They dive deep into the dark ocean to hunt it."], "vi": ["", ""]},
+ {"id": "brain", "src": [[27.0, 34.5]], "en": ["Now look inside that round head.", "The outer layer of its brain holds about thirty seven billion nerve cells.", "That's roughly double the number in yours!"], "vi": ["", "", ""]},
+ {"id": "family", "src": [[34.5, 38.0], [11.0, 14.5], [38.0, 41.5]], "en": ["But their real superpower is family.", "A pod can hold ten whales, or more than two hundred.", "Sons and daughters usually stay with their mother's group."], "vi": ["", "", ""]},
+ {"id": "milk", "src": [[38.0, 42.0], [42.0, 44.0]], "en": ["Calves drink their mother's milk for three years or more.", "That's one of the longest childhoods in the ocean."], "vi": ["", ""]},
+ {"id": "strand", "src": [[44.0, 49.7], [42.0, 44.0]], "en": ["So when one whale gets stuck, others may swim in after it.", "Pilot whales are among the whales that strand in groups most often."], "vi": ["", ""]},
+ {"id": "twist", "src": [[0.0, 3.5], [34.5, 38.0], [38.0, 42.0], [44.0, 49.7]], "en": ["But here's the twist.", "Scientists checked the genes of stranded pilot whales.", "Often the group was not one family, but several families mixed together.", "So a broken family, not a loyal one, may be part of the story."], "vi": ["", "", "", ""]},
+ {"id": "outro", "src": [[11.0, 16.0], [20.0, 24.0], [0.0, 3.0]], "en": ["Big brains, long childhoods, and families for life.", "Why whole pods strand is still a mystery being solved.", "Stay curious!"], "vi": ["", "", ""]}
+]

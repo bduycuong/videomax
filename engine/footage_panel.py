@@ -20,9 +20,13 @@ S = {s["id"]: s for s in json.load(open(os.path.join(EP, "script.json")))}
 
 segs = [("lead", 0.0, 0.04, T["scenes"][0]["start"], 1.0)]
 for sc in T["scenes"]:
-    a, b = S[sc["id"]]["src"]; L = b - a; dur = sc["slot"]
-    sp = min(1.8, max(0.85, L / dur)); cov = min(dur * sp, L)
-    segs.append((sc["id"], a + max(0, (L - dur * sp) / 2), cov, dur, sp))
+    rs = S[sc["id"]]["src"]
+    rs = rs if isinstance(rs[0], (list, tuple)) else [rs]   # one range or a list of ranges
+    tot = sum(b - a for a, b in rs)
+    for k, (a, b) in enumerate(rs):
+        L = b - a; dur = sc["slot"] * L / tot
+        sp = min(1.8, max(0.85, L / dur)); cov = min(dur * sp, L)
+        segs.append((f'{sc["id"]}{k}', a + max(0, (L - dur * sp) / 2), cov, dur, sp))
 tmp = os.path.join(P, "panel_segs"); os.makedirs(tmp, exist_ok=True)
 lst = []
 for i, (name, st, cov, dur, sp) in enumerate(segs):
