@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "src": [[57.2, 60.0], [0.0, 2.8]], "en": ["Why should every guy understand childbirth?", "Because what happens inside a mom's body is wild.", "How wide do you think the opening has to stretch?"], "vi": ["", "", ""]},
+ {"id": "intro", "src": [[12.0, 15.0]], "en": ["I'm Max, and this is Max Wise.", "Birth happens in three stages."], "vi": ["", ""]},
+ {"id": "squeeze", "src": [[36.0, 38.0], [15.2, 18.0]], "en": ["Stage one.", "The womb's muscles squeeze in waves called contractions.", "Each one presses the baby's head down onto the cervix, the narrow door at the bottom."], "vi": ["", "", ""]},
+ {"id": "open", "src": [[18.0, 20.0], [20.0, 23.8], [28.0, 30.0]], "en": ["Slowly, that door thins and opens.", "It has to reach about ten centimeters.", "That's around four inches, roughly the size of a bagel."], "vi": ["", "", ""]},
+ {"id": "hours", "src": [[30.0, 34.0], [34.0, 36.0]], "en": ["This stage takes a long time, especially with a first baby.", "The active part alone often lasts four to eight hours or more."], "vi": ["", ""]},
+ {"id": "push", "src": [[51.0, 54.0], [54.0, 57.0], [62.0, 65.0]], "en": ["Stage two is pushing.", "The baby's head turns and squeezes through the pelvis, the tightest part of the whole trip."], "vi": ["", ""]},
+ {"id": "born", "src": [[45.0, 48.0], [74.0, 77.8]], "en": ["It can take a few minutes, or a few hours.", "And then, the baby is born."], "vi": ["", ""]},
+ {"id": "placenta", "src": [[78.2, 80.0], [87.0, 90.0]], "en": ["But it's not over yet.", "In stage three, the placenta, the baby's food supply, comes out too.", "Usually within thirty minutes."], "vi": ["", "", ""]},
+ {"id": "support", "src": [[108.2, 110.0], [57.2, 60.0]], "en": ["So where do guys come in?", "A big review of studies with more than fifteen thousand women found that having someone there for support the whole time helped.", "Labor was a bit shorter, there were fewer cesarean births, and moms felt better about the experience."], "vi": ["", "", ""]},
+ {"id": "help", "src": [[115.0, 120.0], [105.0, 108.0]], "en": ["So hold her hand, help her breathe, rub her back between contractions.", "And let her decide about pain relief."], "vi": ["", ""]},
+ {"id": "outro", "src": [[122.0, 123.2], [120.0, 122.0]], "en": ["Birth is not a one person job.", "Learn how it works, and show up.", "Stay curious!"], "vi": ["", "", ""]}
+]

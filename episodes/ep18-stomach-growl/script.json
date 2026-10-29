@@ -1,0 +1,127 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "The room is quiet, and suddenly your belly rumbles.",
+   "Why does your stomach growl?"
+  ],
+  "vi": [
+   "Căn phòng đang yên tĩnh, bỗng bụng bạn réo lên.",
+   "Vì sao bụng lại réo?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "Is it hunger pain? Air you swallowed? Or your gut cleaning house?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Là cơn đau vì đói? Không khí bạn nuốt vào? Hay ruột đang dọn dẹp?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's listen inside your belly."
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Cùng lắng nghe bên trong bụng bạn nhé."
+  ]
+ },
+ {
+  "id": "squeeze",
+  "en": [
+   "Your gut is a long muscly tube that never stops squeezing.",
+   "It pushes food, fluid and gas along, like toothpaste."
+  ],
+  "vi": [
+   "Ruột của bạn là một ống cơ dài không bao giờ ngừng co bóp.",
+   "Nó đẩy thức ăn, chất lỏng và khí đi tiếp, như bóp kem đánh răng."
+  ]
+ },
+ {
+  "id": "beat",
+  "en": [
+   "It even has a built in drummer.",
+   "Your stomach gets an electric beat about three times a minute.",
+   "Your small intestine, about twelve times a minute."
+  ],
+  "vi": [
+   "Nó còn có cả một tay trống tích hợp.",
+   "Dạ dày nhận một nhịp điện khoảng 3 lần mỗi phút.",
+   "Ruột non thì khoảng 12 lần mỗi phút."
+  ]
+ },
+ {
+  "id": "empty",
+  "en": [
+   "Now the hungry part.",
+   "About two hours after your stomach empties, a strong cleaning wave starts.",
+   "It sweeps leftovers down the line for ten to twenty minutes."
+  ],
+  "vi": [
+   "Giờ đến phần đói bụng.",
+   "Khoảng 2 giờ sau khi dạ dày trống, một làn sóng dọn dẹp mạnh bắt đầu.",
+   "Nó quét thức ăn thừa đi tiếp trong 10 đến 20 phút."
+  ]
+ },
+ {
+  "id": "repeat",
+  "en": [
+   "And if you still don't eat, it comes back every one to two hours."
+  ],
+  "vi": [
+   "Và nếu bạn vẫn chưa ăn, nó quay lại mỗi 1 đến 2 giờ."
+  ]
+ },
+ {
+  "id": "loud",
+  "en": [
+   "So why so loud?",
+   "With no food inside, nothing muffles the sound.",
+   "Gas and fluid slosh through an empty tube, like a drum."
+  ],
+  "vi": [
+   "Vậy sao kêu to thế?",
+   "Không có thức ăn bên trong thì chẳng có gì làm giảm âm.",
+   "Khí và dịch óc ách chạy qua ống rỗng, như cái trống."
+  ]
+ },
+ {
+  "id": "name",
+  "en": [
+   "Doctors call it borborygmi.",
+   "It's ancient Greek, and it even sounds like a rumble."
+  ],
+  "vi": [
+   "Bác sĩ gọi nó là borborygmi.",
+   "Đó là tiếng Hy Lạp cổ, và nghe y như tiếng ọc ọc."
+  ]
+ },
+ {
+  "id": "full",
+  "en": [
+   "Fun fact, a full belly rumbles too.",
+   "You just can't hear it as well."
+  ],
+  "vi": [
+   "Sự thật thú vị: bụng no cũng réo.",
+   "Chỉ là bạn không nghe rõ bằng thôi."
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "So that growl is your gut doing the cleaning, in an empty, echoey room.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Vậy tiếng réo đó là ruột đang dọn dẹp, trong một căn phòng trống vang vọng.",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]

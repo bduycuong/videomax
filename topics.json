@@ -372,9 +372,9 @@
   "caveat_vi": "Bụng no cũng réo, chỉ nhỏ hơn.",
   "source_title": "Scientific American – Why does your stomach growl?",
   "source_url": "https://scientificamerican.com/article/why-does-your-stomach-gro/",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep18-stomach-growl",
+  "done_date": "2026-10-30"
  },
  {
   "slug": "long-would-take-walk",
@@ -391,11 +391,11 @@
   "calc": "40.075 ÷ 5 ≈ 8.015 giờ ≈ 334 ngày",
   "max_idea_vi": "Giả định vui: Max đi bộ cả trên mặt biển.",
   "caveat_vi": "Giả định đi xuyên đại dương và không ngủ.",
-  "source_title": "BBC Sky at Night Magazine",
-  "source_url": "https://www.skyatnightmagazine.com/space-science/how-long-take-travel-around-world",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "source_title": "NASA NSSDC Earth Fact Sheet + CDC physical activity intensity",
+  "source_url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+  "status": "done",
+  "episode": "ep19-walk-around-earth",
+  "done_date": "2026-10-30"
  },
  {
   "slug": "see-sunlight-old",
