@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "src": [[0.0, 3.5], [62.0, 66.0]], "en": ["If you're nearsighted and you skip your glasses, are you hurting your eyes?", "Or giving them a workout that helps?", "Take a guess."], "vi": ["", "", ""]},
+ {"id": "intro", "src": [[51.5, 54.0], [11.5, 15.5]], "en": ["I'm Max, and this is Max Wise.", "First, let's see how an eye focuses."], "vi": ["", ""]},
+ {"id": "focus", "src": [[11.5, 15.5], [24.0, 31.5]], "en": ["Light comes in through the clear front of the eye, the cornea.", "Then the lens fine tunes the focus.", "In a sharp eye, the picture lands right on the retina at the back."], "vi": ["", "", ""]},
+ {"id": "long", "src": [[36.0, 44.5], [48.0, 51.0]], "en": ["In most nearsighted eyes, the eyeball has grown a bit too long.", "So light comes into focus just in front of the retina.", "Faraway things turn blurry."], "vi": ["", "", ""]},
+ {"id": "shrink", "src": [[82.0, 90.0], [117.5, 119.8]], "en": ["Here's the key part.", "Resting or rubbing your eyes can't shrink that eyeball back.", "Real nearsightedness doesn't just wear off."], "vi": ["", "", ""]},
+ {"id": "myth", "src": [[93.5, 97.5], [101.5, 110.0]], "en": ["Lots of people fear that glasses make your eyes weaker.", "Eye doctors say that's a myth.", "Glasses don't change your eye at all.", "The lenses just bend the light, so the picture lands on the retina again."], "vi": ["", "", "", ""]},
+ {"id": "answer", "src": [[112.0, 119.0]], "en": ["So for most adults, taking glasses off won't hurt the eye, or heal it.", "You simply see less clearly."], "vi": ["", ""]},
+ {"id": "squint", "src": [[121.0, 123.0], [125.5, 136.5]], "en": ["But going without often means squinting.", "Squinting makes a tiny peephole, so things look sharper for a moment.", "Do it all day, and you may end up with tired eyes and headaches."], "vi": ["", "", ""]},
+ {"id": "kids", "src": [[140.0, 158.0]], "en": ["For kids, there's a bigger risk.", "If one eye sees much worse than the other, the brain may start to rely on the better eye.", "The blurry one can become a lazy eye.", "That's why treating it early really matters."], "vi": ["", "", "", ""]},
+ {"id": "rules", "src": [[177.5, 186.0], [186.0, 192.5]], "en": ["So follow your eye doctor's plan, especially for children.", "And wear them whenever you need to see far away, like when you drive."], "vi": ["", ""]},
+ {"id": "outro", "src": [[202.0, 212.0], [218.0, 226.0]], "en": ["Skipping glasses won't heal your eyes, and wearing them won't ruin them.", "They just help you see the world clearly.", "Stay curious!"], "vi": ["", "", ""]}
+]
