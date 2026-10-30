@@ -434,9 +434,9 @@
   "caveat_vi": "Bụi và khói làm hoàng hôn đậm màu hơn.",
   "source_title": "Met Office – Why is the sky blue?",
   "source_url": "https://weather.metoffice.gov.uk/learn-about/weather/optical-effects/why-is-the-sky-blue",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep20",
+  "done_date": "2026-10-31"
  },
  {
   "slug": "far-walk-lifetime",
@@ -497,9 +497,9 @@
   "caveat_vi": "Mẫu là sinh viên; mỗi người chênh nhau rất nhiều.",
   "source_title": "NPR – Study: Men talk just as much as women",
   "source_url": "https://www.npr.org/2007/07/05/11762186/study-men-talk-just-as-much-as-women",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep21",
+  "done_date": "2026-10-31"
  },
  {
   "slug": "dead-skin-shed-lifetime",
