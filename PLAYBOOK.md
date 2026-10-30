@@ -46,7 +46,7 @@ S6. After Telegram delivery: `studio.py runlog --videos <n> [--redone <n>] --sen
    - Order: `hook` (the curious question) → `guess` (invite a guess, 3 options) → `intro` (exactly: "I'm Max, and this is Max Wise." + one short line) → 4–7 explanation scenes that build the answer one step at a time (each step = one number or one idea) → optional twist/bonus/tip → `outro` (answer recap + "Stay curious!"). Scene ids: short lowercase words; `intro` required; the last id must be `outro`.
    - `en`: list of sentences. **Spell all numbers as words; no digits, no hyphens, no symbols** (TTS word boundaries must match the word count). Conversational, short sentences.
    - `vi`: natural Vietnamese translation, one entry per EN sentence (digits allowed here).
-4b. **Storyboard first** (`episodes/epNN-<slug>/storyboard.md`): one line per scene — picture, the one formal idea, what appears on which spoken word, how it hands over to the next scene, and which technique from the *Visual technique bank* below it uses. Use at least 4 different techniques per episode and never the same one in two consecutive scenes. Then code it.
+4b. **Storyboard first** (plan the kit too: which scenes are 3D, which strokes draw themselves — see *Drawing + 3D kit*) (`episodes/epNN-<slug>/storyboard.md`): one line per scene — picture, the one formal idea, what appears on which spoken word, how it hands over to the next scene, and which technique from the *Visual technique bank* below it uses. Use at least 4 different techniques per episode and never the same one in two consecutive scenes. Then code it.
 5. **Write `scenes.py`** following ep01 exactly: sections `# === SCENES ===`, `# === GESTURES ===`, `# === SFX ===`.
    - One `scenes["<id>"] = scene_file(id, css, html, js[, fade])` per script scene; the last scene `outro` uses `fade=False`.
    - Anchor every reveal to the word that says it with `aw(scene_id, "phrase")` (phrase = consecutive spoken words). Helpers in scope: `pop`, `rise`, `draw`, `count`, `blink`, `fmtInt` (JS); `eye_svg`, `boil_defs`, `C`, `K`, `WS`, `SKETCH` (Python). Classes: `.h1 .h2 .hl .chip .card .pill .big .blue .red .hatch-r`.
@@ -70,12 +70,14 @@ S6. After Telegram delivery: `studio.py runlog --videos <n> [--redone <n>] --sen
 13. **If delivery is impossible** (no chat_id, Telegram error after 3 tries): commit the mp4s to `pending/<date>-epNN.mp4` and note it in the log, so the next run sends them.
 14. **If an episode fails** after one fix attempt, still ship the other one and explain the failure in a short Telegram text and the log. If both fail, send a short Vietnamese text saying what went wrong.
 
-## New kit (trial, Oct 30 — use only after Cuong approves the demo `episodes/demo3d-sunlight-age`)
+## Drawing + 3D kit (approved by Cuong 2026-10-30; reference episode `episodes/demo3d-sunlight-age`)
+
+Use it in every doodle episode: at least 2 scenes with `ink`/`morph`/`along`, and 1–3 three.js scenes when the topic has a natural 3D hero (space, Earth, body, objects, machines); none when it does not fit.
 
 - **GSAP official skills** in `docs/gsap-skills/` (core, timeline, plugins, utils, performance; MIT). Read `gsap-plugins.md` + `gsap-timeline.md` before writing scenes that use the helpers below.
 - **Drawing helpers** (GSAP DrawSVG / MorphSVG / MotionPath, all free) are in every scene: `ink(sel, t, d, {stagger})` draws strokes on (one sub-path per `<path>` — split multi-`M` paths, or they draw dotted), `unink`, `morph(sel, "#target", t, d)` (give the target the same start point and direction), `along(svgSel, "#path", t, d, {repeat, ease, rotate})` moves an SVG element drawn around 0,0 along a path of the same `<svg>` (no `align`, which breaks in HyperFrames).
 - **3D scenes** (three.js 0.160, loaded only by scenes that use `T3.`): `const S = T3.stage("#canvas", w, h, fov)`, `T3.inked(geometry, color, outline)` = toon body + ink outline, `T3.toon(color)`, `T3.seeded(n)` for random, then `drive(dur, t => { …; S.render(); })` — every frame must be a pure function of `t`. Keep 3D to 1–3 scenes per episode (a hero object, a pull-back, a cutaway); it renders in software, ≈ +2 min per 3D scene.
-- **Cover image**: `python3 engine/cover/cover.py --title "<hook>" --hl "<2–3 words to highlight>" --tag "<TOPIC>" --out cover.png` (Satori + resvg; Max squeezed by SVGO). Export it as the thumbnail (`studio.py export --thumb`).
+- **Cover image** (every episode; use it as `--thumb` in S5 instead of a frame grab): `python3 engine/cover/cover.py --title "<hook>" --hl "<2–3 words to highlight>" --tag "<TOPIC>" --out cover.png` (Satori + resvg; Max squeezed by SVGO). Export it as the thumbnail (`studio.py export --thumb`).
 
 ## Visual technique bank
 
