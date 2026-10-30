@@ -1,0 +1,22 @@
+[
+ {"id":"hook", "en":["Step outside and feel the warm sunshine on your face.", "But how old is that light, really?"],
+  "vi":["Bước ra ngoài và cảm nhận nắng ấm trên mặt bạn.", "Nhưng ánh sáng ấy thật ra đã bao nhiêu tuổi?"]},
+ {"id":"guess", "en":["Take a guess.", "Brand new? A few minutes old? Or older than the pyramids?"],
+  "vi":["Thử đoán xem.", "Mới tinh? Vài phút tuổi? Hay còn già hơn cả kim tự tháp?"]},
+ {"id":"intro", "en":["I'm Max, and this is Max Wise.", "Let's chase a sunbeam."],
+  "vi":["Mình là Max, và đây là Max Wise.", "Cùng đuổi theo một tia nắng nhé."]},
+ {"id":"distance", "en":["The Sun is about ninety three million miles away from us."],
+  "vi":["Mặt Trời cách chúng ta khoảng 93 triệu dặm (khoảng 150 triệu km)."]},
+ {"id":"speed", "en":["Light is the fastest thing there is.", "It zooms about one hundred eighty six thousand miles every second.", "That's more than seven laps around Earth in one tick!"],
+  "vi":["Ánh sáng là thứ nhanh nhất.", "Nó lao đi khoảng 186.000 dặm mỗi giây (gần 300.000 km).", "Tức là hơn 7 vòng quanh Trái Đất chỉ trong một giây!"]},
+ {"id":"trip", "en":["Divide the distance by the speed, and you get about five hundred seconds.", "That's roughly eight minutes and twenty seconds."],
+  "vi":["Lấy quãng đường chia cho tốc độ, bạn được khoảng 500 giây.", "Tức là khoảng 8 phút 20 giây."]},
+ {"id":"past", "en":["So you never see the Sun as it is right now.", "You see it as it was eight minutes ago."],
+  "vi":["Vậy là bạn không bao giờ thấy Mặt Trời của lúc này.", "Bạn thấy nó của 8 phút trước."]},
+ {"id":"inside", "en":["But wait, the story starts deeper.", "That energy is made in the core, then bounced around like a pinball."],
+  "vi":["Nhưng khoan, câu chuyện còn bắt đầu sâu hơn.", "Năng lượng ấy được tạo ra ở lõi, rồi bị dội qua dội lại như bi trong máy pinball."]},
+ {"id":"ancient", "en":["NASA estimates that trip to the surface takes about forty thousand years.", "Back then, woolly mammoths still roamed the Earth!"],
+  "vi":["NASA ước tính chặng từ lõi ra bề mặt mất khoảng 40.000 năm.", "Hồi đó, voi ma mút lông xoăn vẫn còn đi lại trên Trái Đất!"]},
+ {"id":"outro", "en":["So that sunshine is eight minutes old, but its energy is ancient.", "Stay curious!"],
+  "vi":["Vậy là tia nắng ấy mới 8 phút tuổi, nhưng năng lượng của nó thì cổ xưa.", "Hãy luôn tò mò nhé!"]}
+]

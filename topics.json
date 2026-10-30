@@ -414,9 +414,9 @@
   "caveat_vi": "",
   "source_title": "Smithsonian Air and Space Museum",
   "source_url": "https://howthingsfly.si.edu/ask-an-explainer/how-long-does-it-take-light-sun-get-earth",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "demo3d-sunlight-age",
+  "done_date": "2026-10-30"
  },
  {
   "slug": "sky-blue-but-sunsets",

@@ -107,7 +107,31 @@ const draw = (sel, t, d, ease) => { const el=document.querySelector(sel); const 
 const count = (sel, a, b, t, d, fmt) => { const o={v:a}; const el=document.querySelector(sel); el.textContent=fmt(a); tl.to(o,{v:b,duration:d,ease:"power1.out",onUpdate:()=>{el.textContent=fmt(o.v);}},t); };
 const blink = (sel, t) => { tl.to(sel, {scaleY:1, duration:0.08, ease:"power2.in"}, t); tl.to(sel, {scaleY:0, duration:0.1, ease:"power2.out"}, t+0.1); };
 const fmtInt = v => Math.round(v).toLocaleString("en-US");
+// GSAP drawing plugins (free since 2025): hand-drawn lines that write themselves, shape morphs, motion along a path
+if (window.DrawSVGPlugin) gsap.registerPlugin(DrawSVGPlugin, MorphSVGPlugin, MotionPathPlugin);
+const ink = (sel, t, d, x) => tl.fromTo(sel, {drawSVG:"0%"}, Object.assign({drawSVG:"100%", duration:d||0.6, ease:"power1.inOut"}, x||{}), t);   // x.stagger for many strokes
+const unink = (sel, t, d) => tl.to(sel, {drawSVG:"100% 100%", duration:d||0.4, ease:"power1.in"}, t);
+const morph = (sel, shape, t, d, x) => tl.to(sel, Object.assign({morphSVG:shape, duration:d||0.6, ease:"power2.inOut"}, x||{}), t);
+// along: move an SVG element (drawn around 0,0 in the same <svg>) along a path of that <svg>; raw path coords, no layout needed
+const along = (sel, path, t, d, x) => tl.to(sel, {motionPath:{path, autoRotate:!!(x&&x.rotate)}, duration:d||1, ease:(x&&x.ease)||"power1.inOut", immediateRender:false, repeat:(x&&x.repeat)||0}, t);
 """
+HELP3D = """
+// 3D (three.js, toon look with ink outline). Build once, then drive(fn): fn(t) draws the frame for scene time t (pure function of t).
+const T3 = window.THREE ? {
+  stage(sel, w, h, fov) { const cv=document.querySelector(sel); const r=new THREE.WebGLRenderer({canvas:cv, antialias:true, alpha:true, preserveDrawingBuffer:true});
+    r.setPixelRatio(1); r.setSize(w, h, false); r.outputColorSpace = THREE.SRGBColorSpace;
+    const scene=new THREE.Scene(); const cam=new THREE.PerspectiveCamera(fov||35, w/h, 0.1, 2000);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.1)); const key=new THREE.DirectionalLight(0xffffff, 2.2); key.position.set(4,6,8); scene.add(key);
+    return {r, scene, cam, key, render(){ r.render(scene, cam); }}; },
+  toon(color, x) { const g=new Uint8Array([90,180,255]); const tex=new THREE.DataTexture(g, 3, 1, THREE.RedFormat); tex.needsUpdate=true;
+    tex.minFilter=tex.magFilter=THREE.NearestFilter; return new THREE.MeshToonMaterial(Object.assign({color, gradientMap:tex}, x||{})); },
+  inked(geo, color, w) { const g=new THREE.Group(); const m=new THREE.Mesh(geo, T3.toon(color)); g.add(m);
+    const o=new THREE.Mesh(geo, new THREE.MeshBasicMaterial({color:0x262A3B, side:THREE.BackSide})); o.scale.setScalar(1+(w||0.04)); g.add(o); g.userData.body=m; return g; },
+  seeded(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; },
+} : null;
+const drive = (dur, fn) => { const st={t:0}; tl.fromTo(st, {t:0}, {t:dur, duration:dur, ease:"none", onUpdate:()=>fn(st.t)}, 0); fn(0); };
+"""
+THREE_SRC = '<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>'
 def scene_file(sid, css, html, js, fade=True):
     d = SC[sid]["slot"]; fid = f"{sid}-boil"
     out = f'tl.to("#{sid}-wrap", {{opacity:0, y:-24, duration:0.22, ease:"power2.in"}}, {d-0.26:.3f});' if fade else ""
@@ -120,8 +144,10 @@ def scene_file(sid, css, html, js, fade=True):
 {html}
 </div>
 </div>
+{THREE_SRC if "T3." in js else ""}
 <script>
 {HELP_JS}
+{HELP3D if "T3." in js else ""}
 {boil_js(fid, d)}
 {js}
 {out}
@@ -271,6 +297,9 @@ INDEX = f"""<!doctype html>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width={W}, height={H}" />
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/DrawSVGPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/MorphSVGPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/MotionPathPlugin.min.js"></script>
 <style>
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 html, body {{ margin:0; width:{W}px; height:{H}px; overflow:hidden; background:{C['paper']}; }}

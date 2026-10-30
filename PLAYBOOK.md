@@ -70,6 +70,13 @@ S6. After Telegram delivery: `studio.py runlog --videos <n> [--redone <n>] --sen
 13. **If delivery is impossible** (no chat_id, Telegram error after 3 tries): commit the mp4s to `pending/<date>-epNN.mp4` and note it in the log, so the next run sends them.
 14. **If an episode fails** after one fix attempt, still ship the other one and explain the failure in a short Telegram text and the log. If both fail, send a short Vietnamese text saying what went wrong.
 
+## New kit (trial, Oct 30 — use only after Cuong approves the demo `episodes/demo3d-sunlight-age`)
+
+- **GSAP official skills** in `docs/gsap-skills/` (core, timeline, plugins, utils, performance; MIT). Read `gsap-plugins.md` + `gsap-timeline.md` before writing scenes that use the helpers below.
+- **Drawing helpers** (GSAP DrawSVG / MorphSVG / MotionPath, all free) are in every scene: `ink(sel, t, d, {stagger})` draws strokes on (one sub-path per `<path>` — split multi-`M` paths, or they draw dotted), `unink`, `morph(sel, "#target", t, d)` (give the target the same start point and direction), `along(svgSel, "#path", t, d, {repeat, ease, rotate})` moves an SVG element drawn around 0,0 along a path of the same `<svg>` (no `align`, which breaks in HyperFrames).
+- **3D scenes** (three.js 0.160, loaded only by scenes that use `T3.`): `const S = T3.stage("#canvas", w, h, fov)`, `T3.inked(geometry, color, outline)` = toon body + ink outline, `T3.toon(color)`, `T3.seeded(n)` for random, then `drive(dur, t => { …; S.render(); })` — every frame must be a pure function of `t`. Keep 3D to 1–3 scenes per episode (a hero object, a pull-back, a cutaway); it renders in software, ≈ +2 min per 3D scene.
+- **Cover image**: `python3 engine/cover/cover.py --title "<hook>" --hl "<2–3 words to highlight>" --tag "<TOPIC>" --out cover.png` (Satori + resvg; Max squeezed by SVGO). Export it as the thumbnail (`studio.py export --thumb`).
+
 ## Visual technique bank
 
 Distilled from studying ~100 explainer prompts people shared for code-rendered videos (rewritten in our own words, adapted to Max's doodle world). Pick per scene in the storyboard.

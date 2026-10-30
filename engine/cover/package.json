@@ -1,0 +1,2 @@
+{ "name": "maxwise-cover", "private": true, "type": "module",
+  "dependencies": { "satori": "0.12.2", "@resvg/resvg-js": "2.6.2", "svgo": "3.3.2" } }
