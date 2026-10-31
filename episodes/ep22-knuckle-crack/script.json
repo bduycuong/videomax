@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "en": ["Pull your finger, bend it, and pop!", "But what is actually making that cracking sound?"], "vi": ["Kéo ngón tay, gập lại, và rắc!", "Nhưng thật ra cái gì tạo ra tiếng rắc đó?"]},
+ {"id": "guess", "en": ["Take a guess.", "Bones rubbing together? A bubble bursting? Or a bubble being born?"], "vi": ["Thử đoán xem.", "Xương cọ vào nhau? Bong bóng vỡ? Hay một bong bóng vừa ra đời?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's look inside a knuckle."], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng nhìn vào bên trong khớp ngón tay nhé."]},
+ {"id": "joint", "en": ["Between two finger bones sits a tiny capsule.", "It is filled with slippery joint fluid."], "vi": ["Giữa hai đốt xương ngón tay có một bao khớp nhỏ.", "Bên trong chứa đầy dịch khớp trơn."]},
+ {"id": "pull", "en": ["When you pull the finger, the bones slide apart.", "The space grows, and the pressure in the fluid drops fast."], "vi": ["Khi bạn kéo ngón tay, hai đốt xương tách ra.", "Khoảng trống lớn lên, và áp suất trong dịch khớp tụt rất nhanh."]},
+ {"id": "cavity", "en": ["The fluid cannot fill the gap in time, so a gas pocket suddenly opens.", "It's like a suction cup popping off a window."], "vi": ["Dịch khớp không kịp lấp khoảng trống, nên một túi khí bỗng mở ra.", "Giống như giác hút bật khỏi mặt kính."]},
+ {"id": "mri", "en": ["In two thousand fifteen, scientists filmed a knuckle cracking in an MRI scanner.", "The gas pocket appeared in less than a third of a second."], "vi": ["Năm 2015, các nhà khoa học quay cảnh bẻ khớp ngón tay trong máy MRI.", "Túi khí xuất hiện trong chưa tới một phần ba giây."]},
+ {"id": "debate", "en": ["But a math model from two thousand eighteen says the sound comes from the bubble partly collapsing.", "So scientists still argue."], "vi": ["Nhưng một mô hình toán học năm 2018 cho rằng âm thanh đến từ việc bong bóng xẹp một phần.", "Vì vậy giới khoa học vẫn còn tranh luận."]},
+ {"id": "wait", "en": ["Either way, the gas can stay for up to twenty minutes.", "That's why the same knuckle won't crack again right away."], "vi": ["Dù thế nào, túi khí có thể tồn tại tới 20 phút.", "Đó là lý do khớp vừa bẻ không kêu lại ngay được."]},
+ {"id": "myth", "en": ["And arthritis? One doctor cracked only his left hand's knuckles for about sixty years.", "Neither hand got arthritis."], "vi": ["Còn viêm khớp thì sao? Một bác sĩ chỉ bẻ khớp tay trái, suốt khoảng 60 năm.", "Không tay nào bị viêm khớp cả."]},
+ {"id": "outro", "en": ["So that pop is a gas pocket in your joint fluid.", "Stay curious!"], "vi": ["Vậy tiếng rắc đó là một túi khí trong dịch khớp của bạn.", "Hãy luôn tò mò nhé!"]}
+]

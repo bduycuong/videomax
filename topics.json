@@ -539,9 +539,9 @@
   "caveat_vi": "Nguồn gốc chính xác của âm thanh vẫn tranh luận.",
   "source_title": "Science News – Why knuckles crack",
   "source_url": "https://www.sciencenews.org/article/researchers-pull-fingers-solve-why-knuckles-crack",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep22-knuckle-crack",
+  "done_date": "2026-11-01"
  },
  {
   "slug": "fingers-wrinkle-water",
@@ -561,9 +561,9 @@
   "caveat_vi": "Giả thuyết 'bám tốt hơn' chưa được lặp lại thành công.",
   "source_title": "Newcastle University",
   "source_url": "https://www.ncl.ac.uk/press/articles/archive/2013/01/getagrip-whywegetwrinklyfingersandtoes.html",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep23-wrinkly-fingers",
+  "done_date": "2026-11-01"
  },
  {
   "slug": "ice-cream-give-brain",
