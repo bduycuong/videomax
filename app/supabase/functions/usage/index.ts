@@ -61,7 +61,7 @@ Deno.serve(async (req) => {
     // stats
     const [{ data: st, error: se }, { data: keys }] = await Promise.all([user.rpc("storage_stats"), db.rpc("ext_keys")]);
     if (se) throw se;
-    const out: Record<string, unknown> = { storage: st, limits: { storage: 1024 ** 3, db: 500 * 1024 ** 2, plan: "free" } };
+    const out: Record<string, unknown> = { storage: st, limits: { storage: 100 * 1024 ** 3, db: 8 * 1024 ** 3, plan: "pro" } };
     const ds = keys?.deepseek_key ? fetch("https://api.deepseek.com/user/balance", { headers: { Authorization: `Bearer ${keys.deepseek_key}` } }).then((r) => r.json()).catch(() => null) : null;
     const th = (p: string) => keys?.tikhub_token ? fetch("https://api.tikhub.io" + p, { headers: { Authorization: `Bearer ${keys.tikhub_token}` } }).then((r) => r.json()).catch(() => null) : null;
     const vn = (d: number) => new Date(Date.now() + 7 * 36e5 - d * 864e5).toISOString().slice(0, 10);

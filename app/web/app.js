@@ -181,8 +181,8 @@ async function viewHome() {
   ]);
   sb.rpc("storage_stats").then(({ data: st }) => {
     const box = document.getElementById("stor"); if (!box || !st) return;
-    const used = Object.values(st.buckets || {}).reduce((a, b) => a + Number(b.bytes || 0), 0), lim = 1024 ** 3, pc = Math.round((used / lim) * 100);
-    box.innerHTML = `${ic("disk", 18)}<div style="flex:1;min-width:0"><div class="row between" style="font-size:13px;font-weight:700"><span>Dung lượng</span><span style="color:${pc >= 90 ? "#B91C1C" : "#52525B"}">${gb(used)} / 1 GB</span></div><div class="ubar" style="margin-top:6px"><i style="width:${Math.min(100, pc)}%;background:${pc >= 90 ? "#EF4444" : pc >= 70 ? "#F59E0B" : "#22C55E"}"></i></div></div>${ic("chev", 16, 2.2)}`;
+    const used = Object.values(st.buckets || {}).reduce((a, b) => a + Number(b.bytes || 0), 0), lim = PLAN.storage, pc = Math.round((used / lim) * 100);
+    box.innerHTML = `${ic("disk", 18)}<div style="flex:1;min-width:0"><div class="row between" style="font-size:13px;font-weight:700"><span>Dung lượng</span><span style="color:${pc >= 90 ? "#B91C1C" : "#52525B"}">${gb(used)} / ${PLAN.label}</span></div><div class="ubar" style="margin-top:6px"><i style="width:${Math.min(100, pc)}%;background:${pc >= 90 ? "#EF4444" : pc >= 70 ? "#F59E0B" : "#22C55E"}"></i></div></div>${ic("chev", 16, 2.2)}`;
   });
   const exs = ex.data || []; const hots = hot.data || [];
   const th = await signed("exports", exs.map((e) => e.thumb_path));
@@ -762,6 +762,7 @@ function dlClick(ev) {
 }
 
 /* ---------- usage: storage, API cost, cleanup ---------- */
+const PLAN = { storage: 100 * 1024 ** 3, db: 8 * 1024 ** 3, label: "100 GB", name: "Pro" }; // Supabase Pro (since 2026-11-01)
 const gb = (b) => { b = Number(b || 0); return b >= 1024 ** 3 ? (b / 1024 ** 3).toFixed(2).replace(".", ",") + " GB" : Math.round(b / 1048576) + " MB"; };
 const usd = (x) => x == null ? "—" : "$" + Number(x).toFixed(2);
 const bar = (used, lim) => { const pc = Math.round((used / lim) * 100); return `<div class="ubar"><i style="width:${Math.min(100, pc)}%;background:${pc >= 90 ? "#EF4444" : pc >= 70 ? "#F59E0B" : "#22C55E"}"></i></div>`; };
@@ -779,12 +780,12 @@ async function viewUsage() {
   const cbtn = (kind, days, f, label) => `<button class="btn btn-o xs" data-clean="${kind}" data-days="${days || ""}" ${!f?.files ? "disabled" : ""}>${label}<span class="vm" style="margin:0 0 0 4px">${f?.files ? gb(f.bytes) : "0"}</span></button>`;
   m.innerHTML = `
   <section class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px">
-    <div class="row between"><b style="font-size:15px">Supabase Storage</b><span class="tag ${over ? "bad" : "ok"}">${gb(used)} / 1 GB${over ? " · vượt" : ""}</span></div>
+    <div class="row between"><b style="font-size:15px">Supabase Storage</b><span class="tag ${over ? "bad" : "ok"}">${gb(used)} / ${PLAN.label} · ${PLAN.name}${over ? " · vượt" : ""}</span></div>
     ${bar(used, L.storage)}
     <div class="li" style="padding:6px 0"><span>Video cào (xem Reels)<small>${fe.files} file · ${num(st.feed_items?.new || 0)} video chờ duyệt</small></span><b>${gb(fe.bytes)}</b></div>
     <div class="li" style="padding:6px 0"><span>Video đã xuất (Kho)<small>${ex.files} file · ${st.exports} video</small></span><b>${gb(ex.bytes)}</b></div>
-    <div class="li" style="padding:6px 0;border:0"><span>Database<small>giới hạn 500 MB</small></span><b>${gb(st.db_bytes)}</b></div>
-    ${over ? `<p class="vm" style="margin:0;color:#B91C1C">Gói Free chỉ có 1 GB – dọn bớt bên dưới (video cào đang được nén tự động mỗi giờ).</p>` : ""}
+    <div class="li" style="padding:6px 0;border:0"><span>Database<small>giới hạn 8 GB</small></span><b>${gb(st.db_bytes)}</b></div>
+    ${over ? `<p class="vm" style="margin:0;color:#B91C1C">Đã vượt dung lượng gói Pro – dọn bớt bên dưới.</p>` : ""}
   </section>
   <section class="card" style="padding:14px;display:flex;flex-direction:column;gap:8px">
     <b style="font-size:15px">Chi phí API</b>
