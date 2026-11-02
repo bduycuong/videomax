@@ -582,9 +582,9 @@
   "caveat_vi": "Nghiên cứu nhỏ, mới là báo cáo hội nghị.",
   "source_title": "American Physiological Society (2012)",
   "source_url": "https://therapytoronto.ca/news/2012/04/study-suggests-brain-freeze-caused-by-changes-in-brains-blood-flow/",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep24-brain-freeze",
+  "done_date": "2026-11-02"
  },
  {
   "slug": "we-hiccup",
@@ -624,9 +624,9 @@
   "caveat_vi": "Ước tính mô hình; các phương pháp khác cho 100–140 tỷ.",
   "source_title": "Population Reference Bureau",
   "source_url": "https://www.prb.org/articles/how-many-people-have-ever-lived-on-earth/",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep25-ever-lived",
+  "done_date": "2026-11-02"
  },
  {
   "slug": "more-stars-universe-than",

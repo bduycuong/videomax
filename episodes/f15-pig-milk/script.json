@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "src": [[129.6, 130.6], [160.0, 162.0], [44.2, 47.6], [88.9, 92.1], [65.6, 67.3]], "en": ["Cows, goats, sheep, camels, even reindeer and yaks.", "People milk all kinds of animals.", "So why does almost nobody drink pig milk?", "Is it gross, is it dangerous, or something else? Take a guess."], "vi": ["", "", "", ""]},
+ {"id": "intro", "src": [[113.2, 114.8], [74.8, 77.2]], "en": ["I'm Max, and this is Max Wise.", "Let's crack the pig milk mystery."], "vi": ["", ""]},
+ {"id": "safe", "src": [[38.9, 40.5], [40.5, 41.7], [41.8, 44.1], [37.2, 38.9]], "en": ["Some people whisper that pig milk will make you sick.", "But there's no good evidence for that.", "It's simply milk, made to grow piglets."], "vi": ["", "", ""]},
+ {"id": "taste", "src": [[53.2, 55.5], [55.6, 58.0], [60.7, 63.1]], "en": ["And taste isn't the deal breaker either.", "The real problem is getting the milk out of the pig."], "vi": ["", ""]},
+ {"id": "history", "src": [[98.0, 102.1], [104.5, 107.1]], "en": ["Thousands of years ago, early farmers kept cows, sheep, goats and pigs side by side.", "But only some of them became dairy animals."], "vi": ["", ""]},
+ {"id": "udder", "src": [[67.4, 70.0], [70.1, 74.7], [129.6, 130.6]], "en": ["Start with the body.", "A cow keeps her milk in one big udder with four large teats.", "A farmer can milk her for several minutes at a time."], "vi": ["", "", ""]},
+ {"id": "sow", "src": [[123.1, 125.8], [162.1, 163.6], [88.9, 92.1]], "en": ["A mother pig, called a sow, is built differently.", "She has two long rows of small teats, and no big udder full of milk waiting inside."], "vi": ["", ""]},
+ {"id": "seconds", "src": [[130.7, 132.9], [132.9, 135.6], [113.2, 114.8], [142.0, 144.1]], "en": ["When she finally lets her milk down, it flows for only about twenty seconds.", "Then it stops.", "Her piglets have to wait about fifty minutes for the next round."], "vi": ["", "", ""]},
+ {"id": "amount", "src": [[149.0, 152.7], [107.2, 110.3], [155.7, 160.0]], "en": ["And there isn't much of it.", "At her peak, a sow makes about twenty two pounds of milk a day, and her whole litter needs it.", "An average American dairy cow makes about sixty six pounds, every single day."], "vi": ["", "", ""]},
+ {"id": "angry", "src": [[163.7, 165.6], [165.6, 169.3]], "en": ["Plus, a nursing sow guards her babies.", "Crouching under a big, grumpy mother pig is a great way to get bitten."], "vi": ["", ""]},
+ {"id": "outro", "src": [[95.4, 98.0], [104.5, 107.1], [44.2, 47.6], [37.2, 38.9]], "en": ["So pig milk isn't poison.", "Tiny teats, twenty second bursts and very little milk made pigs a terrible dairy animal.", "Cows simply got the job.", "Stay curious!"], "vi": ["", "", "", ""]}
+]

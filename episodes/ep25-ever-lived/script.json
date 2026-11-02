@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "en": ["How many humans have ever lived on Earth?", "Not just today. Everyone, ever."], "vi": ["Đã có bao nhiêu người từng sống trên Trái Đất?", "Không chỉ hôm nay. Tất cả mọi người, từ trước tới nay."]},
+ {"id": "guess", "en": ["Take a guess.", "Ten billion? Fifty billion? Or more than a hundred billion?"], "vi": ["Thử đoán xem.", "Mười tỷ? Năm mươi tỷ? Hay hơn một trăm tỷ?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's count everyone who ever showed up."], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng đếm tất cả những ai từng có mặt nhé."]},
+ {"id": "start", "en": ["Researchers start the count about one hundred ninety thousand years ago, when modern humans appeared."], "vi": ["Các nhà nghiên cứu bắt đầu đếm từ khoảng 190.000 năm trước, khi người hiện đại xuất hiện."]},
+ {"id": "tiny", "en": ["Ten thousand years ago, around when farming began, there were still only about five million people."], "vi": ["Mười nghìn năm trước, khoảng lúc nghề nông bắt đầu, thế giới vẫn chỉ có khoảng 5 triệu người."]},
+ {"id": "births", "en": ["But babies kept coming, generation after generation, for thousands of generations."], "vi": ["Nhưng em bé cứ tiếp tục ra đời, thế hệ này nối thế hệ khác, qua hàng nghìn thế hệ."]},
+ {"id": "total", "en": ["Add up every birth, and you get about one hundred seventeen billion people."], "vi": ["Cộng tất cả các ca sinh lại, bạn được khoảng 117 tỷ người."]},
+ {"id": "range", "en": ["Other methods give somewhat different totals, so treat it as a rough estimate."], "vi": ["Những cách tính khác cho ra tổng hơi khác, nên hãy coi đây là con số ước lượng."]},
+ {"id": "share", "en": ["Today, about eight billion of us are alive.", "That is only about seven percent of everyone ever born."], "vi": ["Hôm nay, khoảng 8 tỷ người chúng ta đang sống.", "Đó chỉ là khoảng 7% trong số tất cả những người từng được sinh ra."]},
+ {"id": "before", "en": ["So for every person alive right now, about fourteen people came before."], "vi": ["Vậy cứ mỗi người đang sống lúc này, đã có khoảng 14 người đi trước."]},
+ {"id": "outro", "en": ["More than a hundred billion humans have walked this planet, and you are one of them.", "Stay curious!"], "vi": ["Hơn một trăm tỷ người đã từng bước đi trên hành tinh này, và bạn là một trong số đó.", "Hãy luôn tò mò nhé!"]}
+]

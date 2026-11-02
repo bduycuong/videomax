@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "en": ["Why does ice cream give you brain freeze?", "That sharp sting right behind your forehead."], "vi": ["Tại sao ăn kem lại bị buốt óc?", "Cái nhói buốt ngay sau trán ấy."]},
+ {"id": "guess", "en": ["Take a guess.", "Is your brain freezing? Is it your nerves? Or is it your blood?"], "vi": ["Thử đoán xem.", "Não bạn bị đông cứng? Do dây thần kinh? Hay do máu?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's follow that cold bite."], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng theo dấu miếng kem lạnh nhé."]},
+ {"id": "palate", "en": ["First, something icy hits the roof of your mouth, called the palate."], "vi": ["Đầu tiên, thứ gì đó lạnh buốt chạm vào vòm miệng của bạn."]},
+ {"id": "nerves", "en": ["Just above it sits a bundle of nerves that is very sensitive to cold."], "vi": ["Ngay phía trên là một bó dây thần kinh rất nhạy với lạnh."]},
+ {"id": "artery", "en": ["In a small study, scientists saw a blood vessel at the front of the brain suddenly widen."], "vi": ["Trong một nghiên cứu nhỏ, các nhà khoa học thấy một mạch máu ở phía trước não đột ngột giãn ra."]},
+ {"id": "pressure", "en": ["More warm blood rushes in, and the pressure goes up."], "vi": ["Thêm máu ấm tràn vào, và áp lực tăng lên."]},
+ {"id": "forehead", "en": ["Your mouth nerves share wiring with your forehead, so your brain feels the pain up there.", "That is called referred pain."], "vi": ["Dây thần kinh ở miệng nối chung đường với vùng trán, nên não cảm thấy cơn đau ở trên đó.", "Đó gọi là đau quy chiếu."]},
+ {"id": "fade", "en": ["Then the vessel narrows again, and the pain fades in seconds."], "vi": ["Rồi mạch máu co lại, và cơn đau tan đi trong vài giây."]},
+ {"id": "tip", "en": ["Quick tip: press your tongue to the roof of your mouth to warm it up."], "vi": ["Mẹo nhanh: áp lưỡi lên vòm miệng để làm ấm nó."]},
+ {"id": "outro", "en": ["So your brain is not freezing. It is rushing to warm you up.", "Stay curious!"], "vi": ["Vậy não bạn không hề đông cứng. Nó đang vội làm ấm bạn.", "Hãy luôn tò mò nhé!"]}
+]
