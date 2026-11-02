@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "en": ["How far will you walk in your whole life?", "Every step, from your first to your last."], "vi": ["Cả đời bạn sẽ đi bộ được bao xa?", "Mọi bước chân, từ bước đầu tiên tới bước cuối cùng."]},
+ {"id": "guess", "en": ["Take a guess.", "Across your country? Across an ocean? Or all the way around the Earth?"], "vi": ["Thử đoán xem.", "Băng qua đất nước của bạn? Băng qua một đại dương? Hay đi trọn một vòng quanh Trái Đất?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's follow your footsteps."], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng lần theo dấu chân của bạn nhé."]},
+ {"id": "steps", "en": ["Scientists at Stanford studied phone data from more than seven hundred thousand people.", "On average, they walked about five thousand steps a day."], "vi": ["Các nhà khoa học ở Stanford đã nghiên cứu dữ liệu điện thoại của hơn 700.000 người.", "Trung bình, họ đi khoảng 5.000 bước mỗi ngày."]},
+ {"id": "stride", "en": ["One step is roughly seventy centimetres long.", "So five thousand steps is about three and a half kilometres."], "vi": ["Một bước chân dài khoảng 70 xăng-ti-mét.", "Vậy 5.000 bước là khoảng 3,5 ki-lô-mét."]},
+ {"id": "year", "en": ["Do that every day for a year, and you cover about one thousand three hundred kilometres."], "vi": ["Làm vậy mỗi ngày trong một năm, bạn đi được khoảng 1.300 ki-lô-mét."]},
+ {"id": "life", "en": ["Keep it up for about eighty years, and you reach roughly one hundred thousand kilometres."], "vi": ["Cứ thế trong khoảng 80 năm, bạn đạt khoảng 100.000 ki-lô-mét."]},
+ {"id": "earth", "en": ["Earth is about forty thousand kilometres around the middle.", "So your feet could carry you around it about two and a half times!"], "vi": ["Trái Đất có chu vi khoảng 40.000 ki-lô-mét ở đường xích đạo.", "Vậy đôi chân bạn có thể đưa bạn đi vòng quanh nó khoảng hai lần rưỡi!"]},
+ {"id": "moon", "en": ["That is also about a quarter of the way to the Moon."], "vi": ["Đó cũng là khoảng một phần tư quãng đường tới Mặt Trăng."]},
+ {"id": "range", "en": ["Phones miss steps when they sit on a desk, so your real total is probably even higher."], "vi": ["Điện thoại bỏ sót bước chân khi nằm trên bàn, nên tổng thật của bạn có lẽ còn cao hơn."]},
+ {"id": "outro", "en": ["About one hundred thousand kilometres, one small step at a time.", "Stay curious!"], "vi": ["Khoảng 100.000 ki-lô-mét, từng bước nhỏ một.", "Hãy luôn tò mò nhé!"]}
+]

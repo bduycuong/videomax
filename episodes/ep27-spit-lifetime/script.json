@@ -1,0 +1,14 @@
+[
+ {"id": "hook", "en": ["How much spit will you make in your whole life?", "Every single drop, added up."], "vi": ["Cả đời bạn sẽ tiết ra bao nhiêu nước bọt?", "Cộng hết từng giọt một."]},
+ {"id": "guess", "en": ["Take a guess.", "One bathtub? A hundred bathtubs? Or two swimming pools?"], "vi": ["Thử đoán xem.", "Một bồn tắm? Một trăm bồn tắm? Hay hai bể bơi?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's measure every drop."], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng đong từng giọt nhé."]},
+ {"id": "glands", "en": ["Three pairs of big glands around your jaw keep your mouth wet all day."], "vi": ["Ba cặp tuyến lớn quanh hàm giữ cho miệng bạn luôn ướt cả ngày."]},
+ {"id": "day", "en": ["Each day they make somewhere between half a litre and one and a half litres.", "Call it about one litre a day."], "vi": ["Mỗi ngày chúng tiết ra khoảng từ nửa lít đến một lít rưỡi.", "Cứ tính khoảng một lít mỗi ngày."]},
+ {"id": "year", "en": ["In one year, that is about three hundred sixty five litres."], "vi": ["Trong một năm, con số đó là khoảng 365 lít."]},
+ {"id": "tubs", "en": ["An average bathtub holds about one hundred fifty litres.", "So you fill more than two tubs every year."], "vi": ["Một bồn tắm trung bình chứa khoảng 150 lít.", "Vậy mỗi năm bạn làm đầy hơn hai bồn tắm."]},
+ {"id": "life", "en": ["Over about eighty years, it adds up to roughly thirty thousand litres."], "vi": ["Qua khoảng 80 năm, tổng cộng lại là chừng 30.000 lít."]},
+ {"id": "pile", "en": ["That is around two hundred bathtubs of spit!", "Even at the low end, it is still about a hundred tubs."], "vi": ["Tức là khoảng 200 bồn tắm nước bọt!", "Ngay cả ở mức thấp, vẫn là khoảng 100 bồn tắm."]},
+ {"id": "myth", "en": ["Some people say two swimming pools.", "But one Olympic pool holds two and a half million litres. Not even close."], "vi": ["Có người nói là hai bể bơi.", "Nhưng một bể bơi Olympic chứa tới 2,5 triệu lít. Còn xa lắm."]},
+ {"id": "bonus", "en": ["And all that spit is busy.", "It starts breaking down starch in your food, and helps protect your teeth."], "vi": ["Và chỗ nước bọt đó rất bận rộn.", "Nó bắt đầu phân giải tinh bột trong thức ăn, và giúp bảo vệ răng của bạn."]},
+ {"id": "outro", "en": ["So, about two hundred bathtubs in one lifetime.", "Stay curious!"], "vi": ["Vậy là khoảng 200 bồn tắm trong một đời người.", "Hãy luôn tò mò nhé!"]}
+]

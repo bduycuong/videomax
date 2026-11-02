@@ -1,0 +1,12 @@
+[
+ {"id": "hook", "src": [[0.0, 2.5], [2.6, 6.2]], "en": ["Is this fluffy thing even a real bird?", "It can't fly, its feathers feel like hair, and it smells with the tip of its beak.", "Bird, or mammal in disguise? Take a guess."], "vi": ["", "", ""]},
+ {"id": "intro", "src": [[17.0, 18.9], [20.8, 22.9]], "en": ["I'm Max, and this is Max Wise.", "Let's meet the kiwi from New Zealand."], "vi": ["", ""]},
+ {"id": "egg", "src": [[6.4, 9.2], [9.4, 12.3], [13.1, 16.9]], "en": ["A kiwi is about the size of a chicken.", "But its egg is enormous.", "On average, one egg weighs about fifteen percent of the mother's body, and sometimes up to twenty percent.", "Near the end, it leaves her very little room for food."], "vi": ["", "", "", ""]},
+ {"id": "feathers", "src": [[19.0, 20.7], [23.0, 26.9]], "en": ["Now give it a gentle pat.", "Most birds have stiff feathers that zip together for flying.", "A kiwi's feathers are loose and soft, so they feel more like shaggy hair."], "vi": ["", "", ""]},
+ {"id": "bones", "src": [[29.0, 30.9], [31.0, 32.9]], "en": ["Inside, it's built heavy too.", "Flying birds have light, hollow bones, but a kiwi's bones are filled with marrow, like a mammal's."], "vi": ["", ""]},
+ {"id": "wings", "src": [[33.0, 34.9], [38.3, 40.4]], "en": ["And the wings?", "They're tiny, only about one inch long, and hidden under the feathers."], "vi": ["", ""]},
+ {"id": "legs", "src": [[41.0, 43.9], [44.0, 45.9], [46.0, 47.9]], "en": ["Instead, the kiwi puts its power into its legs.", "Those muscular legs make up about a third of its body weight.", "It runs fast through the forest and kicks hard in a fight."], "vi": ["", "", ""]},
+ {"id": "nose", "src": [[48.0, 50.9], [52.9, 54.4]], "en": ["Here's the strangest part.", "The kiwi is the only bird with nostrils at the very tip of its beak.", "It pokes the beak into the soil and sniffs out worms and grubs."], "vi": ["", "", ""]},
+ {"id": "night", "src": [[54.6, 57.3], [57.5, 58.9], [59.0, 60.9]], "en": ["It even has whiskers around its face, a bit like a cat.", "And it comes out mostly at night, then sleeps in a burrow all day."], "vi": ["", ""]},
+ {"id": "outro", "src": [[0.0, 2.5], [17.0, 18.9], [20.8, 22.9], [2.6, 6.2]], "en": ["So yes, the kiwi really is a bird.", "It just broke almost every bird rule.", "No flying, hairy feathers, heavy bones, and a nose on the tip of its beak.", "Stay curious!"], "vi": ["", "", "", ""]}
+]

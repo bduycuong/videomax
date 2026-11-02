@@ -455,9 +455,9 @@
   "caveat_vi": "Điện thoại bỏ sót bước. Con số lan truyền 'đi 4–5 vòng Trái Đất' không rõ nguồn.",
   "source_title": "Live Science – Worldwide daily step counts",
   "source_url": "https://www.livescience.com/59782-worldwide-step-count.html",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep26-far-walk",
+  "done_date": "2026-11-03"
  },
  {
   "slug": "spit-make-lifetime",
@@ -476,9 +476,9 @@
   "caveat_vi": "Tránh câu lan truyền 'đầy hai bể bơi': bể Olympic chứa ~2,5 triệu lít.",
   "source_title": "Cambridge – MRCS Revision Guide, Applied Surgical Physiology",
   "source_url": "https://www.cambridge.org/core/books/mrcs-revision-guide-trunk-and-thorax/applied-surgical-physiology/CE822DF8AFFECA6FE7B137974C6F42F6",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep27-spit-lifetime",
+  "done_date": "2026-11-03"
  },
  {
   "slug": "words-speak-lifetime",
