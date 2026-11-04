@@ -1,0 +1,136 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "Hic! You know that sound.",
+   "So why do we hiccup?"
+  ],
+  "vi": [
+   "Hức! Bạn biết âm thanh này mà.",
+   "Vậy vì sao ta lại bị nấc cụt?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "Swallowed air? A twitchy muscle? Or your baby days?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Do nuốt phải không khí? Một cơ bị co giật? Hay từ hồi bạn còn bé?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's slow one down."
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Cùng quay chậm một cú nấc nhé."
+  ]
+ },
+ {
+  "id": "muscle",
+  "en": [
+   "Under your lungs sits a dome shaped muscle, the diaphragm.",
+   "Each breath, it flattens and pulls air in."
+  ],
+  "vi": [
+   "Bên dưới phổi là một cơ hình vòm: cơ hoành.",
+   "Mỗi lần thở, nó dẹt xuống và kéo không khí vào."
+  ]
+ },
+ {
+  "id": "spasm",
+  "en": [
+   "In a hiccup, it suddenly jerks down on its own.",
+   "Air rushes in."
+  ],
+  "vi": [
+   "Khi nấc, nó bất ngờ tự giật mạnh xuống.",
+   "Không khí ùa vào."
+  ]
+ },
+ {
+  "id": "snap",
+  "en": [
+   "A split second later, your vocal cords slam shut.",
+   "Hic!"
+  ],
+  "vi": [
+   "Chỉ một tích tắc sau, dây thanh của bạn đóng sập lại.",
+   "Hức!"
+  ]
+ },
+ {
+  "id": "womb",
+  "en": [
+   "Weirder still, babies hiccup in the womb, from about nine weeks."
+  ],
+  "vi": [
+   "Kỳ lạ hơn nữa, em bé đã nấc trong bụng mẹ, từ khoảng tuần thứ 9."
+  ]
+ },
+ {
+  "id": "preemie",
+  "en": [
+   "Premature babies hiccup about one percent of the time.",
+   "About fifteen minutes a day."
+  ],
+  "vi": [
+   "Trẻ sinh non dành khoảng 1% thời gian để nấc.",
+   "Khoảng 15 phút mỗi ngày."
+  ]
+ },
+ {
+  "id": "brain",
+  "en": [
+   "In a twenty nineteen study, each newborn hiccup set off three brainwaves.",
+   "Maybe hiccups teach babies to feel their breathing muscles."
+  ],
+  "vi": [
+   "Trong một nghiên cứu năm 2019, mỗi cú nấc của trẻ sơ sinh tạo ra ba sóng não.",
+   "Có thể cú nấc dạy em bé cảm nhận cơ hô hấp của mình."
+  ]
+ },
+ {
+  "id": "gills",
+  "en": [
+   "Another idea: a leftover from ancestors with gills, like tadpoles.",
+   "Nobody knows for sure."
+  ],
+  "vi": [
+   "Một giả thuyết khác: dấu vết từ tổ tiên có mang, giống nòng nọc.",
+   "Chưa ai biết chắc."
+  ]
+ },
+ {
+  "id": "tips",
+  "en": [
+   "Fizzy drinks or eating fast can set them off.",
+   "Most stop in minutes.",
+   "Home remedies? The evidence is thin.",
+   "If they last over two days, see a doctor."
+  ],
+  "vi": [
+   "Nước có ga hay ăn nhanh có thể gây nấc.",
+   "Đa số tự hết sau vài phút.",
+   "Mẹo dân gian ư? Bằng chứng còn rất ít.",
+   "Nếu kéo dài quá hai ngày, hãy đi khám bác sĩ."
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "A muscle jerk, a slam, and maybe a baby brain workout.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Một cú giật cơ, một cú đóng sập, và có thể là bài tập cho não em bé.",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]

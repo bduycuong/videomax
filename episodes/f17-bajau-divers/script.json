@@ -1,0 +1,12 @@
+[
+ {"id": "hook", "src": [[1.0, 5.6], [5.8, 7.5]], "en": ["Can a whole group of people evolve to be better at diving?", "Most of us struggle to stay underwater for even one minute.", "So, yes or no? Take a guess."], "vi": ["", "", ""]},
+ {"id": "intro", "src": [[7.6, 11.4]], "en": ["I'm Max, and this is Max Wise.", "Meet the Bajau, the sea nomads of Southeast Asia."], "vi": ["", ""]},
+ {"id": "village", "src": [[12.5, 17.8], [17.9, 24.4]], "en": ["They live across the islands of Indonesia, Malaysia and the Philippines.", "Many homes stand on stilts right above the water.", "There are no streets here. People get around by boat."], "vi": ["", "", ""]},
+ {"id": "kids", "src": [[24.5, 28.7]], "en": ["Kids learn to swim when they are very young, because the sea is where the food is."], "vi": [""]},
+ {"id": "dive", "src": [[28.8, 33.7], [34.0, 37.7]], "en": ["Some Bajau divers spend up to sixty percent of their workday underwater.", "With only a simple wooden mask, some go deeper than seventy meters."], "vi": ["", ""]},
+ {"id": "hunt", "src": [[40.6, 43.0]], "en": ["They spear fish and crabs, all on a single breath."], "vi": [""]},
+ {"id": "history", "src": [[43.1, 48.4]], "en": ["And they have lived this way for more than a thousand years."], "vi": [""]},
+ {"id": "spleen", "src": [[48.8, 52.4]], "en": ["So scientists checked one organ with ultrasound: the spleen.", "On average, Bajau spleens were about fifty percent bigger than those of their neighbors on land."], "vi": ["", ""]},
+ {"id": "tank", "src": [[52.5, 55.2], [55.3, 57.8]], "en": ["Why does that matter?", "Your spleen stores red blood cells full of oxygen.", "When you dive, it squeezes them into your blood, like a spare air tank.", "And the team found gene changes that seem to make it bigger."], "vi": ["", "", "", ""]},
+ {"id": "outro", "src": [[5.8, 7.5], [40.6, 43.0], [43.1, 46.0]], "en": ["So yes.", "After a thousand years at sea, the Bajau body seems to have adapted for diving.", "Stay curious!"], "vi": ["", "", ""]}
+]

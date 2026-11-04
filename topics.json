@@ -518,9 +518,9 @@
   "caveat_vi": "Bỏ qua con số lan truyền '2.880 kg', sai vì giả định thay toàn bộ da mỗi tháng.",
   "source_title": "BBC Science Focus – How much skin do we shed?",
   "source_url": "https://www.sciencefocus.com/the-human-body/how-much-skin-does-a-human-shed-in-their-life",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep28-dead-skin",
+  "done_date": "2026-11-04"
  },
  {
   "slug": "whats-actually-making-pop",
@@ -604,9 +604,9 @@
   "caveat_vi": "Cơ chế rõ, mục đích còn tranh cãi.",
   "source_title": "UCL News – Newborn hiccups",
   "source_url": "https://www.ucl.ac.uk/news/2019/nov/newborn-baby-hiccups-could-be-key-brain-development",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep29-hiccups",
+  "done_date": "2026-11-04"
  },
  {
   "slug": "humans-have-ever-lived",

@@ -1,0 +1,14 @@
+[
+ {"id": "hook", "en": ["Right now, tiny flakes of you are falling off.", "How much dead skin will you shed in your whole life?"], "vi": ["Ngay lúc này, những mảnh da li ti của bạn đang rơi xuống.", "Cả đời bạn sẽ rụng bao nhiêu da chết?"]},
+ {"id": "guess", "en": ["Take a guess.", "One kilo? Forty kilos? Or three thousand kilos?"], "vi": ["Thử đoán xem.", "Một ký? Bốn mươi ký? Hay ba nghìn ký?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's weigh every flake."], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng cân từng mảnh da nhé."]},
+ {"id": "layers", "en": ["Your outer skin is a wall of flat, dead cells.", "New ones push up, and old ones flake away.", "You get a fresh layer about every month."], "vi": ["Lớp da ngoài cùng là một bức tường tế bào chết dẹt.", "Tế bào mới đẩy lên, tế bào cũ bong ra.", "Khoảng mỗi tháng bạn lại có một lớp da mới."]},
+ {"id": "hour", "en": ["Each hour, you lose between three and nine hundredths of a gram.", "Call it about six hundredths."], "vi": ["Mỗi giờ, bạn mất từ 0,03 đến 0,09 gam da.", "Cứ tính khoảng 0,06 gam."]},
+ {"id": "day", "en": ["Twenty four hours later, that is about one and a half grams.", "Barely a pinch."], "vi": ["Sau 24 giờ, con số là khoảng 1,5 gam.", "Chỉ bằng một nhúm nhỏ."]},
+ {"id": "year", "en": ["But in one year, it piles up to about half a kilo.", "Roughly a loaf of bread."], "vi": ["Nhưng trong một năm, nó dồn lại khoảng nửa ký.", "Cỡ một ổ bánh mì."]},
+ {"id": "life", "en": ["Now stretch that over eighty years.", "The scale lands on about forty kilos!"], "vi": ["Giờ kéo dài ra suốt 80 năm.", "Cân chỉ vào khoảng 40 ký!"]},
+ {"id": "compare", "en": ["That is about half of what a grown adult weighs."], "vi": ["Tức là khoảng một nửa cân nặng của một người trưởng thành."]},
+ {"id": "myth", "en": ["Some websites say almost three thousand kilos.", "That assumes your whole skin falls off every month.", "Only the thin outer layer does."], "vi": ["Có trang mạng nói gần ba nghìn ký.", "Phép tính đó giả định toàn bộ làn da rụng mỗi tháng.", "Thật ra chỉ lớp ngoài mỏng thôi."]},
+ {"id": "dust", "en": ["And house dust is not mostly skin.", "One study found about forty percent comes from outdoors."], "vi": ["Và bụi trong nhà không phải chủ yếu là da.", "Một nghiên cứu thấy khoảng 40% bụi đến từ ngoài trời."]},
+ {"id": "outro", "en": ["So, about forty kilos of you, one flake at a time.", "Stay curious!"], "vi": ["Vậy là khoảng 40 ký của bạn, từng mảnh một.", "Hãy luôn tò mò nhé!"]}
+]
