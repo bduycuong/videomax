@@ -1,0 +1,5 @@
+{
+ "source": "/home/claude/videomax/work/footage/a8b145bc.mp4",
+ "crop": [1600, 850, 160, 20],
+ "note": "1920x1080 Douyin source (洛克科学探索); burned-in Chinese subtitles at y~900-970 and the bulb logo top-left (x<130, y<120) are cropped out; src ranges skip the shots with Chinese labels (18-20 s eye label, 39 s road sign, 135-139 s chalkboard)"
+}

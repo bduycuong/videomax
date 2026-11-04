@@ -1,0 +1,12 @@
+[
+ {"id":"hook", "src":[0.0, 9.0], "en":["If you're nearsighted and you just stop wearing your glasses, will your eyes slowly train themselves back to sharp?", "Take a guess."], "vi":["",""]},
+ {"id":"intro", "src":[9.0, 16.5], "en":["I'm Max, and this is Max Wise.", "Let's look inside the eye."], "vi":["",""]},
+ {"id":"camera", "src":[20.5, 29.5], "en":["Think of your eye as a little camera.", "The cornea and the lens focus the light, and the retina at the back catches the picture."], "vi":["",""]},
+ {"id":"longeye", "src":[29.5, 38.0], "en":["In the most common kind of nearsightedness, the eyeball has grown a bit too long.", "Light from far away comes into focus before it reaches the retina, so faces and road signs turn blurry."], "vi":["",""]},
+ {"id":"myth", "src":[42.0, 57.0], "en":["Taking your glasses off can't shrink that eyeball back.", "If it feels like you're getting used to the blur, your brain is just getting better at guessing fuzzy shapes."], "vi":["",""]},
+ {"id":"lens", "src":[66.0, 81.0], "en":["Glasses for nearsightedness spread the light out a little, so the focus lands right on the retina.", "Eye doctors say wearing them does not make your eyes worse."], "vi":["",""]},
+ {"id":"adult", "src":[97.0, 108.0], "en":["For adults, the main cost of skipping them is simple.", "You just don't see well, and that really matters when you drive."], "vi":["",""]},
+ {"id":"kids", "src":[118.0, 129.0], "en":["For kids, going without glasses, or wearing weaker lenses on purpose, is not a safe trick.", "Studies found it doesn't slow nearsightedness down, and it might even speed it up."], "vi":["",""]},
+ {"id":"lazy", "src":[139.5, 152.0], "en":["And if one eye stays blurry while a child's vision is still developing, the brain can start ignoring that eye.", "That's called lazy eye, and it's best caught early."], "vi":["",""]},
+ {"id":"outro", "src":[155.0, 200.0], "en":["So no, skipping glasses won't train your eyes back.", "Get regular eye checks, and wear the right glasses whenever you need clear vision.", "Stay curious!"], "vi":["","",""]}
+]

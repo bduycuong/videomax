@@ -1,0 +1,131 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "Cosmic showdown!",
+   "Are there more stars in the universe, or grains of sand on Earth?"
+  ],
+  "vi": [
+   "Trận đấu vũ trụ!",
+   "Sao trong vũ trụ nhiều hơn, hay hạt cát trên Trái Đất nhiều hơn?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "Stars? Sand? Or a tie?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Sao? Cát? Hay hòa?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's count both sides."
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Cùng đếm cả hai phe nhé."
+  ]
+ },
+ {
+  "id": "galaxy",
+  "en": [
+   "Round one, stars.",
+   "Our galaxy has about a hundred billion stars, and there are about a hundred billion galaxies."
+  ],
+  "vi": [
+   "Hiệp một, các ngôi sao.",
+   "Thiên hà của chúng ta có khoảng 100 tỷ ngôi sao, và có khoảng 100 tỷ thiên hà."
+  ]
+ },
+ {
+  "id": "stars",
+  "en": [
+   "Multiply them, and you get about ten sextillion stars.",
+   "A one with twenty two zeros!"
+  ],
+  "vi": [
+   "Nhân lên, ta được khoảng 10 nghìn tỷ tỷ ngôi sao.",
+   "Số 1 với 22 chữ số 0 phía sau!"
+  ]
+ },
+ {
+  "id": "grain",
+  "en": [
+   "Round two, sand.",
+   "About ten thousand tiny grains make a line one metre long.",
+   "So a cubic metre holds about a trillion grains."
+  ],
+  "vi": [
+   "Hiệp hai, cát.",
+   "Khoảng 10.000 hạt cát nhỏ xếp thành một hàng dài một mét.",
+   "Vậy một mét khối chứa khoảng 1 nghìn tỷ hạt."
+  ]
+ },
+ {
+  "id": "beach",
+  "en": [
+   "One estimate puts every beach on Earth at five sextillion grains.",
+   "Stars win, two to one."
+  ],
+  "vi": [
+   "Một ước tính cho rằng mọi bãi biển trên Trái Đất có 5 nghìn tỷ tỷ hạt cát.",
+   "Sao thắng, hai chọi một."
+  ]
+ },
+ {
+  "id": "desert",
+  "en": [
+   "But what about deserts?",
+   "The Sahara, just one centimetre deep, holds about a hundred sextillion grains.",
+   "And deserts are much deeper."
+  ],
+  "vi": [
+   "Nhưng còn sa mạc thì sao?",
+   "Sahara, chỉ dày một centimet, đã chứa khoảng 100 nghìn tỷ tỷ hạt.",
+   "Mà sa mạc còn sâu hơn nhiều."
+  ]
+ },
+ {
+  "id": "recount",
+  "en": [
+   "Astronomers fire back.",
+   "Faint little galaxies could push the stars to a hundred sextillion too."
+  ],
+  "vi": [
+   "Các nhà thiên văn phản công.",
+   "Những thiên hà nhỏ mờ có thể đẩy số sao lên 100 nghìn tỷ tỷ."
+  ]
+ },
+ {
+  "id": "verdict",
+  "en": [
+   "It depends what you count.",
+   "Only beaches? Stars win.",
+   "Every desert too? Sand might win."
+  ],
+  "vi": [
+   "Tùy vào cách bạn đếm.",
+   "Chỉ bãi biển? Sao thắng.",
+   "Tính cả sa mạc? Cát có thể thắng."
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "Still a close fight!",
+   "Stars or sand? Vote in the comments!",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Vẫn còn sát nút!",
+   "Sao hay cát? Bình chọn ở phần bình luận nhé!",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]

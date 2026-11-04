@@ -645,8 +645,31 @@
   "caveat_vi": "Trình bày như một cuộc tranh luận, không phải sự thật chắc chắn.",
   "source_title": "Scientific American – Do stars outnumber the sands?",
   "source_url": "https://www.scientificamerican.com/article/do-stars-outnumber-the-sands-of-earths-beaches",
-  "status": "todo",
-  "episode": null,
-  "done_date": null
+  "status": "done",
+  "episode": "ep30-stars-sand",
+  "done_date": "2026-11-05"
+ },
+ {
+  "slug": "hairs-lost-in-lifetime",
+  "group": "Cả đời",
+  "fit": 5,
+  "confidence": "vừa",
+  "question_en": "How many hairs will you lose in your lifetime?",
+  "question_vi": "Cả đời bạn sẽ rụng bao nhiêu sợi tóc?",
+  "answer_vi": "Khoảng 2 triệu sợi (1,5–3 triệu) trong 80 năm — cả mái tóc được thay mới khoảng 20 lần.",
+  "numbers_vi": [
+   "Rụng bình thường: 50–100 sợi/ngày",
+   "Da đầu có khoảng 100.000 sợi tóc",
+   "Mỗi sợi mọc 2–7 năm rồi nghỉ, rụng và chân tóc mọc sợi mới",
+   "Giả định 75 sợi/ngày × 80 năm"
+  ],
+  "calc": "75 × 365 = 27.375 sợi/năm; × 80 năm ≈ 2.190.000 (50/ngày → 1,46 triệu; 100/ngày → 2,92 triệu); 2.190.000 / 100.000 ≈ 22 → khoảng 20 lần",
+  "max_idea_vi": "Chiếc lược đầy tóc rụng, 100 chấm = 100.000 sợi, lưới 365 ô, túi tóc phình thành 2 triệu, 20 cái đầu nhỏ — 'mái tóc tái chế'.",
+  "caveat_vi": "Ước tính trung bình; mỗi người khác nhau. Nếu đột nhiên rụng nhiều hơn hẳn bình thường, nên gặp bác sĩ da liễu.",
+  "source_title": "American Academy of Dermatology – Do you have hair loss or hair shedding?",
+  "source_url": "https://aad.org/hair-shedding",
+  "status": "done",
+  "episode": "ep31-lifetime-hair",
+  "done_date": "2026-11-05"
  }
 ]
