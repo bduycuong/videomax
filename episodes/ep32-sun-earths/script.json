@@ -1,0 +1,22 @@
+[
+ {"id":"hook", "en":["Here's a giant question.", "How many Earths could fit inside the Sun?"],
+  "vi":["Một câu hỏi khổng lồ nhé.", "Bao nhiêu Trái Đất có thể nhét vừa trong Mặt Trời?"]},
+ {"id":"guess", "en":["Take a guess.", "A hundred? A thousand? Or a million?"],
+  "vi":["Thử đoán xem.", "Một trăm? Một nghìn? Hay một triệu?"]},
+ {"id":"intro", "en":["I'm Max, and this is Max Wise.", "Let's pack the Sun!"],
+  "vi":["Mình là Max, và đây là Max Wise.", "Cùng nhồi Trái Đất vào Mặt Trời nào!"]},
+ {"id":"across", "en":["First, line up Earths straight across the middle of the Sun.", "You need about one hundred nine of them."],
+  "vi":["Đầu tiên, xếp các Trái Đất thành một hàng ngang qua giữa Mặt Trời.", "Bạn cần khoảng 109 quả."]},
+ {"id":"slice", "en":["But the Sun is not a line.", "A flat slice holds one hundred nine times one hundred nine.", "That's almost twelve thousand Earths."],
+  "vi":["Nhưng Mặt Trời đâu phải một đường thẳng.", "Một lát cắt phẳng chứa 109 nhân 109.", "Tức là gần 12.000 Trái Đất."]},
+ {"id":"volume", "en":["Now stack those slices from top to bottom.", "One hundred nine, times one hundred nine, times one hundred nine.", "That's about one point three million Earths!"],
+  "vi":["Giờ chồng các lát cắt từ trên xuống dưới.", "109 nhân 109 nhân 109.", "Khoảng 1,3 triệu Trái Đất!"]},
+ {"id":"squish", "en":["Small catch.", "That's if you squish them like clay, with no gaps.", "Round balls leave empty spaces, so fewer would fit."],
+  "vi":["Có một điều nhỏ.", "Đó là khi bạn nặn chúng như đất sét, không chừa khe hở.", "Những quả cầu tròn sẽ để lại chỗ trống, nên vừa ít hơn."]},
+ {"id":"door", "en":["Picture it this way.", "If the Sun were as tall as a front door, Earth would be about the size of a nickel."],
+  "vi":["Hãy hình dung thế này.", "Nếu Mặt Trời cao bằng một cánh cửa, Trái Đất chỉ to cỡ một đồng xu."]},
+ {"id":"mass", "en":["Here's the twist.", "The Sun is made of hot gas, so it weighs about three hundred thirty thousand Earths.", "Still, that's almost all the mass in our solar system."],
+  "vi":["Bất ngờ đây.", "Mặt Trời làm từ khí nóng, nên nó chỉ nặng khoảng 330.000 Trái Đất.", "Dù vậy, đó gần như là toàn bộ khối lượng của Hệ Mặt Trời."]},
+ {"id":"outro", "en":["So, about one point three million Earths could fit inside the Sun.", "Stay curious!"],
+  "vi":["Vậy là khoảng 1,3 triệu Trái Đất có thể nằm gọn trong Mặt Trời.", "Hãy luôn tò mò nhé!"]}
+]

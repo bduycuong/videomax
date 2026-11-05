@@ -1,0 +1,127 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "Quick question.",
+   "Why do your ears pop on a plane?"
+  ],
+  "vi": [
+   "Hỏi nhanh nhé.",
+   "Vì sao tai bạn bị ù rồi kêu bụp khi đi máy bay?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "The engines? The cold? Or the air itself?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Do động cơ? Do lạnh? Hay do chính không khí?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's peek inside your ear."
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Cùng nhìn vào bên trong tai nhé."
+  ]
+ },
+ {
+  "id": "pocket",
+  "en": [
+   "Behind your eardrum sits a tiny pocket of air, called the middle ear."
+  ],
+  "vi": [
+   "Phía sau màng nhĩ có một túi khí nhỏ xíu, gọi là tai giữa."
+  ]
+ },
+ {
+  "id": "climb",
+  "en": [
+   "Air pressure drops as you climb.",
+   "Cabins are kept like a mountain about eight thousand feet high.",
+   "That's about a quarter less air pushing on you."
+  ],
+  "vi": [
+   "Áp suất không khí giảm khi bạn lên cao.",
+   "Khoang máy bay được giữ như trên một ngọn núi cao khoảng 8.000 feet.",
+   "Tức là không khí đè lên bạn ít hơn khoảng một phần tư."
+  ]
+ },
+ {
+  "id": "bulge",
+  "en": [
+   "So the air trapped in your ear pushes outward, and your eardrum bulges like a balloon.",
+   "That's the full, stuffy feeling."
+  ],
+  "vi": [
+   "Nên khí bị kẹt trong tai đẩy ra ngoài, và màng nhĩ phồng lên như quả bóng.",
+   "Đó là cảm giác đầy, ù tai."
+  ]
+ },
+ {
+  "id": "tube",
+  "en": [
+   "Your ear has an escape hatch, a skinny tube about three and a half centimeters long, linking it to the back of your throat."
+  ],
+  "vi": [
+   "Tai bạn có một lối thoát, một ống nhỏ dài khoảng 3,5 cm, nối tai giữa với phía sau cổ họng."
+  ]
+ },
+ {
+  "id": "pop",
+  "en": [
+   "It usually stays shut.",
+   "But when you swallow or yawn, it opens.",
+   "Air rushes through, the pressure evens out, and pop!"
+  ],
+  "vi": [
+   "Bình thường ống này đóng kín.",
+   "Nhưng khi bạn nuốt hoặc ngáp, nó mở ra.",
+   "Không khí ùa qua, áp suất cân bằng, và bụp!"
+  ]
+ },
+ {
+  "id": "down",
+  "en": [
+   "Landing is often worse.",
+   "Rising pressure pushes your eardrum in and squeezes the tube shut."
+  ],
+  "vi": [
+   "Lúc hạ cánh thường khó chịu hơn.",
+   "Áp suất tăng lên đẩy màng nhĩ lõm vào và ép ống đóng chặt."
+  ]
+ },
+ {
+  "id": "tips",
+  "en": [
+   "So chew gum, swallow, or yawn.",
+   "Pinch your nose and blow gently.",
+   "Feed babies during landing.",
+   "If the pain sticks around, see a doctor."
+  ],
+  "vi": [
+   "Vậy hãy nhai kẹo cao su, nuốt, hoặc ngáp.",
+   "Bịt mũi rồi thổi thật nhẹ.",
+   "Cho em bé bú khi máy bay hạ cánh.",
+   "Nếu vẫn đau kéo dài, hãy đi khám bác sĩ."
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "So that pop is a tiny door in your ear, balancing the air.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Vậy tiếng bụp đó là một cánh cửa nhỏ trong tai, giúp cân bằng không khí.",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]

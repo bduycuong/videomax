@@ -671,5 +671,45 @@
   "status": "done",
   "episode": "ep31-lifetime-hair",
   "done_date": "2026-11-05"
+ },
+ {
+  "slug": "earths-in-sun",
+  "group": "Vũ trụ",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "How many Earths could fit inside the Sun?",
+  "question_vi": "Mặt Trời chứa được bao nhiêu Trái Đất?",
+  "answer_vi": "Khoảng 1,3 triệu Trái Đất (theo thể tích, nếu 'nặn' khít không khe hở).",
+  "numbers_vi": [
+   "Bán kính Mặt Trời 695.700 km / Trái Đất 6.371 km ≈ 109",
+   "Thể tích ≈ 109³ ≈ 1,3 triệu",
+   "Khối lượng ≈ 330.000 Trái Đất"
+  ],
+  "calc": "695700/6371 = 109,2; 109,2³ ≈ 1.302.000 (NSSDC 1.304.000)",
+  "source_title": "NASA Science – Sun: Facts; NSSDC Sun Fact Sheet",
+  "source_url": "https://science.nasa.gov/sun/facts/",
+  "status": "done",
+  "episode": "ep32-sun-earths",
+  "done_date": "2026-11-06"
+ },
+ {
+  "slug": "ears-pop-plane",
+  "group": "Cơ thể kỳ lạ",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "Why do your ears pop on a plane?",
+  "question_vi": "Vì sao tai bị ù/bụp khi đi máy bay?",
+  "answer_vi": "Áp suất cabin thay đổi; vòi nhĩ (~3,5 cm) mở khi nuốt/ngáp để cân bằng áp suất tai giữa → tiếng 'bụp'.",
+  "numbers_vi": [
+   "Cabin giữ ở độ cao tương đương ≤ 8.000 ft",
+   "Áp suất ≈ 0,74 mực nước biển (ít hơn ~1/4)",
+   "Vòi nhĩ người lớn ~36 mm"
+  ],
+  "calc": "Công thức khí áp: 8000 ft = 2438 m → p/p0 ≈ 0,743",
+  "source_title": "Mayo Clinic – Airplane ear",
+  "source_url": "https://www.mayoclinic.org/diseases-conditions/airplane-ear/symptoms-causes/syc-20351701",
+  "status": "done",
+  "episode": "ep33-ears-pop",
+  "done_date": "2026-11-06"
  }
 ]
