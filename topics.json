@@ -711,5 +711,44 @@
   "status": "done",
   "episode": "ep33-ears-pop",
   "done_date": "2026-11-06"
+ },
+ {
+  "slug": "ocean-salty",
+  "group": "Trái Đất",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "Why is the ocean salty, but rivers aren't?",
+  "question_vi": "Vì sao nước biển mặn mà nước sông lại không?",
+  "answer_vi": "Mưa hơi axit bào mòn đá, sông mang ion khoáng ra biển; nước bốc hơi để lại muối; tích tụ hàng trăm triệu năm (thêm miệng phun thủy nhiệt).",
+  "numbers_vi": [
+   "Độ mặn ~35‰ (3,5% khối lượng)",
+   "Natri + clorua > 90% ion hòa tan",
+   "Rải hết muối lên đất liền → lớp dày > 500 ft (~150 m), cao như tòa nhà 40 tầng"
+  ],
+  "calc": "35 g/kg ≈ 2 thìa canh muối (~17,5 g/thìa) mỗi lít",
+  "source_title": "USGS – Why is the ocean salty?",
+  "source_url": "https://www.usgs.gov/faqs/why-ocean-salty",
+  "status": "done",
+  "episode": "ep34-ocean-salty",
+  "done_date": "2026-11-07"
+ },
+ {
+  "slug": "recorded-voice",
+  "group": "Cơ thể kỳ lạ",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "Why does your voice sound so weird on a recording?",
+  "question_vi": "Vì sao giọng mình nghe lạ hoắc khi thu âm?",
+  "answer_vi": "Bạn nghe giọng mình qua 2 đường: không khí + xương sọ (dẫn truyền qua xương tăng âm trầm). Máy thu chỉ bắt đường không khí → giọng mỏng, cao hơn — đó mới là giọng người khác nghe.",
+  "numbers_vi": [
+   "2 đường dẫn âm: không khí và xương",
+   "Bịt tai → chỉ còn đường xương"
+  ],
+  "calc": "",
+  "source_title": "Scientific American – Why does my voice sound so different when it is recorded and played back?",
+  "source_url": "https://scientificamerican.com/article/why-does-my-voice-sound-different",
+  "status": "done",
+  "episode": "ep35-recorded-voice",
+  "done_date": "2026-11-07"
  }
 ]

@@ -1,0 +1,123 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "A salty puzzle.",
+   "Why is the ocean salty, but rivers aren't?"
+  ],
+  "vi": [
+   "Một câu đố mặn mòi.",
+   "Vì sao nước biển mặn, còn nước sông thì không?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "Salty fish? Salt mines under the sea? Or rocks on land?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Do cá mặn? Do mỏ muối dưới đáy biển? Hay do đá trên đất liền?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's follow one raindrop."
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Cùng đi theo một giọt mưa nhé."
+  ]
+ },
+ {
+  "id": "rain",
+  "en": [
+   "Rain grabs a little carbon dioxide from the air, which makes it slightly acidic."
+  ],
+  "vi": [
+   "Nước mưa hấp thụ một chút khí cacbonic trong không khí, nên hơi có tính axit."
+  ]
+ },
+ {
+  "id": "rock",
+  "en": [
+   "That weak acid slowly nibbles at rocks, and tiny bits of minerals dissolve."
+  ],
+  "vi": [
+   "Axit yếu đó chậm rãi gặm mòn đá, và những mẩu khoáng chất li ti tan vào nước."
+  ]
+ },
+ {
+  "id": "river",
+  "en": [
+   "The minerals wash into streams, then rivers.",
+   "Rivers carry salt too, but just a pinch, too little to taste, and they keep flowing."
+  ],
+  "vi": [
+   "Khoáng chất trôi vào suối, rồi vào sông.",
+   "Sông cũng mang theo muối, nhưng chỉ một nhúm, quá ít để nếm ra, và sông cứ thế chảy đi."
+  ]
+ },
+ {
+  "id": "ocean",
+  "en": [
+   "But the ocean is a dead end.",
+   "The sun lifts water away as vapor, but the salt stays behind.",
+   "For hundreds of millions of years, it piles up."
+  ],
+  "vi": [
+   "Nhưng đại dương là điểm cuối.",
+   "Mặt trời làm nước bốc hơi bay đi, còn muối thì ở lại.",
+   "Suốt hàng trăm triệu năm, muối cứ thế tích tụ."
+  ]
+ },
+ {
+  "id": "vents",
+  "en": [
+   "Bonus!",
+   "Hot vents on the sea floor add even more minerals."
+  ],
+  "vi": [
+   "Thêm một điều nữa!",
+   "Các miệng phun nước nóng dưới đáy biển còn bổ sung thêm khoáng chất."
+  ]
+ },
+ {
+  "id": "spoon",
+  "en": [
+   "One liter of sea water holds about thirty five grams of salt.",
+   "That's about two tablespoons!",
+   "Mostly sodium and chloride, like table salt."
+  ],
+  "vi": [
+   "Một lít nước biển chứa khoảng 35 gam muối.",
+   "Tức là khoảng hai thìa canh!",
+   "Chủ yếu là natri và clorua, giống muối ăn."
+  ]
+ },
+ {
+  "id": "layer",
+  "en": [
+   "Spread all that salt over the land, and it's more than five hundred feet thick.",
+   "As tall as a forty story building!"
+  ],
+  "vi": [
+   "Rải hết chỗ muối đó lên đất liền, lớp muối sẽ dày hơn 500 feet (khoảng 150 mét).",
+   "Cao bằng một tòa nhà 40 tầng!"
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "So rivers deliver the salt, and the ocean keeps it.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Vậy là sông chỉ chở muối đi, còn đại dương giữ muối lại.",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]
