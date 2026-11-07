@@ -750,5 +750,46 @@
   "status": "done",
   "episode": "ep35-recorded-voice",
   "done_date": "2026-11-07"
+ },
+ {
+  "slug": "moon-drift",
+  "group": "Vũ trụ",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "Is the Moon running away from Earth?",
+  "question_vi": "Mặt Trăng có đang bỏ chạy khỏi Trái Đất không?",
+  "answer_vi": "Có, nhưng rất chậm: gương phản xạ Apollo + laser cho thấy Mặt Trăng lùi xa khoảng 3,8 cm mỗi năm. Thủy triều tạo chỗ phồng đại dương bị Trái Đất quay kéo đi trước Mặt Trăng, kéo nó sang quỹ đạo lớn hơn; Trái Đất quay chậm dần nên ngày dài thêm chút xíu. Nó sẽ không thoát đi.",
+  "numbers_vi": [
+   "≈ 3,8 cm/năm (1,5 inch)",
+   "Khoảng cách trung bình ≈ 384.400 km",
+   "4 bộ gương phản xạ (Apollo 11, 2 chuyến Apollo sau, Lunokhod 2)",
+   "Khoảng 1 tỷ năm nữa Mặt Trời làm bốc hơi đại dương"
+  ],
+  "calc": "3,8 cm × 80 năm = 304 cm ≈ 3 m; 3 m / 384.400 km ≈ 8 phần tỷ",
+  "source_title": "NASA Goddard – Measuring the Moon's Distance; NASA JPL – Apollo 11 experiment continues to return valuable data",
+  "source_url": "https://eclipse.gsfc.nasa.gov/help/ApolloLaser.html",
+  "status": "done",
+  "episode": "ep36-moon-drift",
+  "done_date": "2026-11-08"
+ },
+ {
+  "slug": "nail-lifetime",
+  "group": "Cơ thể kỳ lạ",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "How long would your fingernails grow if you never cut them?",
+  "question_vi": "Nếu không bao giờ cắt, móng tay bạn sẽ dài đến đâu?",
+  "answer_vi": "Móng tay mọc ~3,5 mm/tháng (~0,1 mm/ngày, ~4 cm/năm). Không cắt suốt 80 năm → mỗi móng ~3,3 m, cao hơn trần nhà; 10 móng ~33 m ≈ tòa nhà 10 tầng. Móng út mọc chậm nhất; móng chân chỉ nhanh khoảng một nửa. Ngoài đời móng dài sẽ gãy và xoăn lại.",
+  "numbers_vi": [
+   "Móng tay ~3,47 mm/tháng, móng chân ~1,62 mm/tháng",
+   "~4 cm/năm; 80 năm ≈ 3,3 m mỗi móng",
+   "10 móng ≈ 33 m"
+  ],
+  "calc": "3.47*12=41.6 mm/yr; *80=3331 mm≈3.3 m; *10=33.3 m; 1.62/3.47=0.47",
+  "source_title": "Yaemsiri et al. 2010 – Growth rate of human fingernails and toenails in healthy American young adults (J Eur Acad Dermatol Venereol)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/19744178/",
+  "status": "done",
+  "episode": "ep37-nail-lifetime",
+  "done_date": "2026-11-08"
  }
 ]

@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "en": ["Here's a strange one.", "Is the Moon slowly running away from Earth?"], "vi": ["Một câu hỏi lạ nhé.", "Có phải Mặt Trăng đang từ từ bỏ chạy khỏi Trái Đất?"]},
+ {"id": "guess", "en": ["Take a guess.", "Is it staying put? Coming closer? Or drifting away?"], "vi": ["Thử đoán xem.", "Nó đứng yên? Lại gần hơn? Hay đang trôi xa dần?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's measure it with a laser!"], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng đo bằng tia laser nhé!"]},
+ {"id": "mirror", "en": ["Apollo astronauts left special mirrors on the Moon.", "Scientists bounce lasers off them and time the trip back."], "vi": ["Các phi hành gia Apollo đã để lại những tấm gương đặc biệt trên Mặt Trăng.", "Các nhà khoa học bắn tia laser vào đó và đo thời gian ánh sáng quay về."]},
+ {"id": "drift", "en": ["The answer?", "The Moon drifts about three point eight centimeters farther away every year."], "vi": ["Đáp án là?", "Mỗi năm Mặt Trăng trôi xa thêm khoảng 3,8 xăng-ti-mét."]},
+ {"id": "tides", "en": ["Why? The Moon's gravity pulls Earth's oceans into a bulge.", "But Earth spins fast and drags that bulge a bit ahead of the Moon."], "vi": ["Vì sao? Lực hấp dẫn của Mặt Trăng kéo nước đại dương phồng lên.", "Nhưng Trái Đất quay nhanh và kéo chỗ phồng đó đi trước Mặt Trăng một chút."]},
+ {"id": "tug", "en": ["That bulge tugs the Moon forward, and nudges it into a slightly bigger orbit."], "vi": ["Chỗ phồng ấy kéo Mặt Trăng về phía trước, đẩy nó sang một quỹ đạo lớn hơn một chút."]},
+ {"id": "brake", "en": ["Meanwhile, Earth's spin slowly brakes, so our days get a tiny bit longer."], "vi": ["Trong khi đó, Trái Đất quay chậm dần, nên ngày dài thêm một chút xíu."]},
+ {"id": "life", "en": ["In an eighty year lifetime, the Moon moves away about three meters.", "Out of about three hundred eighty four thousand kilometers!"], "vi": ["Trong một đời người 80 năm, Mặt Trăng chỉ lùi xa khoảng 3 mét.", "Trên tổng khoảng cách chừng 384.000 ki-lô-mét!"]},
+ {"id": "escape", "en": ["So will it escape?", "Nope. It's far too slow, and in about a billion years, the Sun will boil away the oceans that drive it."], "vi": ["Vậy nó có thoát đi mất không?", "Không đâu. Nó trôi quá chậm, và khoảng một tỷ năm nữa, Mặt Trời sẽ làm bốc hơi hết đại dương, thứ đang đẩy nó đi."]},
+ {"id": "outro", "en": ["So yes, the Moon is drifting, but it's not leaving us.", "Stay curious!"], "vi": ["Vậy đúng là Mặt Trăng đang trôi xa, nhưng nó không bỏ chúng ta đâu.", "Hãy luôn tò mò nhé!"]}
+]
