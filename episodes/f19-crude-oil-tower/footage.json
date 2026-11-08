@@ -1,0 +1,5 @@
+{
+ "source": "/home/claude/videomax/work/footage/f68dee63-a6ba-47ba-9dac-3945bc5e0940.mp4",
+ "crop": [1354, 870, 283, 0],
+ "note": "1920x1080 Douyin source (今日原理); burned-in Chinese subtitles at y~890-975 are cropped out (keep y 0-870, centred x 283-1637). The channel name is painted on the 3D still body (0.5-3.5 s, 32-38 s) and in-scene Chinese/number labels appear at 44-51, 66-74, 79-88, 93-97, 123-128, 133.5-136, 186-194, 207-223 s, so those ranges are never used."
+}

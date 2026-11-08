@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "en": ["Right now, storms are flashing all over our planet.", "How many times does lightning flash on Earth every second?"], "vi": ["Ngay lúc này, những cơn dông đang lóe sáng khắp hành tinh.", "Mỗi giây trên Trái Đất có bao nhiêu tia sét?"]},
+ {"id": "guess", "en": ["Take a guess.", "Four? Forty? Or a hundred thousand?"], "vi": ["Thử đoán xem.", "Bốn? Bốn mươi? Hay một trăm nghìn?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's count from space!"], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng đếm từ ngoài không gian nhé!"]},
+ {"id": "sat", "en": ["NASA sent up a satellite with a special lightning camera.", "Year after year, it counted every flash it could see."], "vi": ["NASA đã phóng một vệ tinh mang máy quay sét đặc biệt.", "Năm này qua năm khác, nó đếm mọi tia chớp nó nhìn thấy."]},
+ {"id": "answer", "en": ["The answer?", "About forty four flashes every single second, give or take five."], "vi": ["Đáp án là?", "Khoảng 44 tia sét mỗi giây, chênh lệch cộng trừ 5."]},
+ {"id": "scale", "en": ["That's two thousand six hundred forty flashes every minute.", "And almost one point four billion every year!"], "vi": ["Tức là 2.640 tia sét mỗi phút.", "Và gần 1,4 tỷ tia mỗi năm!"]},
+ {"id": "myth", "en": ["Old textbooks said one hundred per second.", "But that number was just a rough guess from nineteen twenty five."], "vi": ["Sách giáo khoa cũ ghi 100 tia mỗi giây.", "Nhưng con số đó chỉ là ước đoán sơ sài từ năm 1925."]},
+ {"id": "land", "en": ["Most lightning strikes over land.", "For every flash over the ocean, land gets about ten."], "vi": ["Phần lớn sét đánh trên đất liền.", "Cứ mỗi tia sét trên biển, đất liền có khoảng mười tia."]},
+ {"id": "storms", "en": ["Why so many?", "At any moment, up to two thousand thunderstorms are rumbling around the globe."], "vi": ["Sao lại nhiều thế?", "Vào bất kỳ lúc nào, có tới 2.000 cơn dông đang ầm ầm quanh địa cầu."]},
+ {"id": "heat", "en": ["And each bolt heats the air to about fifty thousand degrees Fahrenheit.", "That's about five times hotter than the surface of the Sun!"], "vi": ["Và mỗi tia sét làm không khí nóng tới khoảng 50.000 độ F.", "Nóng gấp khoảng năm lần bề mặt Mặt Trời!"]},
+ {"id": "outro", "en": ["So, about forty four flashes, every second, all day long.", "Stay curious!"], "vi": ["Vậy là khoảng 44 tia sét, mỗi giây, suốt cả ngày.", "Hãy luôn tò mò nhé!"]}
+]

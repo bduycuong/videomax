@@ -1,0 +1,233 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   38.0,
+   44.0
+  ],
+  "en": [
+   "How can one tall tower split a barrel of black crude oil into gasoline, diesel and even road tar?",
+   "Take a guess."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   64.0,
+   66.0
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's climb inside the tower."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "oldway",
+  "src": [
+   [
+    4.0,
+    6.0
+   ],
+   [
+    8.0,
+    26.5
+   ]
+  ],
+  "en": [
+   "Early on, oil was simply boiled in a big pot.",
+   "The vapor was cooled in a coiled pipe and dripped out as liquid."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "slow",
+  "src": [
+   27.0,
+   31.5
+  ],
+  "en": [
+   "Then the leftovers were drained and the pot refilled. Slow and messy."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "mix",
+  "src": [
+   52.0,
+   64.0
+  ],
+  "en": [
+   "Here's the secret.",
+   "Crude oil is a mix of many molecules. Some boil easily, others only when really hot."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "heat",
+  "src": [
+   224.5,
+   228.0
+  ],
+  "en": [
+   "So the crude is cleaned, then pumped through a furnace and heated to hundreds of degrees."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "feed",
+  "src": [
+   88.0,
+   91.8
+  ],
+  "en": [
+   "Part of it turns into vapor.",
+   "Inside the tower, the vapor rises while the liquid falls."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "trays",
+  "src": [
+   97.0,
+   108.0
+  ],
+  "en": [
+   "The tower is stacked with trays, covered in little metal bubble caps."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "bubble",
+  "src": [
+   108.0,
+   122.0
+  ],
+  "en": [
+   "Rising vapor is forced under each cap and has to bubble through the liquid on the tray."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "sort",
+  "src": [
+   [
+    128.0,
+    132.8
+   ],
+   [
+    142.0,
+    149.0
+   ]
+  ],
+  "en": [
+   "The bottom is hot and the top is cooler.",
+   "On every tray, heavier molecules cool and stay behind, while lighter ones keep climbing."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "draw",
+  "src": [
+   153.0,
+   162.0
+  ],
+  "en": [
+   "So each height collects a different product.",
+   "Gasoline at the top, kerosene and diesel in the middle, heavy oils near the bottom."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "reflux",
+  "src": [
+   162.0,
+   172.0
+  ],
+  "en": [
+   "At the top, the vapor is cooled.",
+   "Some of that liquid is sent back down to wash the rising vapor, so the split gets cleaner."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "bottom",
+  "src": [
+   [
+    203.5,
+    206.5
+   ],
+   [
+    227.8,
+    231.5
+   ]
+  ],
+  "en": [
+   "The heaviest leftovers go to a second tower at low pressure, and the last sticky bits become road asphalt."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "barrel",
+  "src": [
+   136.5,
+   142.0
+  ],
+  "en": [
+   "After all the refining, a forty two gallon barrel gives about nineteen to twenty gallons of gasoline in US refineries."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   194.0,
+   202.0
+  ],
+  "en": [
+   "So one tall tower sorts crude oil by boiling point, floor by floor.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ }
+]

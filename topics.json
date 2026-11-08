@@ -791,5 +791,52 @@
   "status": "done",
   "episode": "ep37-nail-lifetime",
   "done_date": "2026-11-08"
+ },
+ {
+  "slug": "cells-replaced-daily",
+  "group": "Cơ thể kỳ lạ",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "How many of your cells die and get replaced every single day?",
+  "question_vi": "Mỗi ngày cơ thể bạn thay mới bao nhiêu tế bào?",
+  "answer_vi": "Khoảng 330 tỷ tế bào mỗi ngày (~1% trong ~30 nghìn tỷ tế bào), tức ~3,8 triệu tế bào mỗi giây. Phần lớn là tế bào máu (~86–90% theo số lượng), phần lớn số còn lại là tế bào lót ruột (sống chưa tới một tuần). Cứ ~80–100 ngày cơ thể tạo số tế bào mới bằng tổng số tế bào; nhưng tế bào mỡ và cơ sống lâu hơn nhiều nên không phải 'mọi thứ đều mới'.",
+  "numbers_vi": [
+   "~330 tỷ tế bào/ngày ≈ 1%",
+   "~3,8 triệu tế bào/giây",
+   "~80–100 ngày bằng tổng ~30 nghìn tỷ tế bào",
+   "Máu ~86–90%, ruột ~12% theo số lượng"
+  ],
+  "calc": "330e9/86400=3.82e6/s; *70 s=267e6; 30e12/330e9=91 days",
+  "source_title": "Sender & Milo 2021, Nature Medicine – The distribution of cellular turnover in the human body (via Scientific American & Weizmann Institute)",
+  "source_url": "https://www.scientificamerican.com/article/our-bodies-replace-billions-of-cells-every-day/",
+  "status": "done",
+  "episode": "ep38-cells-replaced",
+  "done_date": "2026-11-09"
+ },
+ {
+  "slug": "lightning-per-second",
+  "group": "Trái Đất & bầu trời",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "How many times does lightning flash on Earth every second?",
+  "question_vi": "Mỗi giây trên Trái Đất có bao nhiêu tia sét?",
+  "answer_vi": "Khoảng 44 (±5) tia sét mỗi giây theo dữ liệu vệ tinh NASA (OTD), ~1,4 tỷ tia/năm. Con số cũ 100 tia/giây (ước tính năm 1925) đã bị bỏ. Sét chủ yếu trên đất liền (đất liền:biển ≈ 10:1). Lúc nào cũng có tới ~2.000 cơn dông. Sét làm nóng không khí tới ~50.000°F, gấp ~5 lần bề mặt Mặt Trời.",
+  "numbers_vi": [
+   "~44 tia/giây; ~1,4 tỷ tia/năm",
+   "Ước tính cũ 1925: 100 tia/giây",
+   "Đất liền:biển ≈ 10:1",
+   "~2.000 cơn dông cùng lúc",
+   "~50.000°F ≈ 5 lần bề mặt Mặt Trời"
+  ],
+  "calc": "44*86400*365=1.39e9; 44*60=2640/min",
+  "source_title": "Christian et al., NASA Optical Transient Detector global lightning (NTRS 20020051098); NWS Introduction to Lightning; NWS lightning temperature",
+  "source_url": "https://ntrs.nasa.gov/citations/20020051098",
+  "extra_sources": [
+   "https://www.weather.gov/source/zhu/ZHU_Training_Page/lightning_stuff/lightning2/lightning_intro.html",
+   "https://weather.gov/safety/lightning-temperature"
+  ],
+  "status": "done",
+  "episode": "ep39-lightning-per-second",
+  "done_date": "2026-11-09"
  }
 ]
