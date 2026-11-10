@@ -1,0 +1,10 @@
+{
+ "source": "/home/claude/videomax/work/footage/b5dbbe9e.mp4",
+ "crop": [
+  1240,
+  796,
+  340,
+  100
+ ],
+ "note": "1920x1080 Douyin source (讲点理吧, AI/3D animation + stock-style shots). Burned-in Chinese subtitles at y~940-1030, channel logo top-left (x~60-260, y~40-200) and a top-right safety disclaimer (y~40-90, first seconds) are cropped out (keep x 340-1580, y 100-896). Ranges with in-picture text are skipped: 0:53-0:58 (conductor/field-line labels), 1:01-1:05 (store sign), 1:24-1:28 (suit label), 1:45+ (cartoon cut)."
+}

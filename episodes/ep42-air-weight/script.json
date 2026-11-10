@@ -1,0 +1,114 @@
+[
+ {
+  "id": "hook",
+  "en": [
+   "Look up. All that air above you has weight.",
+   "So how much does all the air on Earth weigh?"
+  ],
+  "vi": [
+   "Nhìn lên đi. Tất cả không khí phía trên bạn đều có trọng lượng.",
+   "Vậy toàn bộ không khí trên Trái Đất nặng bao nhiêu?"
+  ]
+ },
+ {
+  "id": "guess",
+  "en": [
+   "Take a guess.",
+   "A few tons? A billion tons? Or way, way more?"
+  ],
+  "vi": [
+   "Thử đoán xem.",
+   "Vài tấn? Một tỷ tấn? Hay nhiều hơn rất, rất nhiều?"
+  ]
+ },
+ {
+  "id": "intro",
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's weigh the sky!"
+  ],
+  "vi": [
+   "Mình là Max, và đây là Max Wise.",
+   "Cùng cân bầu trời nào!"
+  ]
+ },
+ {
+  "id": "square",
+  "en": [
+   "Start small. Draw one square meter on the ground.",
+   "The tall column of air above it weighs about ten tons.",
+   "That's like a pile of ten small cars!"
+  ],
+  "vi": [
+   "Bắt đầu từ nhỏ. Vẽ một mét vuông trên mặt đất.",
+   "Cột không khí cao vút phía trên nó nặng khoảng 10 tấn.",
+   "Như một chồng 10 chiếc ô tô nhỏ!"
+  ]
+ },
+ {
+  "id": "half",
+  "en": [
+   "And that air is squashed down low.",
+   "Half of it sits within about five and a half kilometers of the ground.",
+   "Stand on top of Mount Everest, and about two thirds of the air is below your feet."
+  ],
+  "vi": [
+   "Và lớp không khí đó bị nén sát xuống dưới.",
+   "Một nửa nằm trong khoảng 5,5 ki lô mét tính từ mặt đất.",
+   "Đứng trên đỉnh Everest, khoảng hai phần ba không khí đã nằm dưới chân bạn."
+  ]
+ },
+ {
+  "id": "planet",
+  "en": [
+   "Now cover the whole planet with those columns.",
+   "The total? About five quadrillion tons of air!"
+  ],
+  "vi": [
+   "Giờ phủ kín cả hành tinh bằng những cột như thế.",
+   "Tổng cộng? Khoảng 5 triệu tỷ tấn không khí!"
+  ]
+ },
+ {
+  "id": "body",
+  "en": [
+   "Here's the weird part.",
+   "Your body has about eighteen tons of air pushing on it, right now."
+  ],
+  "vi": [
+   "Đây mới là phần kỳ lạ.",
+   "Cơ thể bạn đang chịu lực đẩy của khoảng 18 tấn không khí, ngay lúc này."
+  ]
+ },
+ {
+  "id": "why",
+  "en": [
+   "So why aren't you squashed flat?",
+   "The air pushes equally from every side, and the fluids inside you push right back."
+  ],
+  "vi": [
+   "Vậy sao bạn không bị ép bẹp?",
+   "Không khí đẩy đều từ mọi phía, và chất lỏng bên trong cơ thể đẩy ngược trở lại."
+  ]
+ },
+ {
+  "id": "pop",
+  "en": [
+   "You only feel it when the push changes, like when your ears pop on a plane."
+  ],
+  "vi": [
+   "Bạn chỉ cảm nhận được khi lực đẩy thay đổi, như lúc tai ù rồi bật lên khi đi máy bay."
+  ]
+ },
+ {
+  "id": "outro",
+  "en": [
+   "So, about five quadrillion tons of air, resting gently on your shoulders.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "Vậy là khoảng 5 triệu tỷ tấn không khí, nhẹ nhàng đặt trên vai bạn.",
+   "Hãy luôn tò mò nhé!"
+  ]
+ }
+]

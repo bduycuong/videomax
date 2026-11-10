@@ -1,0 +1,22 @@
+[
+ {"id":"hook", "en":["Imagine digging a hole straight through the Earth, and jumping in.", "How long would you fall before you reach the other side?"],
+  "vi":["Hãy tưởng tượng đào một cái hố xuyên thẳng qua Trái Đất, rồi nhảy xuống.", "Bạn sẽ rơi bao lâu mới tới được phía bên kia?"]},
+ {"id":"guess", "en":["Take a guess.", "A few minutes? A few hours? Or a whole day?"],
+  "vi":["Thử đoán xem.", "Vài phút? Vài giờ? Hay cả một ngày?"]},
+ {"id":"intro", "en":["I'm Max, and this is Max Wise.", "Let's jump in, on paper!"],
+  "vi":["Mình là Max, và đây là Max Wise.", "Cùng nhảy xuống nào, trên giấy thôi nhé!"]},
+ {"id":"myth", "en":["Old textbooks said about forty two minutes.", "But they pretended the Earth is the same all the way through."],
+  "vi":["Sách giáo khoa cũ nói khoảng 42 phút.", "Nhưng họ giả định Trái Đất giống hệt nhau từ ngoài vào trong."]},
+ {"id":"layers", "en":["It isn't.", "Deep inside sits a core of heavy iron, much denser than the rocks near the surface."],
+  "vi":["Thực ra không phải vậy.", "Sâu bên trong là lõi sắt nặng, đặc hơn nhiều so với đá gần bề mặt."]},
+ {"id":"gravity", "en":["So here's the weird part.", "As you fall, gravity actually gets stronger at first, about nine percent stronger near the core."],
+  "vi":["Và đây là điều kỳ lạ.", "Khi bạn rơi, trọng lực lúc đầu lại mạnh hơn, mạnh hơn khoảng 9% khi gần tới lõi."]},
+ {"id":"center", "en":["Then, at the very center, it fades to zero.", "You would float, weightless, at top speed."],
+  "vi":["Rồi ngay tại tâm, nó giảm về không.", "Bạn sẽ lơ lửng, không trọng lượng, ở tốc độ cao nhất."]},
+ {"id":"answer", "en":["Put real earthquake data into the math, and you get about thirty eight minutes.", "Nineteen minutes down, nineteen minutes up."],
+  "vi":["Đưa dữ liệu động đất thật vào phép tính, bạn được khoảng 38 phút.", "19 phút rơi xuống, 19 phút đi lên."]},
+ {"id":"twist", "en":["And if nobody grabs you on the other side?", "You fall all the way back, and swing back and forth forever, if there were no air."],
+  "vi":["Còn nếu không ai túm lấy bạn ở phía bên kia?", "Bạn sẽ rơi ngược trở lại, và đung đưa qua lại mãi mãi, nếu không có không khí."]},
+ {"id":"outro", "en":["So, about thirty eight minutes to cross the whole planet.", "Stay curious!"],
+  "vi":["Vậy là khoảng 38 phút để xuyên qua cả hành tinh.", "Hãy luôn tò mò nhé!"]}
+]

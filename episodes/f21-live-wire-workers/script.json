@@ -1,0 +1,222 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   0.0,
+   7.5
+  ],
+  "en": [
+   "How can a worker grab a power line carrying hundreds of thousands of volts, and not get hurt?",
+   "Take a guess."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   9.8,
+   13.8
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "The secret starts with a bird."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "bird",
+  "src": [
+   21.6,
+   27.4
+  ],
+  "en": [
+   "Birds sit on live wires all day.",
+   "Electricity only flows when a voltage difference pushes it."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "same",
+  "src": [
+   27.6,
+   33.4
+  ],
+  "en": [
+   "A bird touches just one wire, so its whole body sits at the wire's voltage.",
+   "No difference, no current."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "danger",
+  "src": [
+   14.0,
+   17.6
+  ],
+  "en": [
+   "But touch a second wire, or the ground, and current rushes through."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "lineman",
+  "src": [
+   38.2,
+   47.0
+  ],
+  "en": [
+   "Line workers use the same trick.",
+   "Safety rules even call it the bird on a wire idea."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "field",
+  "src": [
+   [
+    58.0,
+    61.0
+   ],
+   [
+    64.6,
+    70.0
+   ]
+  ],
+  "en": [
+   "But a person is much bigger than a bird.",
+   "Near the line, the strong electric field can charge your body and spark through the air."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "suit",
+  "src": [
+   74.0,
+   83.6
+  ],
+  "en": [
+   "So the worker wears a suit woven with thin stainless steel threads.",
+   "Metal clothes, next to a power line?"
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "cage",
+  "src": [
+   88.2,
+   92.6
+  ],
+  "en": [
+   "Yes! It works like a Faraday cage.",
+   "Current flows around the suit, not through the body inside."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "plane",
+  "src": [
+   93.4,
+   104.4
+  ],
+  "en": [
+   "Airplanes do the same.",
+   "When lightning hits, the current runs along the metal skin, and passengers stay safe inside."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "bucket",
+  "src": [
+   [
+    108.4,
+    111.0
+   ],
+   [
+    112.0,
+    118.0
+   ]
+  ],
+  "en": [
+   "He rides up in a bucket insulated from the ground."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "bond",
+  "src": [
+   119.4,
+   126.0
+  ],
+  "en": [
+   "Then he reaches out with a metal wand.",
+   "Snap! A small arc jumps as his body charges up to match the line.",
+   "It's the riskiest moment of the job."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "work",
+  "src": [
+   126.0,
+   135.0
+  ],
+  "en": [
+   "Now he can grab the wire bare handed and fix it, while power keeps flowing to homes."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   138.0,
+   145.2
+  ],
+  "en": [
+   "So the secret isn't avoiding electricity.",
+   "It's matching the line exactly.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ }
+]

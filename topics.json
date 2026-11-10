@@ -893,5 +893,54 @@
   "status": "done",
   "episode": "ep41-space-dust",
   "done_date": "2026-11-10"
+ },
+ {
+  "slug": "air-weight",
+  "group": "Trái Đất & bầu trời",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "How much does all the air on Earth weigh?",
+  "question_vi": "Toàn bộ không khí trên Trái Đất nặng bao nhiêu?",
+  "answer_vi": "Khoảng 5,15 triệu tỷ tấn (5,148×10^18 kg; Trenberth & Smith 2005, J. Climate). Mỗi mét vuông mặt đất ở mực nước biển chịu khoảng 10 tấn không khí phía trên (101.325 Pa / 9,81). Một nửa khối lượng khí quyển nằm dưới độ cao ~5,5 km (mức 500 hPa). Cơ thể người (~1,8 m² da) chịu lực tương đương ~18 tấn nhưng không bị bẹp vì áp suất đẩy đều mọi phía và chất lỏng/khí trong cơ thể đẩy ngược lại.",
+  "numbers_vi": [
+   "~5,15 triệu tỷ tấn",
+   "~10 tấn trên mỗi m² (mực nước biển)",
+   "50% khối lượng dưới ~5,5 km",
+   "~18 tấn lên cơ thể ~1,8 m²"
+  ],
+  "calc": "101325/9.81=10329 kg/m2; 10329*1.8=18592 kg; total 5.148e18 kg = 5.15e15 t",
+  "source_title": "Trenberth & Smith 2005, The Mass of the Atmosphere: a Constraint on Global Analyses (NCAR/UCAR); UCAR MetEd 'The atmosphere in the vertical'",
+  "source_url": "https://www2.cgd.ucar.edu/cas/abstracts/files/kevin2003_6.html",
+  "extra_sources": [
+   "https://meted.ucar.edu/ams/wim_2014/2b.html"
+  ],
+  "status": "done",
+  "episode": "ep42-air-weight",
+  "done_date": "2026-11-11"
+ },
+ {
+  "slug": "fall-through-earth",
+  "group": "Vật lý & vũ trụ",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "If you jumped into a hole straight through the Earth, how long would the fall take?",
+  "question_vi": "Nếu nhảy vào một đường hầm xuyên qua Trái Đất, bạn sẽ rơi bao lâu?",
+  "answer_vi": "Khoảng 38 phút để sang bờ bên kia (Klotz 2015, American Journal of Physics 83:231, dùng mật độ Trái Đất thật từ dữ liệu địa chấn PREM; 38 phút 11 giây). Đáp án sách giáo khoa cũ là 42 phút (giả định mật độ đều). Trọng lực tăng lên khi xuống sâu, đạt ~1,09 g ở ranh giới lõi ngoài, rồi giảm về 0 ở tâm. Bỏ qua sức cản không khí; nếu không bám lấy mép, bạn sẽ rơi qua lại mãi. Mô hình đơn giản: tốc độ ở tâm gần 8 km/s.",
+  "numbers_vi": [
+   "~38 phút (38 phút 11 giây)",
+   "42 phút (mô hình cũ)",
+   "~19 phút tới tâm",
+   "~1,09 g tối đa trong lòng đất",
+   "~8 km/s ở tâm (mô hình mật độ đều)"
+  ],
+  "calc": "38m11s/2 ≈ 19 min to centre; R=6371 km",
+  "source_title": "Klotz 2015, The gravity tunnel in a non-uniform Earth, Am. J. Phys. 83, 231 (arXiv 1308.1342); phys.org 2015-03",
+  "source_url": "https://phys.org/news/2015-03-fall-hole-earth.amp",
+  "extra_sources": [
+   "https://ar5iv.arxiv.org/html/1308.1342"
+  ],
+  "status": "done",
+  "episode": "ep43-fall-through-earth",
+  "done_date": "2026-11-11"
  }
 ]
