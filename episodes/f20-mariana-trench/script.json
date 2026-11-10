@@ -1,0 +1,229 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   0.0,
+   10.5
+  ],
+  "en": [
+   "What would you find if you sank all the way to the deepest spot on Earth?",
+   "Take a guess."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   11.5,
+   17.5
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's dive into the Mariana Trench."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "sunlight",
+  "src": [
+   18.0,
+   30.0
+  ],
+  "en": [
+   "In the top two hundred meters, sunlight still gets through.",
+   "Below that, the blue fades fast."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "glow",
+  "src": [
+   38.5,
+   47.0
+  ],
+  "en": [
+   "By about one thousand meters, sunlight is gone.",
+   "The only light comes from animals that make their own glow."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "snow",
+  "src": [
+   57.0,
+   72.0
+  ],
+  "en": [
+   "And look, it's snowing!",
+   "This marine snow is bits of dead plants and animals drifting down from above.",
+   "Down here, it's food."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "pressure",
+  "src": [
+   72.5,
+   88.0
+  ],
+  "en": [
+   "Every ten meters adds one more atmosphere of pressure.",
+   "At four thousand meters, that's around four hundred times the push at the surface."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "floor",
+  "src": [
+   88.5,
+   106.0
+  ],
+  "en": [
+   "The seafloor here is pitch black and close to freezing.",
+   "Yet animals still live on it."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "edge",
+  "src": [
+   106.5,
+   119.0
+  ],
+  "en": [
+   "Then the floor drops away.",
+   "Below six thousand meters, we enter the hadal zone."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "plates",
+  "src": [
+   124.0,
+   137.0
+  ],
+  "en": [
+   "Why is there a trench at all?",
+   "Here, one plate of ocean floor dives down under another, bending the seafloor into a long, deep groove."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "fish",
+  "src": [
+   137.5,
+   148.0
+  ],
+  "en": [
+   "Fish get surprisingly deep.",
+   "A snailfish was filmed at about eight thousand three hundred meters.",
+   "Scientists think no fish lives much below eight thousand four hundred."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "deeper",
+  "src": [
+   148.5,
+   163.0
+  ],
+  "en": [
+   "But we keep sinking.",
+   "Past nine thousand meters, past ten thousand."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "bottom",
+  "src": [
+   165.0,
+   184.0
+  ],
+  "en": [
+   "This is the Challenger Deep, about ten thousand nine hundred meters down.",
+   "That's about two kilometers deeper than Mount Everest is tall."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "crush",
+  "src": [
+   184.0,
+   192.0
+  ],
+  "en": [
+   "The pressure here is more than one thousand times what you feel at the beach."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "history",
+  "src": [
+   193.0,
+   206.0
+  ],
+  "en": [
+   "And people have been here!",
+   "In nineteen sixty, Don Walsh and Jacques Piccard rode the Trieste down and stayed about twenty minutes."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   216.0,
+   233.5
+  ],
+  "en": [
+   "So the deepest spot on Earth is dark, crushing, and still full of life.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ }
+]

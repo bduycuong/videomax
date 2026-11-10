@@ -838,5 +838,60 @@
   "status": "done",
   "episode": "ep39-lightning-per-second",
   "done_date": "2026-11-09"
+ },
+ {
+  "slug": "dna-length",
+  "group": "Cơ thể người",
+  "fit": 5,
+  "confidence": "vừa",
+  "question_en": "If you unrolled all the DNA in your body, how far would it reach?",
+  "question_vi": "Nếu tháo duỗi hết DNA trong cơ thể, nó sẽ dài tới đâu?",
+  "answer_vi": "Mỗi tế bào có nhân chứa khoảng 6,2 tỷ cặp base (2 bản bộ gen ~3,1 tỷ), mỗi cặp cách nhau ~0,34 nm → khoảng 2 mét DNA mỗi tế bào. Cơ thể có ~30 nghìn tỷ tế bào (Sender, Fuchs & Milo 2016) nhưng gần 90% không có nhân (chủ yếu hồng cầu và tiểu cầu), chỉ ~3 nghìn tỷ tế bào có nhân. 3 nghìn tỷ × 2 m ≈ 6 tỷ km ≈ 40 lần khoảng cách Trái Đất–Mặt Trời, xấp xỉ khoảng cách Mặt Trời–Sao Diêm Vương (~5,9 tỷ km). Con số phổ biến 37 nghìn tỷ tế bào × 2 m bị thổi phồng.",
+  "numbers_vi": [
+   "~3 tỷ cặp base/bộ gen; ~6,2 tỷ trong tế bào lưỡng bội",
+   "0,34 nm mỗi cặp base → ~2 m DNA mỗi tế bào",
+   "~30 nghìn tỷ tế bào; gần 90% không nhân; ~3 nghìn tỷ tế bào có nhân",
+   "3e12 × 2 m ≈ 6 tỷ km ≈ 40 AU",
+   "Sao Diêm Vương cách Mặt Trời ~5,9 tỷ km (39 AU)"
+  ],
+  "calc": "6.2e9*0.34e-9=2.1 m; 3e12*2 m=6e12 m=6e9 km; 6e9/1.5e8=40; 6e9/5.9e9=1.02",
+  "source_title": "Sender, Fuchs & Milo 2016, PLoS Biology: Revised estimates for the number of human and bacteria cells in the body; NIH genome.gov Human Genome Project FAQ; BioNumbers 100667 (0.34 nm/bp); NASA Pluto facts",
+  "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/4991899",
+  "extra_sources": [
+   "https://www.genome.gov/Pages/Education/Smithsonian_Exhibition/Human_Genome_Project_FAQ.pdf",
+   "https://bionumbers.hms.harvard.edu/bionumber.aspx?id=100667",
+   "https://science.nasa.gov/dwarf-planets/pluto/facts/"
+  ],
+  "status": "done",
+  "episode": "ep40-dna-length",
+  "done_date": "2026-11-10"
+ },
+ {
+  "slug": "space-dust",
+  "group": "Trái Đất & bầu trời",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "How much space dust falls on Earth every year?",
+  "question_vi": "Mỗi năm có bao nhiêu bụi vũ trụ rơi xuống Trái Đất?",
+  "answer_vi": "Khoảng 5.200 tấn vi thiên thạch mỗi năm (Rojas et al. 2021, sau ~20 năm lọc tuyết gần trạm Concordia, Nam Cực), tức ~14 tấn/ngày, ~10 kg/phút. Thiên thạch lớn chỉ góp chưa tới 10 tấn/năm. Khoảng 80% bụi đến từ sao chổi (chủ yếu sao chổi họ Mộc Tinh), phần còn lại từ tiểu hành tinh. Người ta còn tìm thấy ~500 vi thiên thạch trên mái nhà ở thành phố (máng xối ở Oslo, Paris).",
+  "numbers_vi": [
+   "~5.200 tấn/năm (±~1.200–1.500)",
+   "~14 tấn/ngày; ~10 kg/phút",
+   "Thiên thạch lớn < 10 tấn/năm",
+   "~80% từ sao chổi",
+   "~20 năm thu mẫu tại Dome C",
+   "~500 vi thiên thạch trên mái nhà thành phố"
+  ],
+  "calc": "5200/365=14.2 t/day; 5200e3/525600=9.9 kg/min",
+  "source_title": "Rojas et al. 2021, Earth and Planetary Science Letters 566:116794 – The micrometeorite flux at Dome C (Antarctica); CNRS press release (8 Apr 2021)",
+  "source_url": "https://www.cnrs.fr/en/press/more-5000-tons-extraterrestrial-dust-fall-earth-each-year",
+  "extra_sources": [
+   "https://eprints.whiterose.ac.uk/170790",
+   "https://spiral.imperial.ac.uk/entities/publication/9ffb2870-f8ae-402a-9ff8-d595fb708d3a",
+   "https://skyandtelescope.org/astronomy-news/new-study-hunts-for-rain-gutter-micrometeorites/"
+  ],
+  "status": "done",
+  "episode": "ep41-space-dust",
+  "done_date": "2026-11-10"
  }
 ]

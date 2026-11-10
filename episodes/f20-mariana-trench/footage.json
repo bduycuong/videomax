@@ -1,0 +1,10 @@
+{
+ "source": "/home/claude/videomax/work/footage/2d60d16d-f6b9-4f44-957f-1930669d7277.mp4",
+ "crop": [
+  1806,
+  1160,
+  378,
+  0
+ ],
+ "note": "2562x1440 Douyin source (洛克科学探索, AI animation); burned-in Chinese subtitles at y~1200-1290 and a lightbulb channel logo at top-left (x 60-165, y 50-160) are cropped out (keep y 0-1160, x 378-2184). No other in-picture text found in the dense 2 s contact sheets."
+}

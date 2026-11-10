@@ -1,0 +1,13 @@
+[
+ {"id": "hook", "en": ["Here's a wild one.", "If you unrolled all the DNA in your body, how far would it reach?"], "vi": ["Một câu hỏi điên rồ nhé.", "Nếu tháo duỗi hết DNA trong cơ thể bạn, nó sẽ dài tới đâu?"]},
+ {"id": "guess", "en": ["Take a guess.", "To the Moon? To the Sun? Or all the way to Pluto?"], "vi": ["Thử đoán xem.", "Tới Mặt Trăng? Tới Mặt Trời? Hay tận Sao Diêm Vương?"]},
+ {"id": "intro", "en": ["I'm Max, and this is Max Wise.", "Let's unroll it together."], "vi": ["Mình là Max, và đây là Max Wise.", "Cùng nhau tháo cuộn nhé."]},
+ {"id": "letters", "en": ["Your DNA recipe is about three billion letters long.", "Most cells carry two copies, about six billion letters."], "vi": ["Công thức DNA của bạn dài khoảng 3 tỷ chữ cái.", "Phần lớn tế bào mang hai bản, khoảng 6 tỷ chữ cái."]},
+ {"id": "cell", "en": ["Each letter takes about a third of a nanometer.", "Line them up, and one cell holds about two meters of DNA.", "Packed in a nucleus too small to see!"], "vi": ["Mỗi chữ cái chiếm khoảng một phần ba nanomet.", "Xếp thẳng hàng, mỗi tế bào chứa khoảng 2 mét DNA.", "Vậy mà gói gọn trong một nhân tế bào nhỏ tới mức mắt không thấy!"]},
+ {"id": "myth", "en": ["Many people multiply by thirty seven trillion cells.", "But that's not quite right."], "vi": ["Nhiều người nhân với 37 nghìn tỷ tế bào.", "Nhưng như vậy chưa đúng lắm."]},
+ {"id": "blood", "en": ["Newer counts say about thirty trillion cells.", "And almost nine in ten have no nucleus, mostly red blood cells.", "No nucleus, no DNA!"], "vi": ["Ước tính mới cho thấy khoảng 30 nghìn tỷ tế bào.", "Và gần 9 trên 10 tế bào không có nhân, phần lớn là hồng cầu.", "Không có nhân, không có DNA!"]},
+ {"id": "real", "en": ["That leaves about three trillion cells with DNA inside.", "Three trillion times two meters is about six billion kilometers."], "vi": ["Còn lại khoảng 3 nghìn tỷ tế bào có DNA bên trong.", "3 nghìn tỷ nhân 2 mét là khoảng 6 tỷ km."]},
+ {"id": "sun", "en": ["That's like going from Earth to the Sun forty times."], "vi": ["Bằng đi từ Trái Đất tới Mặt Trời 40 lần."]},
+ {"id": "pluto", "en": ["Or about as far as Pluto is from the Sun!"], "vi": ["Hay xa cỡ khoảng cách từ Mặt Trời tới Sao Diêm Vương!"]},
+ {"id": "outro", "en": ["So your DNA could reach Pluto, yet it fits inside you.", "Stay curious!"], "vi": ["Vậy DNA của bạn có thể dài tới Sao Diêm Vương, mà vẫn nằm gọn trong người bạn.", "Hãy luôn tò mò nhé!"]}
+]
