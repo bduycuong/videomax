@@ -1,0 +1,204 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   [
+    0.0,
+    5.2
+   ],
+   [
+    13.8,
+    20.2
+   ]
+  ],
+  "en": [
+   "Light can zip around the Earth seven and a half times in a single second.",
+   "So why does it feel as slow as a snail out in space?",
+   "Take a guess."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   20.8,
+   24.4
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's race a beam of light."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "fast",
+  "src": [
+   28.8,
+   34.5
+  ],
+  "en": [
+   "Light is the fastest thing in the universe.",
+   "It covers about three hundred thousand kilometers every second."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "sun",
+  "src": [
+   36.9,
+   48.2
+  ],
+  "en": [
+   "Even so, sunlight needs eight minutes and twenty seconds to reach us.",
+   "The Sun you see is the Sun from eight minutes ago."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "nearest",
+  "src": [
+   48.3,
+   60.3
+  ],
+  "en": [
+   "The closest star after the Sun is Proxima Centauri.",
+   "Its light travels for more than four years to get here."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "voyager",
+  "src": [
+   60.4,
+   64.6
+  ],
+  "en": [
+   "Voyager One, flying at sixty one thousand kilometers an hour, would need about seventy five thousand years."
+  ],
+  "vi": [
+   ""
+  ]
+ },
+ {
+  "id": "galaxy",
+  "src": [
+   65.4,
+   81.4
+  ],
+  "en": [
+   "Now zoom out to our whole galaxy, the Milky Way.",
+   "It is about one hundred thousand light years across.",
+   "Light needs a hundred thousand years just to cross it."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "past",
+  "src": [
+   81.5,
+   96.1
+  ],
+  "en": [
+   "So every star in your night sky is old light.",
+   "When you look up, you are looking into the past."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "andromeda",
+  "src": [
+   96.2,
+   108.5
+  ],
+  "en": [
+   "The Andromeda galaxy is about two and a half million light years away.",
+   "Imagine someone there pointing a telescope at Earth today."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "ancestors",
+  "src": [
+   [
+    109.5,
+    113.7
+   ],
+   [
+    114.3,
+    119.0
+   ]
+  ],
+  "en": [
+   "They would not see cities.",
+   "They would see our early ancestors, just starting to make stone tools."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "lonely",
+  "src": [
+   136.0,
+   154.7
+  ],
+  "en": [
+   "That is why space feels so lonely.",
+   "A hello between stars takes years, and between galaxies, millions of years."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   [
+    170.0,
+    176.5
+   ],
+   [
+    186.4,
+    190.0
+   ]
+  ],
+  "en": [
+   "So light is not slow.",
+   "Space is just unbelievably big.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ }
+]

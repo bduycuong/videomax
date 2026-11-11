@@ -942,5 +942,59 @@
   "status": "done",
   "episode": "ep43-fall-through-earth",
   "done_date": "2026-11-11"
+ },
+ {
+  "slug": "drive-to-sun",
+  "group": "Vật lý & vũ trụ",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "If you could drive a car to the Sun, how long would it take?",
+  "question_vi": "Nếu lái xe hơi tới Mặt Trời thì mất bao lâu?",
+  "answer_vi": "Khoảng 170 năm lái liên tục ở 100 km/h (khoảng cách trung bình Trái Đất–Mặt Trời ≈ 150 triệu km theo NASA; 149,6 triệu km / 100 km/h ≈ 1,5 triệu giờ ≈ 62.300 ngày). Máy bay phản lực 900 km/h mất khoảng 19 năm; ánh sáng chỉ mất khoảng 8 phút.",
+  "numbers_vi": [
+   "~150 triệu km",
+   "100 km/h (~60 dặm/giờ)",
+   "~1,5 triệu giờ",
+   "hơn 62.000 ngày",
+   "~170 năm",
+   "máy bay 900 km/h ~19 năm",
+   "ánh sáng ~8 phút"
+  ],
+  "calc": "149.6e6/100 = 1.496e6 h = 62,333 d = 170.7 yr; /900 → 18.96 yr; 149.6e6/299792 = 499 s ≈ 8.3 min",
+  "source_title": "NASA Science, Sun: Facts; NASA Science, Cosmic Distances",
+  "source_url": "https://science.nasa.gov/sun/facts/",
+  "extra_sources": [
+   "https://science.nasa.gov/solar-system/cosmic-distances/"
+  ],
+  "status": "done",
+  "episode": "ep44-drive-to-sun",
+  "done_date": "2026-11-12"
+ },
+ {
+  "slug": "baby-bones",
+  "group": "Cơ thể người",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "Who has more bones, a newborn baby or you?",
+  "question_vi": "Ai có nhiều xương hơn, em bé sơ sinh hay bạn?",
+  "answer_vi": "Trẻ sơ sinh có khoảng 270–300 xương (nhiều phần còn là sụn), người lớn có 206. Xương hợp nhất dần khi lớn: các mảnh sọ khép thóp trong 1–2 năm đầu; 5 đốt xương cùng hợp thành xương cùng, xong khoảng 25–30 tuổi. Bàn tay + bàn chân chứa 106/206 xương (hơn một nửa).",
+  "numbers_vi": [
+   "270–300 xương lúc sinh",
+   "206 xương người lớn",
+   "thóp khép trong 1–2 năm",
+   "5 đốt → 1 xương cùng, xong ~25–30 tuổi",
+   "106/206 xương ở tay + chân (≈51%)"
+  ],
+  "calc": "27×2 + 26×2 = 106; 106/206 = 51.5%",
+  "source_title": "Cleveland Clinic: How many bones does a baby have; Bones (25176); Facts about the skeletal system; NCBI StatPearls Sacral Vertebrae (NBK551653)",
+  "source_url": "https://health.clevelandclinic.org/how-many-bones-does-a-baby-have",
+  "extra_sources": [
+   "https://my.clevelandclinic.org/health/body/25176-bones",
+   "https://health.clevelandclinic.org/facts-about-the-skeletal-system",
+   "https://www.ncbi.nlm.nih.gov/books/NBK551653/"
+  ],
+  "status": "done",
+  "episode": "ep45-baby-bones",
+  "done_date": "2026-11-12"
  }
 ]

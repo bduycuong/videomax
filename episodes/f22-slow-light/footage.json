@@ -1,0 +1,10 @@
+{
+ "source": "/home/claude/videomax/work/footage/9eea1f25-e8ee-4ea2-9340-f6c41423c218.mp4",
+ "crop": [
+  1557,
+  1000,
+  500,
+  170
+ ],
+ "note": "2558x1440 Douyin source (洛克科学探索, AI-generated cinematic story: man + alien). Burned-in Chinese subtitles at y~1190-1290 and channel logo top-left (x~60-170, y~60-170) are cropped out (keep x 500-2057, y 170-1170). No in-picture text in the used ranges."
+}
