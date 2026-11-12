@@ -1,0 +1,184 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   [
+    0.0,
+    4.0
+   ],
+   [
+    6.0,
+    10.0
+   ]
+  ],
+  "en": [
+   "Flying to Mars takes about seven months.",
+   "So why might the very first people who land there never come home?",
+   "Take a guess."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   18.0,
+   26.0
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's step outside and find out."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "air",
+  "src": [
+   [
+    31.0,
+    46.0
+   ],
+   [
+    47.0,
+    55.0
+   ]
+  ],
+  "en": [
+   "Problem one is the air.",
+   "It is so thin that the pressure is less than one percent of Earth's.",
+   "Without a suit, the spit on your tongue would start to boil, just from your own body heat."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "gravity",
+  "src": [
+   55.0,
+   66.0
+  ],
+  "en": [
+   "Problem two sounds like fun.",
+   "Mars has only thirty eight percent of Earth's gravity, so you could jump almost three times higher.",
+   "But over the years, weak gravity slowly weakens bones and muscles."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "shield",
+  "src": [
+   66.0,
+   78.0
+  ],
+  "en": [
+   "Problem three is invisible.",
+   "Mars has no global magnetic field and very thin air, so far more space radiation reaches the ground."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "call",
+  "src": [
+   78.0,
+   95.0
+  ],
+  "en": [
+   "And if something goes wrong, you can't just call home.",
+   "A radio message needs from about three to twenty two minutes to reach Earth, one way."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "rocket",
+  "src": [
+   95.0,
+   108.0
+  ],
+  "en": [
+   "Now the biggest problem.",
+   "No rocket has ever taken off from the surface of Mars.",
+   "Not one."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "fuel",
+  "src": [
+   108.0,
+   125.0
+  ],
+  "en": [
+   "So fuel and oxygen for the trip home must come from Earth, or be made on Mars.",
+   "A test machine on the Perseverance rover made oxygen from Martian air.",
+   "Over about two years it made one hundred twenty two grams, roughly ten hours of breathing for a small dog."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "window",
+  "src": [
+   125.0,
+   142.0
+  ],
+  "en": [
+   "And even with a full tank, you wait.",
+   "Earth and Mars line up for a quick trip only about every twenty six months.",
+   "A round trip could take close to three years."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   [
+    142.0,
+    152.0
+   ],
+   [
+    160.0,
+    172.0
+   ]
+  ],
+  "en": [
+   "So the first explorers on Mars may stay for a very long time.",
+   "Getting there is hard. Getting back is harder.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ }
+]

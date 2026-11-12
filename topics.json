@@ -996,5 +996,49 @@
   "status": "done",
   "episode": "ep45-baby-bones",
   "done_date": "2026-11-12"
+ },
+ {
+  "slug": "venus-day",
+  "group": "Vũ trụ",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "On which planet is one day longer than one whole year?",
+  "question_vi": "Hành tinh nào có một ngày dài hơn cả một năm?",
+  "answer_vi": "Sao Kim: quay một vòng quanh trục mất 243 ngày Trái Đất, nhưng đi hết một vòng quanh Mặt Trời chỉ mất 225 ngày. Sao Kim còn quay ngược chiều nên Mặt Trời mọc ở hướng tây, lặn ở hướng đông; dù không gần Mặt Trời nhất, nó vẫn là hành tinh nóng nhất.",
+  "numbers_vi": [
+   "243 ngày Trái Đất = 1 vòng tự quay",
+   "225 ngày Trái Đất = 1 năm",
+   "243 − 225 = 18 ngày dài hơn"
+  ],
+  "calc": "243 - 225 = 18",
+  "source_title": "NASA Space Place: All About Venus",
+  "source_url": "https://spaceplace.nasa.gov/all-about-venus/",
+  "status": "done",
+  "episode": "ep46-venus-day",
+  "done_date": "2026-11-13"
+ },
+ {
+  "slug": "heart-bathtubs",
+  "group": "Cơ thể người",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "How many bathtubs of blood does your heart pump in one day?",
+  "question_vi": "Mỗi ngày tim bạn bơm được bao nhiêu bồn tắm máu?",
+  "answer_vi": "Mỗi phút tim bơm gần 5,7 lít máu → 5,7 × 1.440 phút ≈ 8.200 lít mỗi ngày ≈ hơn 50 bồn tắm (1 bồn ≈ 150 lít). Tim đập khoảng 100.000 lần/ngày, đẩy máu qua khoảng 96.000 km mạch máu. Sống 80 năm ≈ 240 triệu lít ≈ khoảng 100 bể bơi Olympic (2,5 triệu lít).",
+  "numbers_vi": [
+   "5,7 lít mỗi phút",
+   "1.440 phút mỗi ngày",
+   "≈ 8.200 lít/ngày",
+   "≈ 55 bồn tắm 150 lít",
+   "100.000 nhịp/ngày",
+   "96.000 km mạch máu",
+   "80 năm ≈ 240 triệu lít ≈ 96 bể Olympic"
+  ],
+  "calc": "5.7*1440 = 8208 L; /150 = 54.7 bathtubs; *365.25*80 = 239.8 million L; /2.5 million = 95.9 pools",
+  "source_title": "Cleveland Clinic: Facts about the heart",
+  "source_url": "https://health.clevelandclinic.org/facts-about-the-heart",
+  "status": "done",
+  "episode": "ep47-heart-bathtubs",
+  "done_date": "2026-11-13"
  }
 ]

@@ -1,0 +1,12 @@
+# ep46 venus-day storyboard
+- hook — 3D: toon Venus spins slowly in a starfield, camera drifts in; question text; red "?" pops. (3D hero, one continuous camera move)
+- guess — three sticky notes Mercury / Venus / Neptune pop on each name; mini planets ink on. (containers move first)
+- intro — MAX WISE logo, underline inks, little spin arrow inks. (ink)
+- words — left: planet with curved arrow inks (DAY = 1 spin); right: Sun + orbit ellipse inks, dot travels along it (YEAR = 1 trip). (ink + along)
+- earth — Earth doodle; ruler/counter 1 day vs 365 days bars; tape labels. (countable units: 365 tick marks fill)
+- spin — 3D: Venus spins with a flag marker; day counter runs 0→243 (simulate). (simulate, 3D)
+- orbit — 2D: Sun centre, orbit inks, Venus moves along orbit; counter 0→225 days. (along + counter)
+- compare — two bars: DAY 243 (red) vs YEAR 225 (blue), gap bracket "+18 days". (side-by-side bars)
+- west — compass W/E; Sun arcs along a path from west to east; "backwards!" stamp. (along + onomatopoeia)
+- hot — myth crossed out: "closest = hottest?" struck with red pen; thermometer fills; tape "thick cloudy blanket". Actually keep only stated facts: "Mercury: closest", "Venus: hottest". (myth crossed out)
+- outro — "?" morphs into a tick, chip "Venus: day > year", Stay curious. (morph, callback)

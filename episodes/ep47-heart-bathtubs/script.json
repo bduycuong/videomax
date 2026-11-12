@@ -1,0 +1,22 @@
+[
+ {"id":"hook", "en":["Here's a messy question.", "How many bathtubs of blood does your heart pump in just one day?"],
+  "vi":["Một câu hỏi hơi bừa bộn nhé.", "Chỉ trong một ngày, tim bạn bơm được bao nhiêu bồn tắm máu?"]},
+ {"id":"guess", "en":["Take a guess.", "One bathtub? Ten? Or more than fifty?"],
+  "vi":["Thử đoán xem.", "Một bồn? Mười bồn? Hay hơn năm mươi bồn?"]},
+ {"id":"intro", "en":["I'm Max, and this is Max Wise.", "Let's follow the pump."],
+  "vi":["Mình là Max, và đây là Max Wise.", "Cùng theo dấu chiếc máy bơm nào."]},
+ {"id":"squeeze", "en":["Every time your heart squeezes, it pushes out a small gulp of blood.", "It does that about one hundred thousand times a day."],
+  "vi":["Mỗi lần tim co bóp, nó đẩy ra một ngụm máu nhỏ.", "Nó làm vậy khoảng 100.000 lần mỗi ngày."]},
+ {"id":"minute", "en":["Add up the gulps, and every minute your heart moves nearly five point seven liters.", "That's almost three big soda bottles."],
+  "vi":["Cộng các ngụm lại, mỗi phút tim bạn đẩy đi gần 5,7 lít.", "Gần bằng ba chai nước ngọt cỡ lớn."]},
+ {"id":"day", "en":["A day has one thousand four hundred and forty minutes.", "Multiply, and you get about eight thousand two hundred liters."],
+  "vi":["Một ngày có 1.440 phút.", "Nhân lên, bạn được khoảng 8.200 lít."]},
+ {"id":"tubs", "en":["A full bathtub holds about one hundred and fifty liters.", "So your heart fills about fifty five bathtubs.", "Every single day!"],
+  "vi":["Một bồn tắm đầy chứa khoảng 150 lít.", "Vậy tim bạn đổ đầy khoảng 55 bồn tắm.", "Mỗi ngày luôn!"]},
+ {"id":"pipes", "en":["And it pushes all of that through about ninety six thousand kilometers of blood vessels.", "That could wrap around the Earth twice!"],
+  "vi":["Và nó đẩy toàn bộ lượng máu đó qua khoảng 96.000 km mạch máu.", "Đủ quấn quanh Trái Đất hai vòng!"]},
+ {"id":"life", "en":["Over eighty years, that adds up to about two hundred and forty million liters.", "Nearly one hundred Olympic pools!"],
+  "vi":["Qua 80 năm, con số đó lên tới khoảng 240 triệu lít.", "Gần 100 bể bơi Olympic!"]},
+ {"id":"outro", "en":["So, about fifty five bathtubs a day.", "All from a pump about the size of two clasped hands.", "Stay curious!"],
+  "vi":["Vậy là khoảng 55 bồn tắm mỗi ngày.", "Tất cả từ một chiếc bơm chỉ to cỡ hai bàn tay chắp lại.", "Hãy luôn tò mò nhé!"]}
+]
