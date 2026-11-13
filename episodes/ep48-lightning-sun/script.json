@@ -1,0 +1,22 @@
+[
+ {"id":"hook", "en":["Here's a stormy question.", "Is a bolt of lightning hotter than the Sun?"],
+  "vi":["Một câu hỏi đầy giông bão nhé.", "Tia sét có nóng hơn Mặt Trời không?"]},
+ {"id":"guess", "en":["Take a guess.", "Cooler than the Sun? About the same? Or way hotter?"],
+  "vi":["Thử đoán xem.", "Mát hơn Mặt Trời? Nóng ngang nhau? Hay nóng hơn nhiều?"]},
+ {"id":"intro", "en":["I'm Max, and this is Max Wise.", "Let's grab a giant thermometer."],
+  "vi":["Mình là Max, và đây là Max Wise.", "Lấy một cái nhiệt kế khổng lồ nào."]},
+ {"id":"sun", "en":["First, the Sun.", "Its glowing surface is about ten thousand degrees Fahrenheit.", "That's our first mark."],
+  "vi":["Trước tiên là Mặt Trời.", "Bề mặt rực sáng của nó nóng khoảng 10.000 độ F.", "Đó là vạch đầu tiên của chúng ta."]},
+ {"id":"bolt", "en":["Now, a lightning bolt.", "In a split second, it heats the air around it to about fifty thousand degrees."],
+  "vi":["Giờ đến tia sét.", "Chỉ trong tích tắc, nó nung không khí quanh nó lên khoảng 50.000 độ."]},
+ {"id":"times", "en":["Fifty thousand divided by ten thousand is five.", "So lightning is about five times hotter than the surface of the Sun!"],
+  "vi":["50.000 chia 10.000 bằng 5.", "Vậy tia sét nóng gấp khoảng 5 lần bề mặt Mặt Trời!"]},
+ {"id":"fast", "en":["But it doesn't last.", "A whole lightning flash is usually over in less than half a second."],
+  "vi":["Nhưng nó không kéo dài.", "Cả một tia chớp thường kết thúc trong chưa đầy nửa giây."]},
+ {"id":"thunder", "en":["That sudden heat makes the air burst outward, then quickly shrink back.", "That push and pull is the sound we call thunder."],
+  "vi":["Sức nóng đột ngột đó làm không khí bung ra, rồi nhanh chóng co lại.", "Cú đẩy rồi kéo đó chính là âm thanh ta gọi là sấm."]},
+ {"id":"count", "en":["Here's a trick.", "Count the seconds from flash to boom, then divide by five.", "Fifteen seconds means the bolt is about three miles away."],
+  "vi":["Có một mẹo nhỏ.", "Đếm số giây từ lúc chớp đến lúc nghe sấm, rồi chia cho 5.", "Mười lăm giây nghĩa là tia sét cách bạn khoảng 3 dặm."]},
+ {"id":"outro", "en":["So yes, lightning is about five times hotter than the Sun's surface.", "When thunder roars, go indoors.", "Stay curious!"],
+  "vi":["Vậy đúng rồi, tia sét nóng gấp khoảng 5 lần bề mặt Mặt Trời.", "Khi sấm rền, hãy vào trong nhà.", "Hãy luôn tò mò nhé!"]}
+]

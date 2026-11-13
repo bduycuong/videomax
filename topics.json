@@ -1040,5 +1040,53 @@
   "status": "done",
   "episode": "ep47-heart-bathtubs",
   "done_date": "2026-11-13"
+ },
+ {
+  "slug": "lightning-hotter-sun",
+  "group": "Thời tiết",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "Is a bolt of lightning hotter than the Sun?",
+  "question_vi": "Tia sét có nóng hơn Mặt Trời không?",
+  "answer_vi": "Có — tia sét nung không khí quanh nó tới khoảng 50.000°F (≈28.000°C), gấp khoảng 5 lần bề mặt Mặt Trời (≈10.000°F). Không khí nóng giãn nở đột ngột rồi co lại tạo ra tiếng sấm; cả tia sét thường xong trong chưa tới nửa giây. Đếm số giây từ lúc chớp đến lúc nghe sấm, chia 5 → ra số dặm.",
+  "numbers_vi": [
+   "50.000°F ≈ 28.000°C",
+   "bề mặt Mặt Trời ≈ 10.000°F",
+   "50.000 ÷ 10.000 = 5 lần",
+   "< nửa giây",
+   "âm thanh đi 1 dặm ≈ 5 giây",
+   "nghe sấm xa tới ≈ 10 dặm"
+  ],
+  "calc": "50000/10000 = 5; 15 s / 5 = 3 miles",
+  "source_title": "NWS: Lightning temperature; How thunder is created; What is lightning (NWS Melbourne)",
+  "source_url": "https://weather.gov/safety/lightning-temperature",
+  "status": "done",
+  "episode": "ep48-lightning-sun",
+  "done_date": "2026-11-14"
+ },
+ {
+  "slug": "brain-energy",
+  "group": "Cơ thể người",
+  "fit": 5,
+  "confidence": "cao",
+  "question_en": "Your brain is tiny. So how much of your energy does it eat?",
+  "question_vi": "Bộ não nhỏ xíu, vậy nó 'ăn' bao nhiêu năng lượng của bạn?",
+  "answer_vi": "Não chỉ khoảng 2% cân nặng nhưng dùng khoảng 20% năng lượng của cơ thể — gấp 10 lần phần của nó. Với 2.000 kcal/ngày, ≈ 400 kcal cho não. Khoảng 2/3 dùng để nơ-ron phát tín hiệu. Suy nghĩ căng thẳng chỉ tốn thêm khoảng 5% so với lúc nghỉ. Ở trẻ sơ sinh, não dùng gần 50%.",
+  "numbers_vi": [
+   "2% cân nặng",
+   "20% năng lượng",
+   "20 ÷ 2 = 10 lần",
+   "70 kg → não ≈ 1,4 kg",
+   "2.000 kcal × 20% = 400 kcal",
+   "2/3 cho tín hiệu",
+   "+5% khi suy nghĩ căng",
+   "trẻ sơ sinh ≈ 50%"
+  ],
+  "calc": "70*0.02=1.4 kg; 2000*0.2=400 kcal; 20/2=10",
+  "source_title": "Quanta Magazine: How much energy does it take to think? (2025); Scientific American: Why does the brain need so much power?",
+  "source_url": "https://www.quantamagazine.org/how-much-energy-does-it-take-to-think-20250604/",
+  "status": "done",
+  "episode": "ep49-brain-energy",
+  "done_date": "2026-11-14"
  }
 ]

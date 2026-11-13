@@ -1,0 +1,10 @@
+{
+ "source": "/home/claude/videomax/work/footage/f22b84fc.mp4",
+ "crop": [
+  1440,
+  925,
+  260,
+  0
+ ],
+ "note": "1920x1080 Douyin source (讲点理吧, 3D animation about China's UHV DC lines). Burned-in Chinese subtitles y~950-1030 and round channel logo top-left (x~96-236, y~70-210) cropped out (keep x 260-1700, y 0-925). Shots with Chinese labels (map 4-10 s, 84-91 s, 144 s, 150 s, 154-158 s, 166-169 s) avoided."
+}

@@ -1,0 +1,217 @@
+[
+ {
+  "id": "hook",
+  "src": [
+   [
+    0.0,
+    3.5
+   ],
+   [
+    14.0,
+    18.5
+   ]
+  ],
+  "en": [
+   "Some power lines carry electricity across a whole country.",
+   "Why such crazy high voltage?",
+   "And why do the longest ones use direct current, not the alternating current in your wall?",
+   "Take a guess."
+  ],
+  "vi": [
+   "",
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "intro",
+  "src": [
+   60.0,
+   67.5
+  ],
+  "en": [
+   "I'm Max, and this is Max Wise.",
+   "Let's follow the power."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "power",
+  "src": [
+   [
+    16.0,
+    18.5
+   ],
+   [
+    29.9,
+    37.9
+   ]
+  ],
+  "en": [
+   "A power plant has a fixed amount of power to send.",
+   "Power equals voltage times current.",
+   "So it's lots of current at low voltage, or a little current at high voltage."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "heat",
+  "src": [
+   [
+    38.0,
+    40.3
+   ],
+   [
+    43.0,
+    53.4
+   ]
+  ],
+  "en": [
+   "But every wire has resistance, so current makes it hot.",
+   "The heat you lose grows with the current squared.",
+   "Double the current, and you waste four times the heat."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "voltage",
+  "src": [
+   63.6,
+   71.5
+  ],
+  "en": [
+   "So engineers crank up the voltage.",
+   "Same power, less current, far less heat.",
+   "Transformers step it back down near the city."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "ac",
+  "src": [
+   77.5,
+   83.5
+  ],
+  "en": [
+   "But your wall gives you alternating current.",
+   "It flips direction fifty or sixty times every second."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "waste",
+  "src": [
+   92.7,
+   107.5
+  ],
+  "en": [
+   "On a very long line, that flipping keeps filling and emptying the line, like a giant battery.",
+   "That extra current crowds the wires but does no useful work."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "sync",
+  "src": [
+   119.3,
+   140.0
+  ],
+  "en": [
+   "And every AC grid on the line must swing in perfect step, like dancers.",
+   "Across thousands of kilometers that gets wobbly, and one fault can spread into a blackout."
+  ],
+  "vi": [
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "dc",
+  "src": [
+   [
+    140.6,
+    143.8
+   ],
+   [
+    146.0,
+    149.5
+   ],
+   [
+    152.0,
+    153.5
+   ]
+  ],
+  "en": [
+   "Direct current fixes this.",
+   "It flows one way, so nothing flips and nobody keeps step.",
+   "A government energy lab says it can cut losses by up to fifty percent."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "cost",
+  "src": [
+   159.1,
+   164.6
+  ],
+  "en": [
+   "The catch?",
+   "Both ends need giant converter stations to turn AC into DC and back.",
+   "They can eat up to sixty percent of the cost."
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ },
+ {
+  "id": "outro",
+  "src": [
+   [
+    170.0,
+    174.0
+   ],
+   [
+    60.0,
+    63.5
+   ]
+  ],
+  "en": [
+   "So for shorter trips, AC wins.",
+   "For huge power over more than about five hundred kilometers, high voltage DC wins.",
+   "Stay curious!"
+  ],
+  "vi": [
+   "",
+   "",
+   ""
+  ]
+ }
+]
